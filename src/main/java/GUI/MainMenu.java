@@ -1,5 +1,7 @@
 package GUI;
 
+import GameLogic.EventData;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,8 +15,8 @@ public class MainMenu {
 	public MainMenu() {
 		button1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				InputStream guiInput = new ByteArrayInputStream("this is a test".getBytes());
-				System.setIn(guiInput);
+//				System.out.println("button pressed");
+				EventData.addOutput("this was a button click");
 			}
 		});
 	}

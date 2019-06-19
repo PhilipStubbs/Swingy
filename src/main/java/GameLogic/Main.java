@@ -20,7 +20,10 @@ public class Main {
 			System.out.println("Starting");
 
 			while (input.hasNext()) {
-				System.out.print("input:"+input.nextLine());
+				System.out.println(EventData.getOutput());
+
+				EventData.addOutput(input.nextLine());
+//				System.out.print("input:"+input.nextLine());
 			}
 			System.out.println();
 
