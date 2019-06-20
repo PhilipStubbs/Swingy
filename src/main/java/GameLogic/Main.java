@@ -2,6 +2,7 @@ package GameLogic;
 
 import javax.swing.*;
 import java.util.Scanner;
+
 import GUI.MainMenu;
 
 public class Main {
@@ -10,7 +11,6 @@ public class Main {
 			System.out.println("Starting");
 
 			JFrame frame = new JFrame("Swingy");
-			Scanner input = new Scanner(System.in);
 
 			frame.setContentPane(new MainMenu().panel1);
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -18,14 +18,14 @@ public class Main {
 			frame.setVisible(true);
 
 			System.out.println("Starting");
+//			EventParsing parser = new EventParsing();
+//			EventData eventData = new EventData();
 
-			while (input.hasNext()) {
-				System.out.println(EventData.getOutput());
+			EventParsing.instructionParseAsync();
 
-				EventData.addOutput(input.nextLine());
-//				System.out.print("input:"+input.nextLine());
-			}
-			System.out.println();
+			EventData.readStdinAsync();
+
+			System.out.println("End of program");
 
 		}
 }
