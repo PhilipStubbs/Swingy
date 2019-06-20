@@ -18,12 +18,12 @@ public class Main {
 			frame.setVisible(true);
 
 			System.out.println("Starting");
-			EventParsing parser = new EventParsing();
-			EventData eventData = new EventData();
+//			EventParsing parser = new EventParsing();
+//			EventData eventData = new EventData();
 
-			parser.instructionParseAsync();
+			EventParsing.instructionParseAsync();
 
-			eventData.readStdinAsync();
+			EventData.readStdinAsync();
 
 			System.out.println("End of program");
 
