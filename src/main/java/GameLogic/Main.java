@@ -18,19 +18,14 @@ public class Main {
 			frame.setVisible(true);
 
 			System.out.println("Starting");
+			EventParsing parser = new EventParsing();
+			EventData eventData = new EventData();
 
-			while (!EventData.getOutput().contains("exit")) {
-				if (EventData.getOutput().contains("print")){
-					System.out.println(EventData.getOutput());
-					EventData.removeInstructions("print");
-				}
-				System.out.print("input");
+			parser.instructionParseAsync();
 
-				EventData.readSTDinAsync();
+			eventData.readStdinAsync();
 
-//				EventData.addOutput(input.nextLine());
-			}
-			System.out.println();
+			System.out.println("End of program");
 
 		}
 }

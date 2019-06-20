@@ -7,25 +7,37 @@ import java.util.Scanner;
 
 public class EventData {
 
+	public EventData() {
+	}
+
 	private static List<String> instructions = new ArrayList<String>();
+	private static Boolean isRunning = true;
 
 
 	public static List<String> getOutput() {
 		return instructions;
 	}
 
+	public static Boolean getIsRunning() {
+		return isRunning;
+	}
 
-	public static void readSTDinAsync(){
+	public static void setIsRunning(Boolean isRunning) {
+		EventData.isRunning = isRunning;
+	}
 
-//		new Thread(new Runnable() {
+	public static void readStdinAsync(){
+
+		new Thread(new Runnable() {
 			Scanner input = new Scanner(System.in);
 
-//			public void run() {
-				if (input.hasNext()) {
-					addInstructions(input.nextLine());
-				}
-//			}
-//		}).start();
+			public void run() {
+					while (isRunning && input.hasNext()) {
+						addInstructions(input.nextLine());
+					}
+					return;
+			}
+		}).start();
 	}
 
 	public static void addInstructions(String input) {
