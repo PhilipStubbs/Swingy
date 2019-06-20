@@ -1,5 +1,8 @@
 package GameLogic;
 
+import Views.BaseWindow;
+import Views.MainMenu;
+
 import java.util.List;
 
 public class EventParsing {
@@ -10,7 +13,8 @@ public class EventParsing {
 	enum Instruction {
 		print,
 		exit,
-		test
+		test,
+		gui
 	}
 
 	static void instructionParseAsync() {
@@ -34,9 +38,16 @@ public class EventParsing {
 								case exit: {
 									EventData.setIsRunning(false);
 									System.out.println("killing program");
-									return;
+									break;
 								}
-								default:
+								case gui:
+									BaseWindow.showBaseWindow();
+									break;
+
+								default: {
+									System.out.println("Invalid instruction:" + instructions.get(i));
+									EventData.removeInstructions(instructions.get(instructionIndex));
+								}
 							}
 						}
 					}

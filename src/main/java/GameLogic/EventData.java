@@ -35,7 +35,8 @@ public class EventData {
 					while (isRunning && input.hasNext()) {
 						addInstructions(input.nextLine());
 					}
-					return;
+					System.out.println("ended stdin");
+					Thread.interrupted();
 			}
 		}).start();
 	}
