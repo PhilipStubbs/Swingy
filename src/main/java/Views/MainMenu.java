@@ -38,7 +38,7 @@ public class MainMenu extends BaseWindow{
 		});
 	}
 
-	public void displayMainMenu(){
+	static public void displayMainMenu(){
 
 
 		frame.setContentPane(new MainMenu().panel1);
