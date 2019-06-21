@@ -3,11 +3,14 @@ package Views;
 import javax.swing.*;
 
 public class BaseWindow {
-	static public JFrame frame = new JFrame("Swingy");
+	static public JFrame frame ;
 
-//	public BaseWindow{
+	static public void createBaseWindow(){
+		frame = new JFrame("Swingy");
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		frame.setVisible(true);
 
-//		}
+		}
 
 	static public void showBaseWindow(){
 		frame.setVisible(true);

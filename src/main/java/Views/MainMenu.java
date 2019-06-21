@@ -6,11 +6,12 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MainMenu extends BaseWindow {
+public class MainMenu extends BaseWindow{
 	private JButton button1;
 	private JPanel panel1;
 	private JButton printButton;
 	private JButton validButton;
+
 
 	public MainMenu() {
 		button1.addActionListener(new ActionListener() {
@@ -33,10 +34,9 @@ public class MainMenu extends BaseWindow {
 
 	public void displayMainMenu(){
 
+
 		frame.setContentPane(new MainMenu().panel1);
-		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.pack();
-		frame.setVisible(true);
 	}
 
 }

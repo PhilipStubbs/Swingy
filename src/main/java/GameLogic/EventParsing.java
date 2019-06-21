@@ -7,9 +7,6 @@ import java.util.List;
 
 public class EventParsing {
 
-	public EventParsing(){
-	}
-
 	enum Instruction {
 		print,
 		exit,
@@ -27,12 +24,12 @@ public class EventParsing {
 						instructions = EventData.getOutput();
 						for (int i=0; i < instructions.size(); i++) {
 							instructionIndex = i;
-							switch (Instruction.valueOf(instructions.get(i).toLowerCase())) {
+							/* IMPORTANT: remove instruction after use. */
 
+							switch (Instruction.valueOf(instructions.get(i).toLowerCase())) {
 
 								case print: {
 									System.out.println(EventData.getOutput());
-									EventData.removeInstructions(instructions.get(i));
 									break;
 								}
 								case exit: {
@@ -46,9 +43,9 @@ public class EventParsing {
 
 								default: {
 									System.out.println("Invalid instruction:" + instructions.get(i));
-									EventData.removeInstructions(instructions.get(instructionIndex));
 								}
 							}
+							EventData.removeInstructions(instructions.get(i));
 						}
 					}
 				} catch (IllegalArgumentException e){

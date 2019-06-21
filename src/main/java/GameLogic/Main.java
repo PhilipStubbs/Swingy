@@ -1,5 +1,6 @@
 package GameLogic;
 
+import Views.BaseWindow;
 import Views.MainMenu;
 
 public class Main {
@@ -10,10 +11,9 @@ public class Main {
 			MainMenu mainMenu = new MainMenu();
 
 			System.out.println("Starting");
+			BaseWindow.createBaseWindow();
 			mainMenu.displayMainMenu();
-//			mainMenu
-//			EventParsing parser = new EventParsing();
-//			EventData eventData = new EventData();
+
 
 			EventParsing.instructionParseAsync();
 
