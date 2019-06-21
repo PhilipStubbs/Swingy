@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Mob {
+
     protected String name;
     protected int level;
     protected int attackPnts;
@@ -18,7 +19,7 @@ public abstract class Mob {
     protected int maxDefencePnts;
     protected int maxExperiencePnts;
     protected List<Item> backpack = new ArrayList<Item>();
-    protected List<Artifact> equipped = new ArrayList<Artifact>();
+    protected Artifact[] equipped = new Artifact[3];
 
     public Mob() {
         this.name = "undefined";
@@ -31,7 +32,7 @@ public abstract class Mob {
         this.equipped = null;
     }
 
-    public Mob(String name, int level, int attackPnts, int defencePnts, int hitPnts, int experiencePnts, int maxHitPnts, int maxAttackPnts, int maxDefencePnts, int maxExperiencePnts, List<Item> backpack, List<Artifact> equipped) {
+    public Mob(String name, int level, int attackPnts, int defencePnts, int hitPnts, int experiencePnts, int maxHitPnts, int maxAttackPnts, int maxDefencePnts, int maxExperiencePnts, List<Item> backpack, Artifact[] equipped) {
         this.name = name;
         this.level = level;
         this.attackPnts = attackPnts;
