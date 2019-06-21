@@ -1,31 +1,29 @@
 package GameLogic;
 
-import javax.swing.*;
-import java.util.Scanner;
+import Views.BaseWindow;
+import Views.MainMenu;
 
-import GUI.MainMenu;
 
 public class Main {
+
+
+
+
 
 		public static void main(String[] args) {
 			System.out.println("Starting");
 
-			JFrame frame = new JFrame("Swingy");
-
-			frame.setContentPane(new MainMenu().panel1);
-			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			frame.pack();
-			frame.setVisible(true);
+			MainMenu mainMenu = new MainMenu();
 
 			System.out.println("Starting");
-//			EventParsing parser = new EventParsing();
-//			EventData eventData = new EventData();
-
+			BaseWindow.createBaseWindow();
+			mainMenu.displayMainMenu();
+			EventData.setIsRunning(true);
 			EventParsing.instructionParseAsync();
 
 			EventData.readStdinAsync();
 
-			System.out.println("End of program");
+			System.out.println("End of main");
 
 		}
 }

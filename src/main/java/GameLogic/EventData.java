@@ -7,11 +7,9 @@ import java.util.Scanner;
 
 public class EventData {
 
-	public EventData() {
-	}
 
 	private static List<String> instructions = new ArrayList<String>();
-	private static Boolean isRunning = true;
+	private static Boolean isRunning;
 
 
 	public static List<String> getOutput() {
@@ -35,7 +33,8 @@ public class EventData {
 					while (isRunning && input.hasNext()) {
 						addInstructions(input.nextLine());
 					}
-					return;
+					System.out.println("ended stdin");
+					Thread.interrupted();
 			}
 		}).start();
 	}

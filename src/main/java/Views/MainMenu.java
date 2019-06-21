@@ -1,4 +1,4 @@
-package GUI;
+package Views;
 
 import GameLogic.EventData;
 
@@ -6,11 +6,13 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MainMenu {
+public class MainMenu extends BaseWindow{
 	private JButton button1;
-	public JPanel panel1;
+	private JPanel panel1;
 	private JButton printButton;
 	private JButton validButton;
+	private JButton exitButton;
+
 
 	public MainMenu() {
 		button1.addActionListener(new ActionListener() {
@@ -29,5 +31,18 @@ public class MainMenu {
 				EventData.addInstructions("test");
 			}
 		});
+		exitButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent actionEvent) {
+				EventData.addInstructions("exit");
+			}
+		});
 	}
+
+	public void displayMainMenu(){
+
+
+		frame.setContentPane(new MainMenu().panel1);
+		frame.pack();
+	}
+
 }

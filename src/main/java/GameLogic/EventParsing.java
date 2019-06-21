@@ -1,16 +1,17 @@
 package GameLogic;
 
+import Views.BaseWindow;
+import Views.MainMenu;
+
 import java.util.List;
 
 public class EventParsing {
 
-	public EventParsing(){
-	}
-
 	enum Instruction {
 		print,
 		exit,
-		test
+		test,
+		gui
 	}
 
 	static void instructionParseAsync() {
@@ -23,21 +24,29 @@ public class EventParsing {
 						instructions = EventData.getOutput();
 						for (int i=0; i < instructions.size(); i++) {
 							instructionIndex = i;
-							switch (Instruction.valueOf(instructions.get(i).toLowerCase())) {
+							/* IMPORTANT: remove instruction after use. */
 
+							switch (Instruction.valueOf(instructions.get(i).toLowerCase())) {
 
 								case print: {
 									System.out.println(EventData.getOutput());
-									EventData.removeInstructions(instructions.get(i));
 									break;
 								}
 								case exit: {
 									EventData.setIsRunning(false);
 									System.out.println("killing program");
-									return;
+									GameLogic.ApplicationControls.closeApplication();
+									break;
 								}
-								default:
+								case gui:
+									BaseWindow.showBaseWindow();
+									break;
+
+								default: {
+									System.out.println("Invalid instruction:" + instructions.get(i));
+								}
 							}
+							EventData.removeInstructions(instructions.get(i));
 						}
 					}
 				} catch (IllegalArgumentException e){
