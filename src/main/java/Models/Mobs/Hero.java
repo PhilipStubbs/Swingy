@@ -13,8 +13,8 @@ public class Hero extends Mob {
         super();
     }
 
-    public Hero(String name, int level, int attackPnts, int defencePnts, int hitPnts, int experiencePnts, int maxHitPnts, int maxAttackPnts, int maxDefencePnts, int maxExperiencePnts, List<Item> backpack, Artifact[] equipped) {
-        super(name, level, attackPnts, defencePnts, hitPnts, experiencePnts, maxHitPnts, maxAttackPnts, maxDefencePnts, maxExperiencePnts, backpack, equipped);
+    public Hero(String name, int level, int experiencePnts, int maxHitPnts, int maxAttackPnts, int maxDefencePnts, List<Item> backpack, Artifact[] equipped) {
+        super(name, level, experiencePnts, maxHitPnts, maxAttackPnts, maxDefencePnts, backpack, equipped);
     }
 
     public void gainExperince(int gain){
