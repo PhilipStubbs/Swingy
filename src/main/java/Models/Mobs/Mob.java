@@ -6,7 +6,11 @@ import Models.Items.Item;
 import java.util.ArrayList;
 import java.util.List;
 
+import static Models.Artifacts.Artifact.*;
+import static Models.Artifacts.Artifact.HELM;
+
 public abstract class Mob {
+
     protected String name;
     protected int level;
     protected int attackPnts;
@@ -18,7 +22,7 @@ public abstract class Mob {
     protected int maxDefencePnts;
     protected int maxExperiencePnts;
     protected List<Item> backpack = new ArrayList<Item>();
-    protected List<Artifact> equipped = new ArrayList<Artifact>();
+    protected Artifact[] equipped = new Artifact[3];
 
     public Mob() {
         this.name = "undefined";
@@ -31,17 +35,27 @@ public abstract class Mob {
         this.equipped = null;
     }
 
-    public Mob(String name, int level, int attackPnts, int defencePnts, int hitPnts, int experiencePnts, int maxHitPnts, int maxAttackPnts, int maxDefencePnts, int maxExperiencePnts, List<Item> backpack, List<Artifact> equipped) {
+    public Mob(String name, int level, int experiencePnts, int maxHitPnts, int maxAttackPnts, int maxDefencePnts, List<Item> backpack, Artifact[] equipped) {
         this.name = name;
         this.level = level;
-        this.attackPnts = attackPnts;
-        this.defencePnts = defencePnts;
-        this.hitPnts = hitPnts;
-        this.experiencePnts = experiencePnts;
-        this.maxHitPnts = maxHitPnts;
+
         this.maxAttackPnts = maxAttackPnts;
+        attackPnts = maxAttackPnts;
+        if (equipped[WEAPON] != null)
+            attackPnts += equipped[WEAPON].getBuff();
+
         this.maxDefencePnts = maxDefencePnts;
-        this.maxExperiencePnts = maxExperiencePnts;
+        defencePnts = maxDefencePnts;
+        if (equipped[ARMOUR] != null)
+            defencePnts += equipped[ARMOUR].getBuff();
+
+        this.maxHitPnts = maxHitPnts;
+        hitPnts = maxHitPnts;
+        if (equipped[HELM] != null)
+            hitPnts += equipped[HELM].getBuff();
+
+        this.experiencePnts -= maxExperiencePnts;
+        maxExperiencePnts = level * 1000 + (int)Math.pow(level - 1, 2) * 450;
         this.backpack = backpack;
         this.equipped = equipped;
     }
