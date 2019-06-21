@@ -11,6 +11,7 @@ public class MainMenu extends BaseWindow{
 	private JPanel panel1;
 	private JButton printButton;
 	private JButton validButton;
+	private JButton exitButton;
 
 
 	public MainMenu() {
@@ -28,6 +29,11 @@ public class MainMenu extends BaseWindow{
 		validButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
 				EventData.addInstructions("test");
+			}
+		});
+		exitButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent actionEvent) {
+				EventData.addInstructions("exit");
 			}
 		});
 	}

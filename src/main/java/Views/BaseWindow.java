@@ -12,6 +12,11 @@ public class BaseWindow {
 
 		}
 
+	static public void destoryWindow(){
+		frame.dispose();
+		frame.setVisible(false);
+	}
+
 	static public void showBaseWindow(){
 		frame.setVisible(true);
 	}

@@ -35,6 +35,7 @@ public class EventParsing {
 								case exit: {
 									EventData.setIsRunning(false);
 									System.out.println("killing program");
+									GameLogic.ApplicationControls.closeApplication();
 									break;
 								}
 								case gui:
