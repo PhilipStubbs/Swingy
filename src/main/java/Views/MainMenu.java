@@ -1,5 +1,6 @@
 package Views;
 
+import GameLogic.ApplicationControls;
 import GameLogic.EventData;
 
 import javax.swing.*;
@@ -7,42 +8,32 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MainMenu extends BaseWindow{
-	private JButton button1;
-	private JPanel panel1;
-	private JButton printButton;
-	private JButton validButton;
-	private JButton exitButton;
 
+	private JPanel mainMenuPanel;
+	private JButton newGameButton;
+	private JButton exitButton;
+	private JButton continueButton;
 
 	public MainMenu() {
-		button1.addActionListener(new ActionListener() {
+		continueButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				EventData.addInstructions("this was a button click");
+				ApplicationControls.addInstructions("continue");
 			}
 		});
-		printButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				EventData.addInstructions("print");
-			}
-		});
-		validButton.addActionListener(new ActionListener() {
+		newGameButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				EventData.addInstructions("test");
+				ApplicationControls.addInstructions("new_game");
 			}
 		});
 		exitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				EventData.addInstructions("exit");
+				ApplicationControls.addInstructions("exit");
 			}
 		});
 	}
 
 	static public void displayMainMenu(){
-
-
-		frame.setContentPane(new MainMenu().panel1);
+		frame.setContentPane(new MainMenu().mainMenuPanel);
 		frame.pack();
 	}
-
 }
