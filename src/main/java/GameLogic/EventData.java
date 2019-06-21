@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 public class EventData {
 
-
 	private static List<String> instructions = new ArrayList<String>();
 	private static Boolean isRunning;
 
@@ -47,8 +46,4 @@ public class EventData {
 		instructions.remove(input);
 	}
 
-
-	public static void setOutput(List<String> output) {
-		EventData.instructions = output;
-	}
 }
