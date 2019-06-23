@@ -36,28 +36,28 @@ public abstract class Mob {
     }
 
     public Mob(String name, int level, int experiencePnts, int maxHitPnts, int maxAttackPnts, int maxDefencePnts, List<Item> backpack, Artifact[] equipped) {
-        this.name = name;
-        this.level = level;
-
-        this.maxAttackPnts = maxAttackPnts;
-        attackPnts = maxAttackPnts;
-        if (equipped[WEAPON] != null)
-            attackPnts += equipped[WEAPON].getBuff();
-
-        this.maxDefencePnts = maxDefencePnts;
-        defencePnts = maxDefencePnts;
-        if (equipped[ARMOUR] != null)
-            defencePnts += equipped[ARMOUR].getBuff();
-
-        this.maxHitPnts = maxHitPnts;
-        hitPnts = maxHitPnts;
-        if (equipped[HELM] != null)
-            hitPnts += equipped[HELM].getBuff();
-
-        this.experiencePnts -= maxExperiencePnts;
-        maxExperiencePnts = level * 1000 + (int)Math.pow(level - 1, 2) * 450;
-        this.backpack = backpack;
-        this.equipped = equipped;
+//        this.name = name;
+//        this.level = level;
+//
+//        this.maxAttackPnts = maxAttackPnts;
+//        attackPnts = maxAttackPnts;
+//        if (equipped[WEAPON] != null)
+//            attackPnts += equipped[WEAPON].getBuff();
+//
+//        this.maxDefencePnts = maxDefencePnts;
+//        defencePnts = maxDefencePnts;
+//        if (equipped[ARMOUR] != null)
+//            defencePnts += equipped[ARMOUR].getBuff();
+//
+//        this.maxHitPnts = maxHitPnts;
+//        hitPnts = maxHitPnts;
+//        if (equipped[HELM] != null)
+//            hitPnts += equipped[HELM].getBuff();
+//
+//        this.experiencePnts -= maxExperiencePnts;
+//        maxExperiencePnts = level * 1000 + (int)Math.pow(level - 1, 2) * 450;
+//        this.backpack = backpack;
+//        this.equipped = equipped;
     }
 
     public void attack(){}
