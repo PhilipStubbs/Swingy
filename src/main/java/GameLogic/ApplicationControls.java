@@ -1,7 +1,7 @@
 package GameLogic;
 
-import Views.BaseWindow;
-import Views.MainMenu;
+import Views.Gui.BaseWindow;
+import Views.Gui.MainMenu;
 
 import java.util.ArrayList;
 import java.util.List;

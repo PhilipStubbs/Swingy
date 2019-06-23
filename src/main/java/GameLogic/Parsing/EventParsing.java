@@ -1,8 +1,7 @@
 package GameLogic.Parsing;
 
 import GameLogic.ApplicationControls;
-import GameLogic.EventData;
-import Views.BaseWindow;
+
 import java.util.List;
 
 public class EventParsing {

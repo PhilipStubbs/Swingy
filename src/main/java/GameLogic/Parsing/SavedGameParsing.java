@@ -15,6 +15,9 @@ public class SavedGameParsing {
    private static Scanner sc = null;
    private static List<Hero> heroes = new ArrayList<Hero>();
 
+    public static List<Hero> getHeroes() {
+        return heroes;
+    }
 
     public static List<Hero> openSaves(){
 

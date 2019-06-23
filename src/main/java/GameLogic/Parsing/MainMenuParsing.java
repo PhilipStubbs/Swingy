@@ -1,13 +1,10 @@
 package GameLogic.Parsing;
 
 import GameLogic.ApplicationControls;
-import GameLogic.EventData;
 import Models.Mobs.Hero;
-import Views.BaseWindow;
+import Views.Gui.BaseWindow;
 
 import java.util.List;
-
-import static GameLogic.Parsing.EventParsing.instructionParseAsync;
 
 public class MainMenuParsing {
 	static List<String> instructions;
@@ -46,10 +43,8 @@ public static void mainMenuCommands(){
 							break;
 
 						case continue_game:
-							List<Hero> heroes = SavedGameParsing.openSaves();
-							for (int x = 0; x < heroes.size(); x++){
-								System.out.println(heroes.get(x).toString());
-							}
+							SavedGameParsing.openSaves();
+							ApplicationControls.status = 1;
 							break;
 
 						case exit:
@@ -80,9 +75,8 @@ public static void mainMenuCommands(){
 	} catch (IllegalArgumentException e){
 		System.out.println("Invalid instruction:"+instructions.get(instructionIndex));
 		ApplicationControls.removeInstructions(instructions.get(instructionIndex));
-//		instructions = ApplicationControls.getInstructions();
-
 		mainMenuCommands();
+
 		} finally {
 		instructions = ApplicationControls.getInstructions();
 		}

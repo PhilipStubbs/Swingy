@@ -1,7 +1,6 @@
-package Views;
+package Views.Gui;
 
 import GameLogic.ApplicationControls;
-import GameLogic.EventData;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

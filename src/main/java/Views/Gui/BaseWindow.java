@@ -1,4 +1,4 @@
-package Views;
+package Views.Gui;
 
 import javax.swing.*;
 import java.awt.*;
