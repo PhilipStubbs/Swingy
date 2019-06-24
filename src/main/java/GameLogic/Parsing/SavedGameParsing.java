@@ -31,7 +31,7 @@ public class SavedGameParsing {
             int attackPnts;
             int defencePnts;
             List<Item> backpack = new ArrayList<Item>();
-            Artifact[] equipped = {};
+            Artifact[] equipped = {new Artifact(1), new Artifact(1), new Artifact(1) };
 
 
             while (sc.hasNext()) {

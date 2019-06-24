@@ -71,4 +71,48 @@ public abstract class Mob {
     public void takeDamage(){}
 
     public void gainHitPnts(){}
+
+    public int getAttackPnts() {
+        return attackPnts;
+    }
+
+    public int getDefencePnts() {
+        return defencePnts;
+    }
+
+    public int getHitPnts() {
+        return hitPnts;
+    }
+
+    public int getExperiencePnts() {
+        return experiencePnts;
+    }
+
+    public int getMaxHitPnts() {
+        return maxHitPnts;
+    }
+
+    public int getMaxAttackPnts() {
+        return maxAttackPnts;
+    }
+
+    public int getMaxDefencePnts() {
+        return maxDefencePnts;
+    }
+
+    public int getMaxExperiencePnts() {
+        return maxExperiencePnts;
+    }
+
+    public List<Item> getBackpack() {
+        return backpack;
+    }
+
+    public Artifact[] getEquipped() {
+        return equipped;
+    }
+
+    public int getLevel() {
+        return level;
+    }
 }
