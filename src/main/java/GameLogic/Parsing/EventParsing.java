@@ -22,6 +22,8 @@ public class EventParsing {
 				while(ApplicationControls.getIsRunning()) {
 					MainMenuParsing.mainMenuCommands();
 					System.out.println("outside");
+
+					ContinueMenuParsing.continueMenuCommands();
 				}
 //				try {
 //					while (ApplicationControls.getIsRunning()){
@@ -62,6 +64,13 @@ public class EventParsing {
 //				}
 			}
 		}).start();
+	}
 
+	public static void instructionParse() {
+			while(ApplicationControls.getIsRunning()) {
+			MainMenuParsing.mainMenuCommands();
+
+			ContinueMenuParsing.continueMenuCommands();
+		}
 	}
 }

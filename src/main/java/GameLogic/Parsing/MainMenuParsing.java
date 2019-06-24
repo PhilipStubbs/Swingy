@@ -1,12 +1,13 @@
 package GameLogic.Parsing;
 
 import GameLogic.ApplicationControls;
+import Models.Global;
 import Models.Mobs.Hero;
 import Views.Gui.BaseWindow;
 
 import java.util.List;
 
-public class MainMenuParsing {
+public class MainMenuParsing extends Global {
 	static List<String> instructions;
 
 
@@ -23,9 +24,8 @@ public static void mainMenuCommands(){
 
 	int instructionIndex = -1;
 	instructions = ApplicationControls.getInstructions();
-
 	try {
-		while(ApplicationControls.status == 0) {
+		while(ApplicationControls.status == MAIN_MENU) {
 
 			if ( instructions.size() != 0)
 				System.out.println("instruction size:" + instructions.size());
