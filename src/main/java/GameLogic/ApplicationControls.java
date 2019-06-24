@@ -1,11 +1,14 @@
 package GameLogic;
 
+import GameLogic.Parsing.SavedGameParsing;
 import Models.Mobs.Hero;
 import Views.Gui.BaseWindow;
 import Views.Gui.MainMenu;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static Models.Global.GAME_LOOP;
 
 public class ApplicationControls {
 
@@ -29,7 +32,6 @@ public class ApplicationControls {
 
 	static public void createWindow(){
 		BaseWindow.createBaseWindow();
-		MainMenu.displayMainMenu();
 		isRunning = true;
 	}
 
@@ -61,5 +63,10 @@ public class ApplicationControls {
 
 	public static void setHero(Hero hero) {
 		ApplicationControls.hero = hero;
+	}
+	public static void setHero(int i) {
+		ApplicationControls.hero = SavedGameParsing.getHeroes().get(i);
+		status = GAME_LOOP;
+
 	}
 }

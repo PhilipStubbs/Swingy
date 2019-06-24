@@ -4,6 +4,7 @@ import GameLogic.ApplicationControls;
 import Models.Global;
 import Models.Mobs.Hero;
 import Views.Gui.BaseWindow;
+import Views.Gui.MainMenu;
 
 import java.util.List;
 
@@ -23,7 +24,10 @@ public static void mainMenuCommands(){
 
 
 	int instructionIndex = -1;
-	instructions = ApplicationControls.getInstructions();
+	if (ApplicationControls.status == MAIN_MENU) {
+		instructions = ApplicationControls.getInstructions();
+		MainMenu.displayMainMenu();
+	}
 	try {
 		while(ApplicationControls.status == MAIN_MENU) {
 
@@ -44,7 +48,7 @@ public static void mainMenuCommands(){
 
 						case continue_game:
 							SavedGameParsing.openSaves();
-							ApplicationControls.status = 1;
+							ApplicationControls.status = CONTINUE_MENU;
 							break;
 
 						case exit:

@@ -6,33 +6,33 @@ import Models.Mobs.Hero;
 import Views.Gui.BaseWindow;
 import Views.Terminal.ContinueMenuOutput;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static GameLogic.Parsing.SavedGameParsing.getHeroes;
-import static Views.Gui.ContinueMenu.displayContinueMenu;
+import static Views.Gui.GameLoopMenu.displayGameLoopMenu;
 
-public class ContinueMenuParsing extends Global {
+
+public class GameLoopParsing extends Global {
+
     static List<String> instructions;
 
 
-    enum ContinueMenuInstruction {
+    enum GameLoopMenuInstruction {
         exit,
         gui,
     }
 
 
-    public static void continueMenuCommands(){
+    public static void gameLoopMenuCommands(){
         int instructionIndex = -1;
 
-        if (ApplicationControls.status == CONTINUE_MENU) {
-            displayContinueMenu();
+        if (ApplicationControls.status == GAME_LOOP) {
+            displayGameLoopMenu();
             instructions = ApplicationControls.getInstructions();
             ContinueMenuOutput.outputHeroes(SavedGameParsing.getHeroes());
         }
 
         try {
-            while(ApplicationControls.status == CONTINUE_MENU && ApplicationControls.getHero() == null) {
+            while(ApplicationControls.status == GAME_LOOP) {
 
                 if ( instructions.size() != 0)
                     System.out.println("instruction size:" + instructions.size());
@@ -44,11 +44,10 @@ public class ContinueMenuParsing extends Global {
 
                     if (instructions.get(i) != null) {
 
-                        switch (ContinueMenuInstruction.valueOf(instructions.get(i).toLowerCase())) {
+                        switch (GameLoopMenuInstruction.valueOf(instructions.get(i).toLowerCase())) {
 
                             case exit:
                                 ApplicationControls.setIsRunning(false);
-                                System.out.println("killing program");
                                 GameLogic.ApplicationControls.closeApplication();
                                 break;
 
@@ -68,22 +67,22 @@ public class ContinueMenuParsing extends Global {
 
             }
         } catch (IllegalArgumentException e){
-            try {
-                 List<Hero> heroList = getHeroes();
-                int heroIndex = Integer.parseInt(instructions.get(instructionIndex));
-                    if (heroIndex >= 0 && heroIndex <= heroList.size()){
-                    ApplicationControls.setHero(heroList.get(heroIndex));
-                    ApplicationControls.status = GAME_LOOP;
-                    return;
-                } else {
-                    System.out.println("Invalid index:" + heroIndex + ". Range from 0 - " + (getHeroes().size() -1));
-                }
-
-            } catch (NumberFormatException x){
-                System.out.println("Not an int:" + x.getLocalizedMessage());
-            }
+//            try {
+//                List<Hero> heroList = getHeroes();
+//                int heroIndex = Integer.parseInt(instructions.get(instructionIndex));
+//                if (heroIndex >= 0 && heroIndex <= heroList.size()){
+//                    ApplicationControls.setHero(heroList.get(heroIndex));
+//                    ApplicationControls.status = GAME_LOOP;
+//                    return;
+//                } else {
+//                    System.out.println("Invalid index:" + heroIndex + ". Range from 0 - " + (getHeroes().size() -1));
+//                }
+//
+//            } catch (NumberFormatException x){
+//                System.out.println("Not an int:" + x.getLocalizedMessage());
+//            }
             ApplicationControls.removeInstructions(instructions.get(instructionIndex));
-            continueMenuCommands();
+            gameLoopMenuCommands();
 
         } finally {
             instructions = ApplicationControls.getInstructions();

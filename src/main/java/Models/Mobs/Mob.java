@@ -35,6 +35,10 @@ public abstract class Mob {
         this.equipped = null;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public Mob(String name, int level, int experiencePnts, int maxHitPnts, int maxAttackPnts, int maxDefencePnts, List<Item> backpack, Artifact[] equipped) {
         this.name = name;
         this.level = level;

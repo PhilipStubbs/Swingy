@@ -20,48 +20,16 @@ public class EventParsing {
 			public void run() {
 
 				while(ApplicationControls.getIsRunning()) {
+//					System.out.println("Main Menu");
+
 					MainMenuParsing.mainMenuCommands();
-					System.out.println("outside");
+//					System.out.println("Continue Menu");
 
 					ContinueMenuParsing.continueMenuCommands();
+
+//					System.out.println("Begin Game");
+					GameLoopParsing.gameLoopMenuCommands();
 				}
-//				try {
-//					while (ApplicationControls.getIsRunning()){
-//						while(ApplicationControls.status == 0) {
-//							instructions = ApplicationControls.getInstructions();
-//							for (int i=0; i < instructions.size(); i++) {
-//								instructionIndex = i;
-//								/* IMPORTANT: remove instruction after use. */
-//
-//								switch (Instruction.valueOf(instructions.get(i).toLowerCase())) {
-//
-//									case print: {
-//										System.out.println(ApplicationControls.getInstructions());
-//										break;
-//									}
-//									case exit: {
-//										ApplicationControls.setIsRunning(false);
-//										System.out.println("killing program");
-//										GameLogic.ApplicationControls.closeApplication();
-//										break;
-//									}
-//									case gui:
-//										BaseWindow.showBaseWindow();
-//										break;
-//
-//									default: {
-//										System.out.println("Invalid instruction:" + instructions.get(i));
-//									}
-//								}
-//								ApplicationControls.removeInstructions(instructions.get(i));
-//							}
-//						}
-//					}
-//				} catch (IllegalArgumentException e){
-//					System.out.println("Invalid instruction:"+instructions.get(instructionIndex));
-//					ApplicationControls.removeInstructions(instructions.get(instructionIndex));
-//					instructionParseAsync();
-//				}
 			}
 		}).start();
 	}

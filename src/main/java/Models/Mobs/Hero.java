@@ -57,7 +57,7 @@ public class Hero extends Mob {
     @Override
     public String toString() {
         return
-                "name='" + name + '\'' +
+                "'" + name + '\'' +
                 ", level=" + level +
                 ", attackPnts=" + attackPnts +
                 ", defencePnts=" + defencePnts +
