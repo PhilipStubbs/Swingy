@@ -16,7 +16,7 @@ public class GameLoopMenu extends BaseWindow{
     private JButton inventoryButton;
     private JPanel gameLoopMenu;
     private JLabel heroName;
-    private JLabel Health;
+    private JLabel health;
     private JLabel attack;
     private JLabel defence;
     private JLabel xp;
@@ -29,12 +29,10 @@ public class GameLoopMenu extends BaseWindow{
     public GameLoopMenu() {
         exitButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                ApplicationControls.addInstructions("exit");
+                ApplicationControls.addInstructions("save_exit");
             }
         });
-
         updateStats();
-
     }
 
     public void updateStats() {
@@ -42,17 +40,17 @@ public class GameLoopMenu extends BaseWindow{
         Artifact[] equipped = hero.getEquipped();
 
         heroName.setText(hero.getName());
-        level.setText("Level:"+String.valueOf(hero.getLevel()));
-        Health.setText("Health:" + String.valueOf(hero.getHitPnts()));
-        attack.setText("Attack:" + String.valueOf(hero.getAttackPnts()));
-        defence.setText("defence:" + String.valueOf(hero.getDefencePnts()));
-        xp.setText("xp:" + String.valueOf(hero.getExperiencePnts()));
+        level.setText("Level: "+String.valueOf(hero.getLevel()));
+        health.setText("health: " + String.valueOf(hero.getHitPnts()) + "/" + String.valueOf(hero.getMaxHitPnts()));
+        attack.setText("Attack: " + String.valueOf(hero.getAttackPnts()));
+        defence.setText("defence: " + String.valueOf(hero.getDefencePnts()) + "/" + String.valueOf(hero.getMaxDefencePnts()));
+        xp.setText("xp:" + String.valueOf(hero.getExperiencePnts()) + "/" + String.valueOf(hero.getMaxExperiencePnts()));
         if (equipped != null && equipped[WEAPON] != null)
-            equippedWeapon.setText(String.valueOf(equipped[WEAPON]));
+            equippedWeapon.setText("Weapon: "+String.valueOf(equipped[WEAPON].getName() + ":" + equipped[WEAPON].getBuff()));
         if (hero.getEquipped() != null && equipped[ARMOUR] != null)
-            equippedArmor.setText(String.valueOf(equipped[ARMOUR]));
+            equippedArmor.setText("Armour: "+String.valueOf(equipped[ARMOUR].getName()+ ":" + equipped[ARMOUR].getBuff()));
         if (hero.getEquipped() != null && equipped[HELM] != null)
-            equippedHelm.setText(String.valueOf(equipped[HELM]));
+            equippedHelm.setText("Helmet: "+String.valueOf(equipped[HELM].getName() + ":" + equipped[HELM].getBuff()));
     }
 
     static public void displayGameLoopMenu(){

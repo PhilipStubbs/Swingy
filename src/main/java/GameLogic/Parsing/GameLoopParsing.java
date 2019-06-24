@@ -17,6 +17,7 @@ public class GameLoopParsing extends Global {
 
 
     enum GameLoopMenuInstruction {
+        save_exit,
         exit,
         gui,
     }
@@ -28,7 +29,6 @@ public class GameLoopParsing extends Global {
         if (ApplicationControls.status == GAME_LOOP) {
             displayGameLoopMenu();
             instructions = ApplicationControls.getInstructions();
-            ContinueMenuOutput.outputHeroes(SavedGameParsing.getHeroes());
         }
 
         try {
@@ -48,6 +48,12 @@ public class GameLoopParsing extends Global {
 
                             case exit:
                                 ApplicationControls.setIsRunning(false);
+                                GameLogic.ApplicationControls.closeApplication();
+                                break;
+
+                            case save_exit:
+                                ApplicationControls.setIsRunning(false);
+                                SavedGameParsing.saveGame();
                                 GameLogic.ApplicationControls.closeApplication();
                                 break;
 

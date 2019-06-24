@@ -1,5 +1,7 @@
 package Models.Items;
 
-public class Item {
+import Models.Global;
+
+public class Item extends Global {
 
 }

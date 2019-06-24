@@ -13,8 +13,8 @@ public class Hero extends Mob {
         super();
     }
 
-    public Hero(String name, int level, int experiencePnts, int maxHitPnts, int maxAttackPnts, int maxDefencePnts, List<Item> backpack, Artifact[] equipped) {
-        super(name, level, experiencePnts, maxHitPnts, maxAttackPnts, maxDefencePnts, backpack, equipped);
+    public Hero(String name, String mobClass,int level, int experiencePnts, int maxHitPnts, int maxAttackPnts, int maxDefencePnts, List<Artifact> backpack, Artifact[] equipped) {
+        super(name, mobClass,level, experiencePnts, maxHitPnts, maxAttackPnts, maxDefencePnts, backpack, equipped);
     }
 
     public void gainExperince(int gain){
@@ -69,5 +69,32 @@ public class Hero extends Mob {
                 ", maxExperiencePnts=" + maxExperiencePnts +
                 ", backpack=" + backpack +
                 ", equipped=" + equipped;
+    }
+
+    public String saveString(){
+        String backpackString = "";
+        for(int i = 0; i < backpack.size(); i++){
+            backpackString += (backpack.get(i).getName() + " " + backpack.get(i).getName()+ " " +backpack.get(i).getType());
+        }
+
+     return name + " " +
+            mobClass + " " +
+            level + " " +
+            experiencePnts + " " +
+            hitPnts + " " +
+            attackPnts + " " +
+            defencePnts + " " +
+            equipped.length + " " +
+            equipped[0].getName() + " " +
+            equipped[0].getBuff() + " " +
+            HELM + " " +
+            equipped[1].getName() + " " +
+            equipped[1].getBuff() + " " +
+            ARMOUR + " " +
+            equipped[2].getName() + " " +
+            equipped[2].getBuff() + " " +
+            WEAPON + " " +
+            backpack.size() + " " +
+            backpackString ;
     }
 }

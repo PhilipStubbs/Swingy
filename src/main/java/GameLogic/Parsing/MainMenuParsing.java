@@ -58,7 +58,7 @@ public static void mainMenuCommands(){
 							break;
 
 						case new_game:
-							System.out.println("new game totes created");
+							ApplicationControls.status = NEW_GAME;
 							break;
 
 						case gui:

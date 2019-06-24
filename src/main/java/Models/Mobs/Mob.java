@@ -1,17 +1,17 @@
 package Models.Mobs;
 
 import Models.Artifacts.Artifact;
+import Models.Global;
 import Models.Items.Item;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static Models.Artifacts.Artifact.*;
-import static Models.Artifacts.Artifact.HELM;
 
-public abstract class Mob {
+public abstract class Mob extends Global {
 
     protected String name;
+    protected String mobClass;
     protected int level;
     protected int attackPnts;
     protected int defencePnts;
@@ -21,7 +21,7 @@ public abstract class Mob {
     protected int maxAttackPnts;
     protected int maxDefencePnts;
     protected int maxExperiencePnts;
-    protected List<Item> backpack = new ArrayList<Item>();
+    protected List<Artifact> backpack = new ArrayList<Artifact>();
     protected Artifact[] equipped = new Artifact[3];
 
     public Mob() {
@@ -39,24 +39,26 @@ public abstract class Mob {
         return name;
     }
 
-    public Mob(String name, int level, int experiencePnts, int maxHitPnts, int maxAttackPnts, int maxDefencePnts, List<Item> backpack, Artifact[] equipped) {
+    public Mob(String name, String mobClass ,int level, int experiencePnts, int maxHitPnts, int maxAttackPnts, int maxDefencePnts, List<Artifact> backpack, Artifact[] equipped) {
         this.name = name;
+        this.mobClass = mobClass;
+
         this.level = level;
 
         this.maxAttackPnts = maxAttackPnts;
         attackPnts = maxAttackPnts;
-//        if (equipped[WEAPON] != null)
-//            attackPnts += equipped[WEAPON].getBuff();
+        if (equipped[WEAPON] != null)
+            attackPnts += equipped[WEAPON].getBuff();
 
         this.maxDefencePnts = maxDefencePnts;
         defencePnts = maxDefencePnts;
-//        if (equipped[ARMOUR] != null)
-//            defencePnts += equipped[ARMOUR].getBuff();
+        if (equipped[ARMOUR] != null)
+            defencePnts += equipped[ARMOUR].getBuff();
 
         this.maxHitPnts = maxHitPnts;
         hitPnts = maxHitPnts;
-//        if (equipped[HELM] != null)
-//            hitPnts += equipped[HELM].getBuff();
+        if (equipped[HELM] != null)
+            hitPnts += equipped[HELM].getBuff();
 
         this.experiencePnts -= maxExperiencePnts;
         maxExperiencePnts = level * 1000 + (int)Math.pow(level - 1, 2) * 450;
@@ -104,7 +106,7 @@ public abstract class Mob {
         return maxExperiencePnts;
     }
 
-    public List<Item> getBackpack() {
+    public List<Artifact> getBackpack() {
         return backpack;
     }
 
@@ -114,5 +116,17 @@ public abstract class Mob {
 
     public int getLevel() {
         return level;
+    }
+
+    public String getMobClass() {
+        return mobClass;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setMobClass(String mobClass) {
+        this.mobClass = mobClass;
     }
 }

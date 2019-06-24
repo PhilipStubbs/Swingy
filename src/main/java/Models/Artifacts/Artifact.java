@@ -1,14 +1,25 @@
 package Models.Artifacts;
 
-public class Artifact {
-    public static final int HELM = 0;
-    public static final int ARMOUR = 1;
-    public static final int WEAPON = 2;
+import Models.Global;
+
+public class Artifact extends Global {
 
     private int abilityBuff;
+    private int type;
+    private String name;
 
-    public Artifact(int abilityBuff) {
+    public Artifact(String name ,int abilityBuff, int type) {
+        this.name = name;
         this.abilityBuff = abilityBuff;
+        this.type = type;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getType() {
+        return type;
     }
 
     public int getBuff() {

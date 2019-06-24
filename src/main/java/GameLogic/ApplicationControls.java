@@ -64,9 +64,5 @@ public class ApplicationControls {
 	public static void setHero(Hero hero) {
 		ApplicationControls.hero = hero;
 	}
-	public static void setHero(int i) {
-		ApplicationControls.hero = SavedGameParsing.getHeroes().get(i);
-		status = GAME_LOOP;
 
-	}
 }

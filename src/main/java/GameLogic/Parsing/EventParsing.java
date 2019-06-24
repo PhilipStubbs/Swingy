@@ -15,8 +15,6 @@ public class EventParsing {
 
 	public static void instructionParseAsync() {
 		new Thread(new Runnable() {
-			List<String> instructions;
-			int instructionIndex = 0;
 			public void run() {
 
 				while(ApplicationControls.getIsRunning()) {
@@ -26,6 +24,8 @@ public class EventParsing {
 //					System.out.println("Continue Menu");
 
 					ContinueMenuParsing.continueMenuCommands();
+
+					NewGameMenuParsing.newGameMenuCommands();
 
 //					System.out.println("Begin Game");
 					GameLoopParsing.gameLoopMenuCommands();
@@ -39,6 +39,10 @@ public class EventParsing {
 			MainMenuParsing.mainMenuCommands();
 
 			ContinueMenuParsing.continueMenuCommands();
+
+			NewGameMenuParsing.newGameMenuCommands();
+
+			GameLoopParsing.gameLoopMenuCommands();
 		}
 	}
 }
