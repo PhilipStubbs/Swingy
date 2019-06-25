@@ -38,6 +38,7 @@ public class GameLoopParsing extends Global {
             displayGameLoopMenu();
             instructions = ApplicationControls.getInstructions();
             GameLoopOutput.gameLoopGreating();
+            GameLoopOutput.gameLoopMapDisplay();
         }
 
         try {

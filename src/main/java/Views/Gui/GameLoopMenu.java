@@ -7,6 +7,7 @@ import Models.GameMap.GameMap;
 import Models.Mobs.Hero;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ import java.util.List;
 
 public class GameLoopMenu extends BaseWindow{
     private JButton exitButton;
-    private JList map;
+    private JScrollPane gameMapScrollPlane;
     private JButton inventoryButton;
     private JPanel gameLoopMenu;
     private JLabel heroName;
@@ -42,9 +43,9 @@ public class GameLoopMenu extends BaseWindow{
     }
 
     public void updateMap(){
+
         int[][] gameLoopMap = GameLoopParsing.getGameLoopMap();
         String tmp = "";
-
         for(int i = 0; i < gameLoopMap.length; i++){
             for(int x = 0; x < gameLoopMap.length; x++) {
                 tmp += String.valueOf(gameLoopMap[i][x]);
@@ -53,15 +54,7 @@ public class GameLoopMenu extends BaseWindow{
             mapDataList.add(tmp);
             tmp = "";
         }
-//       String t = Arrays.deepToString(gameLoopMap);
-//        StringBuilder sb = new StringBuilder();
-//        for(int[] s1 : gameLoopMap){
-//            mapDataList.add(s1.toString());
-//
-//        }
-//        System.out.println(t);
-
-        map.setListData(mapDataList.toArray());
+        gameMapScrollPlane.getViewport().add(new JList(mapDataList.toArray()));
     }
 
     public void updateStats() {
