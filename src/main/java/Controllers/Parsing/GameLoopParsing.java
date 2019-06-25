@@ -3,6 +3,7 @@ package Controllers.Parsing;
 import Controllers.ApplicationControls;
 import Models.GameMap.GameMap;
 import Models.Global;
+import Models.Mobs.Hero;
 import Views.Gui.BaseWindow;
 import Views.Terminal.GameLoopOutput;
 
@@ -18,6 +19,54 @@ public class GameLoopParsing extends Global {
     private static List<String> instructions;
     private static GameMap gameMap = new GameMap();
 
+    public  static void endLevel(Hero hero){
+        hero.gainExperince(100);
+        gameMap.createMap(hero);
+    }
+
+    public static void moveHero(int i){
+        Hero hero = ApplicationControls.getHero();
+        int x = hero.getX();
+        int y = hero.getY();
+        int size = gameMap.getMapSize();
+        System.out.println(size);
+        switch(i){
+            case 0:     // North
+                if (y <= 0) {
+                    endLevel(hero);
+                }else
+                    hero.setXY(x, y - 1);
+                break;
+
+            case 1:     // South
+                if (y >= size -1) {
+                    endLevel(hero);
+                }else
+                    hero.setXY(x, y+ 1);
+                break;
+
+
+            case 2:     // East
+                if (x >= size -1) {
+                    endLevel(hero);
+                }else {
+                    hero.setXY(x + 1, y);
+                }
+                break;
+
+            case 3:     // West
+                if (x <= 0) {
+                    endLevel(hero);
+                }else
+                    hero.setXY(x - 1, y);
+                break;
+
+        }
+        GameMap.updateHeroLoc(hero);
+        displayGameLoopMenu();
+        GameLoopOutput.gameLoopMapDisplay();
+    }
+
     public static int[][] getGameLoopMap() {
         return gameMap.getGameMap();
     }
@@ -26,6 +75,10 @@ public class GameLoopParsing extends Global {
         save_exit,
         exit,
         gui,
+        north,
+        south,
+        east,
+        west
     }
 
 
@@ -55,6 +108,22 @@ public class GameLoopParsing extends Global {
                             case exit:
                                 ApplicationControls.setIsRunning(false);
                                 Controllers.ApplicationControls.closeApplication();
+                                break;
+
+                            case north:
+                                moveHero(0);
+                                break;
+
+                            case south:
+                                moveHero(1);
+                                break;
+
+                            case east:
+                                moveHero(2);
+                                break;
+
+                            case west:
+                                moveHero(3);
                                 break;
 
                             case save_exit:
@@ -93,9 +162,8 @@ public class GameLoopParsing extends Global {
 //            } catch (NumberFormatException x){
 //                System.out.println("Not an int:" + x.getLocalizedMessage());
 //            }
-            e.printStackTrace();
+
             ApplicationControls.removeInstructions(instructions.get(instructionIndex));
-            System.out.println("heher");
             gameLoopMenuCommands();
 
         } finally {

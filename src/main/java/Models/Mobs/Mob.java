@@ -62,7 +62,7 @@ public abstract class Mob extends Global {
         if (equipped[HELM] != null)
             hitPnts += equipped[HELM].getBuff();
 
-        this.experiencePnts -= maxExperiencePnts;
+        this.experiencePnts = experiencePnts;
         maxExperiencePnts = level * 1000 + (int)Math.pow(level - 1, 2) * 450;
         this.backpack = backpack;
         this.equipped = equipped;
@@ -132,6 +132,14 @@ public abstract class Mob extends Global {
         this.mobClass = mobClass;
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
     public void setXY(int x, int y) {
         this.x = x;
         this.y = y;
@@ -142,11 +150,5 @@ public abstract class Mob extends Global {
         return (loc);
     }
 
-    public int getX() {
-        return x;
-    }
 
-    public int getY() {
-        return y;
-    }
 }

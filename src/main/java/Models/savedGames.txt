@@ -3,3 +3,6 @@ Kirsten_The_Great fighter 1 200 5000 123 321 3 hat1 13 chest2 4 Hammer_of_scarye
 Xeno_The_Beno hunters 2 2 000 123 321 3 hat_of_badassatude 13 chest3 4 Hammer_of_blunt 11 0
 fd Rouge 0 0 101 21 21 3 Basic_cap 1 Cloth_shirt 1 Wooden_sword 1 0 
 Philip_The_Great wizzard 7 0 5012 133 326 3 hat_of_justice 12 chest 5 Sword_of_sharpness 10 0 
+fd Rouge 0 100 102 22 22 3 Basic_cap 1 Cloth_shirt 1 Wooden_sword 1 0 
+fd Rouge 0 100 103 23 23 3 Basic_cap 1 Cloth_shirt 1 Wooden_sword 1 0 
+fd Rouge 0 200 104 24 24 3 Basic_cap 1 Cloth_shirt 1 Wooden_sword 1 0 

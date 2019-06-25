@@ -32,6 +32,7 @@ public class GameLoopMenu extends BaseWindow{
     private JComboBox TravelDirection;
     private JList mapList;
     private static List<String> mapDataList;
+    private String[] dir= {"North", "East", "South", "West"};
 
     public GameLoopMenu() {
         exitButton.addActionListener(new ActionListener() {
@@ -41,6 +42,11 @@ public class GameLoopMenu extends BaseWindow{
         });
         updateStats();
         displayMap();
+        endTurnButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent actionEvent) {
+                ApplicationControls.addInstructions(dir[TravelDirection.getSelectedIndex()]);
+            }
+        });
     }
 
     public void updateMap(){

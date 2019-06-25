@@ -8,6 +8,7 @@ public class GameLoopOutput {
 	}
 
 	static public void gameLoopMapDisplay(){
+		System.out.println();
 		int[][] gameLoopMap = GameLoopParsing.getGameLoopMap();
 		for(int i = 0; i < gameLoopMap.length; i++){
 			for(int x = 0; x < gameLoopMap.length; x++) {

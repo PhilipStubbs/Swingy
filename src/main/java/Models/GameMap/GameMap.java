@@ -20,6 +20,7 @@ public class GameMap {
 			}
 		}
 		gameMap[heroLoc[0]][heroLoc[1]] = 1;
+		ApplicationControls.getHero().setXY(heroLoc[0],heroLoc[1]);
 //		hero.setXY(heroLoc[0], heroLoc[1])
 	}
 
@@ -29,6 +30,10 @@ public class GameMap {
 
 	public static int[][] getGameMap() {
 		return gameMap;
+	}
+
+	public static void updateHeroLoc(Hero hero){
+		gameMap[hero.getY()][hero.getX()] = 1;
 	}
 
 	public static void setMapSize(int mapSize) {

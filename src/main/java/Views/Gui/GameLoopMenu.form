@@ -118,7 +118,7 @@
             <item value="North"/>
             <item value="East"/>
             <item value="South"/>
-            <item value="East"/>
+            <item value="West"/>
           </model>
         </properties>
       </component>
