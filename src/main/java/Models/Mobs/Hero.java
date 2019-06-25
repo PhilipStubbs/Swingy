@@ -95,7 +95,8 @@ public class Hero extends Mob {
             backpackString ;
     }
 
-    public void findMiddleOfMap(){
-
+    public int[] findMiddleOfMap(int mapSize){
+        int[] heroLoc = {mapSize /2, mapSize /2};
+        return heroLoc;
     }
 }

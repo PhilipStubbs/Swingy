@@ -69,7 +69,6 @@ public class ContinueMenuParsing extends Global {
                     if (heroIndex >= 0 && heroIndex <= heroList.size()){
                     ApplicationControls.setHero(heroList.get(heroIndex));
                     ApplicationControls.status = GAME_LOOP;
-                    return;
                 } else {
                     System.out.println("Invalid index:" + heroIndex + ". Range from 0 - " + (getHeroes().size() -1));
                 }

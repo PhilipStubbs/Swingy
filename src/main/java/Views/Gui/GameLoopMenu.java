@@ -30,7 +30,8 @@ public class GameLoopMenu extends BaseWindow{
     private JLabel level;
     private JButton endTurnButton;
     private JComboBox TravelDirection;
-    private static List<String> mapDataList = new ArrayList<String>();
+    private JList mapList;
+    private static List<String> mapDataList;
 
     public GameLoopMenu() {
         exitButton.addActionListener(new ActionListener() {
@@ -39,12 +40,13 @@ public class GameLoopMenu extends BaseWindow{
             }
         });
         updateStats();
-        updateMap();
+        displayMap();
     }
 
     public void updateMap(){
-
+        mapDataList = new ArrayList<String>();
         int[][] gameLoopMap = GameLoopParsing.getGameLoopMap();
+
         String tmp = "";
         for(int i = 0; i < gameLoopMap.length; i++){
             for(int x = 0; x < gameLoopMap.length; x++) {
@@ -54,6 +56,10 @@ public class GameLoopMenu extends BaseWindow{
             mapDataList.add(tmp);
             tmp = "";
         }
+    }
+
+    public void displayMap(){
+        updateMap();
         gameMapScrollPlane.getViewport().add(new JList(mapDataList.toArray()));
     }
 

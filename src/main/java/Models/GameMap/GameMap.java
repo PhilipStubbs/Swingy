@@ -1,5 +1,6 @@
 package Models.GameMap;
 
+import Controllers.ApplicationControls;
 import Models.Mobs.Hero;
 
 public class GameMap {
@@ -11,12 +12,15 @@ public class GameMap {
 		int level = hero.getLevel();
 		int mapSize = (level - 1)*5 + 10 -(level % 2);
 		setMapSize(mapSize);
+		int[] heroLoc = ApplicationControls.getHero().findMiddleOfMap(mapSize);
 		setGameMap(new int[mapSize][mapSize]);
 		for (int i = 0; i < mapSize; i++){
 			for (int x = 0; x < mapSize; x++){
 				gameMap[i][x] = 0;
 			}
 		}
+		gameMap[heroLoc[0]][heroLoc[1]] = 1;
+//		hero.setXY(heroLoc[0], heroLoc[1])
 	}
 
 	private static void setGameMap(int[][] gameMap) {

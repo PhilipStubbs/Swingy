@@ -93,7 +93,9 @@ public class GameLoopParsing extends Global {
 //            } catch (NumberFormatException x){
 //                System.out.println("Not an int:" + x.getLocalizedMessage());
 //            }
+            e.printStackTrace();
             ApplicationControls.removeInstructions(instructions.get(instructionIndex));
+            System.out.println("heher");
             gameLoopMenuCommands();
 
         } finally {

@@ -137,6 +137,11 @@ public abstract class Mob extends Global {
         this.y = y;
     }
 
+    public int[] getLoc(){
+        int[] loc = {this.y,this.x};
+        return (loc);
+    }
+
     public int getX() {
         return x;
     }
