@@ -1,3 +1,5 @@
-Philip_The_Great wizzard 100 200 5000 123 321 3 hat_of_justice 12 chest 5 Sword_of_sharpness 10 0
-Kirsten_The_Great fighter 100 200 5000 123 321 3 hat1 13 chest2 4 Hammer_of_scaryerness 11 0
-Xeno_The_Beno hunters 100 200 000 123 321 3 hat_of_badassatude 13 chest3 4 Hammer_of_blunt 11 0
+Philip_The_Great wizzard 7 200 5000 123 321 3 hat_of_justice 12 chest 5 Sword_of_sharpness 10 0
+Kirsten_The_Great fighter 1 200 5000 123 321 3 hat1 13 chest2 4 Hammer_of_scaryerness 11 0
+Xeno_The_Beno hunters 100 2 000 123 321 3 hat_of_badassatude 13 chest3 4 Hammer_of_blunt 11 0
+Philip_The_Great wizzard 1 0 5012 133 326 3 hat_of_justice 12 chest 5 Sword_of_sharpness 10 0 
+Kirsten_The_Great fighter 1 0 5013 134 325 3 hat1 13 chest2 4 Hammer_of_scaryerness 11 0 

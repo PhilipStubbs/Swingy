@@ -1,8 +1,6 @@
-package GameLogic.Parsing;
+package Controllers.Parsing;
 
-import GameLogic.ApplicationControls;
-
-import java.util.List;
+import Controllers.ApplicationControls;
 
 public class EventParsing {
 

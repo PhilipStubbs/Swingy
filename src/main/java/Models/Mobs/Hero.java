@@ -94,4 +94,8 @@ public class Hero extends Mob {
              this.backpack.size() + " " +
             backpackString ;
     }
+
+    public void findMiddleOfMap(){
+
+    }
 }

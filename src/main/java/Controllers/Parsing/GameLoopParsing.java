@@ -1,20 +1,26 @@
-package GameLogic.Parsing;
+package Controllers.Parsing;
 
-import GameLogic.ApplicationControls;
+import Controllers.ApplicationControls;
+import Models.GameMap.GameMap;
 import Models.Global;
-import Models.Mobs.Hero;
 import Views.Gui.BaseWindow;
-import Views.Terminal.ContinueMenuOutput;
+import Views.Terminal.GameLoopOutput;
 
 import java.util.List;
+import java.util.Map;
 
+import static Controllers.ApplicationControls.getHero;
 import static Views.Gui.GameLoopMenu.displayGameLoopMenu;
 
 
 public class GameLoopParsing extends Global {
 
-    static List<String> instructions;
+    private static List<String> instructions;
+    private static GameMap gameMap = new GameMap();
 
+    public static int[][] getGameLoopMap() {
+        return gameMap.getGameMap();
+    }
 
     enum GameLoopMenuInstruction {
         save_exit,
@@ -27,16 +33,15 @@ public class GameLoopParsing extends Global {
         int instructionIndex = -1;
 
         if (ApplicationControls.status == GAME_LOOP) {
+            gameMap.createMap(getHero());
+
             displayGameLoopMenu();
             instructions = ApplicationControls.getInstructions();
+            GameLoopOutput.gameLoopGreating();
         }
 
         try {
             while(ApplicationControls.status == GAME_LOOP) {
-
-                if ( instructions.size() != 0)
-                    System.out.println("instruction size:" + instructions.size());
-
 
                 for (int i = 0; i < instructions.size(); i++) {
                     instructionIndex = i;
@@ -48,13 +53,13 @@ public class GameLoopParsing extends Global {
 
                             case exit:
                                 ApplicationControls.setIsRunning(false);
-                                GameLogic.ApplicationControls.closeApplication();
+                                Controllers.ApplicationControls.closeApplication();
                                 break;
 
                             case save_exit:
                                 ApplicationControls.setIsRunning(false);
                                 SavedGameParsing.saveGame();
-                                GameLogic.ApplicationControls.closeApplication();
+                                Controllers.ApplicationControls.closeApplication();
                                 break;
 
                             case gui:

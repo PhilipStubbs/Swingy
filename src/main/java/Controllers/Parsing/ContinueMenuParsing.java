@@ -1,15 +1,14 @@
-package GameLogic.Parsing;
+package Controllers.Parsing;
 
-import GameLogic.ApplicationControls;
+import Controllers.ApplicationControls;
 import Models.Global;
 import Models.Mobs.Hero;
 import Views.Gui.BaseWindow;
 import Views.Terminal.ContinueMenuOutput;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static GameLogic.Parsing.SavedGameParsing.getHeroes;
+import static Controllers.Parsing.SavedGameParsing.getHeroes;
 import static Views.Gui.ContinueMenu.displayContinueMenu;
 
 public class ContinueMenuParsing extends Global {
@@ -34,10 +33,6 @@ public class ContinueMenuParsing extends Global {
         try {
             while(ApplicationControls.status == CONTINUE_MENU && ApplicationControls.getHero() == null) {
 
-                if ( instructions.size() != 0)
-                    System.out.println("instruction size:" + instructions.size());
-
-
                 for (int i = 0; i < instructions.size(); i++) {
                     instructionIndex = i;
                     /* IMPORTANT: remove instruction after use. */
@@ -49,7 +44,7 @@ public class ContinueMenuParsing extends Global {
                             case exit:
                                 ApplicationControls.setIsRunning(false);
                                 System.out.println("killing program");
-                                GameLogic.ApplicationControls.closeApplication();
+                                Controllers.ApplicationControls.closeApplication();
                                 break;
 
                             case gui:

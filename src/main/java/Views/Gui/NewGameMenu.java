@@ -1,7 +1,6 @@
 package Views.Gui;
 
-import GameLogic.ApplicationControls;
-import Models.Artifacts.Artifact;
+import Controllers.ApplicationControls;
 import Models.Mobs.Hero;
 
 import javax.swing.*;

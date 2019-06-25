@@ -23,7 +23,7 @@
       </vspacer>
       <component id="ffd91" class="javax.swing.JList" binding="map">
         <constraints>
-          <grid row="0" column="2" row-span="12" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
+          <grid row="0" column="2" row-span="12" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>
           </grid>
         </constraints>
@@ -31,20 +31,12 @@
           <model/>
         </properties>
       </component>
-      <component id="6f9e2" class="javax.swing.JButton" binding="button1" default-binding="true">
+      <component id="9474" class="javax.swing.JButton" binding="endTurnButton">
         <constraints>
-          <grid row="10" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="2" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="11" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Button"/>
-        </properties>
-      </component>
-      <component id="9474" class="javax.swing.JButton" binding="button2" default-binding="true">
-        <constraints>
-          <grid row="11" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Button"/>
+          <text value="EndTurn"/>
         </properties>
       </component>
       <component id="69c9" class="javax.swing.JLabel" binding="heroName">
@@ -121,10 +113,23 @@
       </component>
       <component id="7ccd9" class="javax.swing.JButton" binding="inventoryButton" default-binding="true">
         <constraints>
-          <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Inventory "/>
+        </properties>
+      </component>
+      <component id="a22c1" class="javax.swing.JComboBox" binding="TravelDirection">
+        <constraints>
+          <grid row="10" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <model>
+            <item value="North"/>
+            <item value="East"/>
+            <item value="South"/>
+            <item value="East"/>
+          </model>
         </properties>
       </component>
     </children>

@@ -23,8 +23,10 @@ public abstract class Mob extends Global {
     protected int maxExperiencePnts;
     protected List<Artifact> backpack;
     protected Artifact[] equipped;
+    protected int x;
+    protected int y;
 
-    public Mob() {
+    Mob() {
         this.name = "undefined";
         this.level = 0;
         this.attackPnts = 0;
@@ -39,7 +41,7 @@ public abstract class Mob extends Global {
         return name;
     }
 
-    public Mob(String name, String mobClass ,int level, int experiencePnts, int maxHitPnts, int maxAttackPnts, int maxDefencePnts, List<Artifact> backpack, Artifact[] equipped) {
+    Mob(String name, String mobClass ,int level, int experiencePnts, int maxHitPnts, int maxAttackPnts, int maxDefencePnts, List<Artifact> backpack, Artifact[] equipped) {
         this.name = name;
         this.mobClass = mobClass;
 
@@ -128,5 +130,18 @@ public abstract class Mob extends Global {
 
     public void setMobClass(String mobClass) {
         this.mobClass = mobClass;
+    }
+
+    public void setXY(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 }

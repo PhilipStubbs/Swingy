@@ -1,8 +1,7 @@
-package GameLogic.Parsing;
+package Controllers.Parsing;
 
-import GameLogic.ApplicationControls;
+import Controllers.ApplicationControls;
 import Models.Global;
-import Models.Mobs.Hero;
 import Views.Gui.BaseWindow;
 import Views.Gui.MainMenu;
 
@@ -31,16 +30,12 @@ public static void mainMenuCommands(){
 	try {
 		while(ApplicationControls.status == MAIN_MENU) {
 
-			if ( instructions.size() != 0)
-				System.out.println("instruction size:" + instructions.size());
-
-
 			for (int i = 0; i < instructions.size(); i++) {
 				instructionIndex = i;
 				/* IMPORTANT: remove instruction after use. */
 
 				if (instructions.get(i) != null) {
-					switch (MainMenuInstruction.valueOf(instructions.get(i).toLowerCase())) {
+					switch (MainMenuInstruction.valueOf(instructions.get(i).replaceAll(" ", "_").toLowerCase())) {
 
 						case print:
 							System.out.println(ApplicationControls.getInstructions());
@@ -54,7 +49,7 @@ public static void mainMenuCommands(){
 						case exit:
 							ApplicationControls.setIsRunning(false);
 							System.out.println("killing program");
-							GameLogic.ApplicationControls.closeApplication();
+							Controllers.ApplicationControls.closeApplication();
 							break;
 
 						case new_game:

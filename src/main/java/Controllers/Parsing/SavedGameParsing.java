@@ -1,9 +1,8 @@
-package GameLogic.Parsing;
+package Controllers.Parsing;
 
-import GameLogic.ApplicationControls;
+import Controllers.ApplicationControls;
 import Models.Artifacts.Artifact;
 import Models.Global;
-import Models.Items.Item;
 import Models.Mobs.Hero;
 
 import java.io.*;
@@ -86,7 +85,6 @@ public class SavedGameParsing extends Global {
                     backpack.add(new Artifact(sc.next(), sc.nextInt(), sc.nextInt()));
                 }
                 Hero hero = new Hero(name,heroClass ,level, xpPnts, hpPnts ,attackPnts, defencePnts, backpack, equipped);
-                System.out.println(hero.saveString());
                 heroList.add(hero);
             }
 

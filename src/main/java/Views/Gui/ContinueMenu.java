@@ -1,7 +1,6 @@
 package Views.Gui;
 
-import GameLogic.ApplicationControls;
-import Models.Mobs.Hero;
+import Controllers.ApplicationControls;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -9,8 +8,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import static GameLogic.Parsing.SavedGameParsing.getHeroes;
-import static Models.Global.GAME_LOOP;
+import static Controllers.Parsing.SavedGameParsing.getHeroes;
 
 public class ContinueMenu extends BaseWindow {
     private JPanel continueMenuPanel;

@@ -1,6 +1,6 @@
-package GameLogic;
+package Controllers;
 
-import GameLogic.Parsing.EventParsing;
+import Controllers.Parsing.EventParsing;
 
 public class Main {
 

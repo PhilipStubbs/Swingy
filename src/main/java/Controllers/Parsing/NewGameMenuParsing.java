@@ -1,11 +1,12 @@
-package GameLogic.Parsing;
+package Controllers.Parsing;
 
-import GameLogic.ApplicationControls;
+import Controllers.ApplicationControls;
 import Models.Artifacts.Artifact;
 import Models.Global;
 import Models.Mobs.Hero;
 import Views.Gui.BaseWindow;
 import Views.Gui.NewGameMenu;
+import Views.Terminal.NewGameMenuOutput;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,14 +34,11 @@ public class NewGameMenuParsing extends Global {
 		if (ApplicationControls.status == NEW_GAME) {
 			ApplicationControls.setHero(createRandomHero());
 			instructions = ApplicationControls.getInstructions();
+			NewGameMenuOutput.outputInstructions();
 			NewGameMenu.displayNewGameMenu();
 		}
 		try {
 			while(ApplicationControls.status == NEW_GAME) {
-
-				if ( instructions.size() != 0)
-					System.out.println("instruction size:" + instructions.size());
-
 
 				for (int i = 0; i < instructions.size(); i++) {
 					instructionIndex = i;
@@ -52,7 +50,7 @@ public class NewGameMenuParsing extends Global {
 							case exit:
 								ApplicationControls.setIsRunning(false);
 								System.out.println("killing program");
-								GameLogic.ApplicationControls.closeApplication();
+								Controllers.ApplicationControls.closeApplication();
 								break;
 
 							case gui:
