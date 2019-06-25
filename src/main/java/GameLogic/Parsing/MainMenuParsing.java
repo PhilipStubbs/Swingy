@@ -47,7 +47,7 @@ public static void mainMenuCommands(){
 							break;
 
 						case continue_game:
-							SavedGameParsing.openSaves();
+							SavedGameParsing.setHeroes(SavedGameParsing.openSaves());
 							ApplicationControls.status = CONTINUE_MENU;
 							break;
 

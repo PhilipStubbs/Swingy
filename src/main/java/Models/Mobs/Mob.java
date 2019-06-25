@@ -21,8 +21,8 @@ public abstract class Mob extends Global {
     protected int maxAttackPnts;
     protected int maxDefencePnts;
     protected int maxExperiencePnts;
-    protected List<Artifact> backpack = new ArrayList<Artifact>();
-    protected Artifact[] equipped = new Artifact[3];
+    protected List<Artifact> backpack;
+    protected Artifact[] equipped;
 
     public Mob() {
         this.name = "undefined";

@@ -84,17 +84,14 @@ public class Hero extends Mob {
             hitPnts + " " +
             attackPnts + " " +
             defencePnts + " " +
-            equipped.length + " " +
-            equipped[0].getName() + " " +
-            equipped[0].getBuff() + " " +
-            HELM + " " +
-            equipped[1].getName() + " " +
-            equipped[1].getBuff() + " " +
-            ARMOUR + " " +
-            equipped[2].getName() + " " +
-            equipped[2].getBuff() + " " +
-            WEAPON + " " +
-            backpack.size() + " " +
+             this.equipped.length + " " +
+             this.equipped[0].getName() + " " +
+             this.equipped[0].getBuff() + " " +
+             this.equipped[1].getName() + " " +
+             this.equipped[1].getBuff() + " " +
+             this.equipped[2].getName() + " " +
+             this.equipped[2].getBuff() + " " +
+             this.backpack.size() + " " +
             backpackString ;
     }
 }

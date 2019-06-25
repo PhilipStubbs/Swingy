@@ -6,10 +6,7 @@ import Models.Global;
 import Models.Items.Item;
 import Models.Mobs.Hero;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -26,22 +23,33 @@ public class SavedGameParsing extends Global {
     }
 
     public static void saveGame(){
-           heroes.add(ApplicationControls.getHero());
+//            List<Hero> saveList = openSaves();
+//            saveList.add(ApplicationControls.getHero());
+            Hero hero = ApplicationControls.getHero();
         try {
-            PrintWriter writer = new PrintWriter(savedGameDir, "UTF-8");
-            for (int p = 0; p < heroes.size(); p++) {
-                writer.println(heroes.get(p).saveString());
-            }
-            writer.close();
-
-        } catch (FileNotFoundException e) {
-            System.out.println("Cannot save game. file not found.");
-        } catch (UnsupportedEncodingException e){
-            System.out.println("Cannot save game. unsupported encoding.");
+            FileWriter fr = new FileWriter(file, true);
+            fr.write(hero.saveString() + "\n");
+            fr.close();
+        } catch (IOException e){
+            System.out.println("Cannot save game.");
         }
+//        try {
+//            PrintWriter writer = new PrintWriter(savedGameDir, "UTF-8");
+//            for (int p = 0; p < saveList.size(); p++) {
+//                writer.println(saveList.get(p).saveString());
+//                System.out.println(saveList.get(p).saveString());
+//            }
+//            writer.close();
+//
+//        } catch (FileNotFoundException e) {
+//            System.out.println("Cannot save game. file not found.");
+//        } catch (UnsupportedEncodingException e){
+//            System.out.println("Cannot save game. unsupported encoding.");
+//        }
     }
 
     public static List<Hero> openSaves(){
+        List<Hero> heroList = new ArrayList<Hero>();
 
         try {
             sc = new Scanner(file);
@@ -54,11 +62,12 @@ public class SavedGameParsing extends Global {
             int attackPnts;
             int defencePnts;
             List<Artifact> backpack = new ArrayList<Artifact>();
-            Artifact[] equipped = new Artifact[3];
             int equppied;
             int backPackSize;
 
             while (sc.hasNext()) {
+                Artifact[] equipped = new Artifact[3];
+
                 name = sc.next();
                 heroClass = sc.next();
                 level = sc.nextInt();
@@ -66,7 +75,7 @@ public class SavedGameParsing extends Global {
                 hpPnts = sc.nextInt();
                 attackPnts = sc.nextInt();
                 defencePnts = sc.nextInt();
-                equppied = sc.nextInt();
+                sc.nextInt();
                 equipped[0] = new Artifact(sc.next(), sc.nextInt(), HELM);
                 equipped[1] = new Artifact(sc.next(), sc.nextInt(), ARMOUR);
                 equipped[2] = new Artifact(sc.next(), sc.nextInt(), WEAPON);
@@ -76,8 +85,9 @@ public class SavedGameParsing extends Global {
                 for(int i = 0; i < backPackSize; i++){
                     backpack.add(new Artifact(sc.next(), sc.nextInt(), sc.nextInt()));
                 }
-
-                heroes.add(new Hero(name,heroClass ,level, xpPnts, hpPnts ,attackPnts, defencePnts, backpack, equipped));
+                Hero hero = new Hero(name,heroClass ,level, xpPnts, hpPnts ,attackPnts, defencePnts, backpack, equipped);
+                System.out.println(hero.saveString());
+                heroList.add(hero);
             }
 
         } catch (FileNotFoundException e) {
@@ -89,6 +99,10 @@ public class SavedGameParsing extends Global {
             System.out.println("invalid saved game " + e.getLocalizedMessage());
             e.printStackTrace();
         }
-        return (heroes);
+        return (heroList);
+    }
+
+    public static void setHeroes(List<Hero> heroes) {
+        SavedGameParsing.heroes = heroes;
     }
 }
