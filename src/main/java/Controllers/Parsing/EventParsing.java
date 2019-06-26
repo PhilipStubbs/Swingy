@@ -27,6 +27,8 @@ public class EventParsing {
 
 //					System.out.println("Begin Game");
 					GameLoopParsing.gameLoopMenuCommands();
+
+					InventoryMenuParsing.inventoryMenuParsing();
 				}
 			}
 		}).start();
@@ -42,6 +44,9 @@ public class EventParsing {
 			NewGameMenuParsing.newGameMenuCommands();
 
 			GameLoopParsing.gameLoopMenuCommands();
+
+			InventoryMenuParsing.inventoryMenuParsing();
+
 		}
 	}
 }

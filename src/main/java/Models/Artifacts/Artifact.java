@@ -25,4 +25,10 @@ public class Artifact extends Global {
     public int getBuff() {
         return this.abilityBuff;
     }
+
+    public String getDetails(){
+        String ret;
+        ret = getName() + " " + getBuff();
+        return ret;
+    }
 }

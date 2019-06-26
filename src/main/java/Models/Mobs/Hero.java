@@ -48,9 +48,7 @@ public class Hero extends Mob {
         maxExperiencePnts = level * 1000 + (int)Math.pow(level - 1, 2) * 450;
     }
 
-    public void unequipArtifact(){}
     public void lootEnemy(){}
-    public void equipArtifact(){}
     public void save(){}
     public void load(){}
 
@@ -96,6 +94,38 @@ public class Hero extends Mob {
              this.equipped[WEAPON].getBuff() + " " +
              backpackSize + " " +
             backpackString ;
+    }
+
+    public void addToBackpack(Artifact item){
+        backpack[item.getType()].add(item);
+    }
+
+    public void equipHelm(int helmIndex){
+        Artifact newHelm = backpack[HELM].get(helmIndex);
+        Artifact oldHelm = equipped[HELM];
+        this.equipped[HELM] = newHelm;
+
+        backpack[HELM].remove(helmIndex);
+        addToBackpack(oldHelm);
+    }
+
+    public void equipArmour(int ArmourIndex){
+        Artifact newArmour = backpack[ARMOUR].get(ArmourIndex);
+        Artifact oldArmour = equipped[ARMOUR];
+        this.equipped[ARMOUR] = newArmour;
+
+        backpack[ARMOUR].remove(ArmourIndex);
+        addToBackpack(oldArmour);
+    }
+
+    public void equipWeapon(int WeaponIndex){
+        Artifact newWeapon = backpack[WEAPON].get(WeaponIndex);
+        Artifact oldWeapon = equipped[WEAPON];
+        this.equipped[WEAPON] = newWeapon;
+
+        backpack[WEAPON].remove(WeaponIndex);
+        addToBackpack(oldWeapon);
+
     }
 
     public int[] findMiddleOfMap(int mapSize){

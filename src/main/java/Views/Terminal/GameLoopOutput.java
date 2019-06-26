@@ -5,6 +5,7 @@ import Controllers.Parsing.GameLoopParsing;
 public class GameLoopOutput {
 	static public void gameLoopGreating(){
 		System.out.println("Now the game begins");
+		System.out.println("'save_exit', 'inventory' ,'north', 'east, 'south', 'west'");
 	}
 
 	static public void gameLoopMapDisplay(){

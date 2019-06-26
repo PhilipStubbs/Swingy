@@ -47,7 +47,12 @@ public class GameLoopMenu extends BaseWindow{
                 ApplicationControls.addInstructions(dir[TravelDirection.getSelectedIndex()]);
             }
         });
-    }
+		inventoryButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent actionEvent) {
+				ApplicationControls.addInstructions("inventory");
+			}
+		});
+	}
 
     public void updateMap(){
         mapDataList = new ArrayList<String>();

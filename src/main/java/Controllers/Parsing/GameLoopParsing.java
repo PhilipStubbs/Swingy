@@ -75,6 +75,7 @@ public class GameLoopParsing extends Global {
         save_exit,
         exit,
         gui,
+        inventory,
         north,
         south,
         east,
@@ -134,6 +135,10 @@ public class GameLoopParsing extends Global {
 
                             case gui:
                                 BaseWindow.showBaseWindow();
+                                break;
+
+                            case inventory:
+                                ApplicationControls.status = INVENTORY_MENU;
                                 break;
 
                             default:
