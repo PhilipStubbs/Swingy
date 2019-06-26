@@ -2,6 +2,7 @@ package Controllers.Parsing;
 
 import Controllers.ApplicationControls;
 import Models.Global;
+import Models.SavedGameLoader;
 import Views.Gui.BaseWindow;
 import Views.Gui.MainMenu;
 
@@ -42,7 +43,7 @@ public static void mainMenuCommands(){
 							break;
 
 						case continue_game:
-							SavedGameParsing.setHeroes(SavedGameParsing.openSaves());
+							SavedGameLoader.setHeroes(SavedGameLoader.openSaves());
 							ApplicationControls.status = CONTINUE_MENU;
 							break;
 

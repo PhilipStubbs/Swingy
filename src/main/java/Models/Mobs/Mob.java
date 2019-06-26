@@ -21,7 +21,7 @@ public abstract class Mob extends Global {
     protected int maxAttackPnts;
     protected int maxDefencePnts;
     protected int maxExperiencePnts;
-    protected List<Artifact> backpack;
+    protected List<Artifact>[] backpack;
     protected Artifact[] equipped;
     protected int x;
     protected int y;
@@ -41,7 +41,7 @@ public abstract class Mob extends Global {
         return name;
     }
 
-    Mob(String name, String mobClass ,int level, int experiencePnts, int maxHitPnts, int maxAttackPnts, int maxDefencePnts, List<Artifact> backpack, Artifact[] equipped) {
+    Mob(String name, String mobClass ,int level, int experiencePnts, int maxHitPnts, int maxAttackPnts, int maxDefencePnts, List<Artifact>[] backpack, Artifact[] equipped) {
         this.name = name;
         this.mobClass = mobClass;
 
@@ -108,7 +108,7 @@ public abstract class Mob extends Global {
         return maxExperiencePnts;
     }
 
-    public List<Artifact> getBackpack() {
+    public List<Artifact>[] getBackpack() {
         return backpack;
     }
 

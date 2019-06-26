@@ -19,11 +19,15 @@ public class NewGameMenuParsing extends Global {
 		gui,
 	}
 	private static Hero createRandomHero(){
-		List<Artifact> backpack = new ArrayList<Artifact>();
+		List<Artifact>[] backpack = new ArrayList[3];
+		backpack[HELM] = new ArrayList<Artifact>();
+		backpack[ARMOUR] = new ArrayList<Artifact>();
+		backpack[WEAPON] = new ArrayList<Artifact>();
+
 		Artifact[] equipped = new Artifact[3];
-		equipped[0] = new Artifact("Basic_cap", 1, HELM);
-		equipped[1] = new Artifact("Cloth_shirt", 1, ARMOUR);
-		equipped[2] = new Artifact("Wooden_sword", 1, WEAPON);
+		equipped[HELM] = new Artifact("Basic_cap", 1, HELM);
+		equipped[ARMOUR] = new Artifact("Cloth_shirt", 1, ARMOUR);
+		equipped[WEAPON] = new Artifact("Wooden_sword", 1, WEAPON);
 		return new Hero("", "Fighter", 0, 0,100, 20, 20,backpack,equipped);
 	}
 
@@ -49,7 +53,6 @@ public class NewGameMenuParsing extends Global {
 
 							case exit:
 								ApplicationControls.setIsRunning(false);
-								System.out.println("killing program");
 								Controllers.ApplicationControls.closeApplication();
 								break;
 

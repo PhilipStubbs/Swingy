@@ -34,6 +34,7 @@ public class EventParsing {
 
 	public static void instructionParse() {
 			while(ApplicationControls.getIsRunning()) {
+				System.out.println();
 			MainMenuParsing.mainMenuCommands();
 
 			ContinueMenuParsing.continueMenuCommands();

@@ -4,11 +4,11 @@ import Controllers.ApplicationControls;
 import Models.GameMap.GameMap;
 import Models.Global;
 import Models.Mobs.Hero;
+import Models.SavedGameLoader;
 import Views.Gui.BaseWindow;
 import Views.Terminal.GameLoopOutput;
 
 import java.util.List;
-import java.util.Map;
 
 import static Controllers.ApplicationControls.getHero;
 import static Views.Gui.GameLoopMenu.displayGameLoopMenu;
@@ -128,7 +128,7 @@ public class GameLoopParsing extends Global {
 
                             case save_exit:
                                 ApplicationControls.setIsRunning(false);
-                                SavedGameParsing.saveGame();
+                                SavedGameLoader.saveGame();
                                 Controllers.ApplicationControls.closeApplication();
                                 break;
 

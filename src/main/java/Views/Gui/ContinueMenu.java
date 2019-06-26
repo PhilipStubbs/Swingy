@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import static Controllers.Parsing.SavedGameParsing.getHeroes;
+import static Models.SavedGameLoader.getHeroes;
 
 public class ContinueMenu extends BaseWindow {
     private JPanel continueMenuPanel;

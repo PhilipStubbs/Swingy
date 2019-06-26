@@ -13,7 +13,7 @@ public class Hero extends Mob {
         super();
     }
 
-    public Hero(String name, String mobClass,int level, int experiencePnts, int maxHitPnts, int maxAttackPnts, int maxDefencePnts, List<Artifact> backpack, Artifact[] equipped) {
+    public Hero(String name, String mobClass,int level, int experiencePnts, int maxHitPnts, int maxAttackPnts, int maxDefencePnts, List<Artifact>[] backpack, Artifact[] equipped) {
         super(name, mobClass,level, experiencePnts, maxHitPnts, maxAttackPnts, maxDefencePnts, backpack, equipped);
     }
 
@@ -73,8 +73,11 @@ public class Hero extends Mob {
 
     public String saveString(){
         String backpackString = "";
-        for(int i = 0; i < backpack.size(); i++){
-            backpackString += (backpack.get(i).getName() + " " + backpack.get(i).getName()+ " " +backpack.get(i).getType());
+        int backpackSize = backpack[HELM].size() + backpack[ARMOUR].size() + backpack[WEAPON].size();
+        for (int x = 0; x < 3; x++) {
+            for (int i = 0; i < backpack[x].size(); i++) {
+                backpackString += (backpack[x].get(i).getName() + " " + backpack[x].get(i).getBuff() + " " + backpack[x].get(i).getType() + " ");
+            }
         }
 
      return name + " " +
@@ -85,13 +88,13 @@ public class Hero extends Mob {
             attackPnts + " " +
             defencePnts + " " +
              this.equipped.length + " " +
-             this.equipped[0].getName() + " " +
-             this.equipped[0].getBuff() + " " +
-             this.equipped[1].getName() + " " +
-             this.equipped[1].getBuff() + " " +
-             this.equipped[2].getName() + " " +
-             this.equipped[2].getBuff() + " " +
-             this.backpack.size() + " " +
+             this.equipped[HELM].getName() + " " +
+             this.equipped[HELM].getBuff() + " " +
+             this.equipped[ARMOUR].getName() + " " +
+             this.equipped[ARMOUR].getBuff() + " " +
+             this.equipped[WEAPON].getName() + " " +
+             this.equipped[WEAPON].getBuff() + " " +
+             backpackSize + " " +
             backpackString ;
     }
 

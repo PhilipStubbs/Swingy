@@ -3,12 +3,13 @@ package Controllers.Parsing;
 import Controllers.ApplicationControls;
 import Models.Global;
 import Models.Mobs.Hero;
+import Models.SavedGameLoader;
 import Views.Gui.BaseWindow;
 import Views.Terminal.ContinueMenuOutput;
 
 import java.util.List;
 
-import static Controllers.Parsing.SavedGameParsing.getHeroes;
+import static Models.SavedGameLoader.getHeroes;
 import static Views.Gui.ContinueMenu.displayContinueMenu;
 
 public class ContinueMenuParsing extends Global {
@@ -27,7 +28,7 @@ public class ContinueMenuParsing extends Global {
         if (ApplicationControls.status == CONTINUE_MENU) {
             displayContinueMenu();
             instructions = ApplicationControls.getInstructions();
-            ContinueMenuOutput.outputHeroes(SavedGameParsing.getHeroes());
+            ContinueMenuOutput.outputHeroes(SavedGameLoader.getHeroes());
         }
 
         try {
