@@ -36,18 +36,18 @@ public class FightMenu extends BaseWindow {
         Monster monster = ApplicationControls.getMonster();
 
         enemName.setText(monster.getName());
-        enemAttack.setText(String.valueOf(monster.getAttackPnts()));
-        enemDefence.setText(String.valueOf(monster.getDefencePnts()) + "/" + monster.getMaxDefencePnts());
-        enemHealth.setText(String.valueOf(monster.getHitPnts() + "/" + monster.getMaxHitPnts()));
+        enemAttack.setText("Attack: "+String.valueOf(monster.getAttackPnts()));
+        enemDefence.setText("Defence: " + String.valueOf(monster.getDefencePnts()) + "/" + monster.getMaxDefencePnts());
+        enemHealth.setText("Health: " + String.valueOf(monster.getHitPnts() + "/" + monster.getMaxHitPnts()));
     }
 
     public void updateHeroDisplay(){
         Hero hero = ApplicationControls.getHero();
 
         heroName.setText(hero.getName());
-        heroAttack.setText(String.valueOf(hero.getAttackPnts()));
-        heroDefence.setText(String.valueOf(hero.getDefencePnts()) + "/" + hero.getMaxDefencePnts());
-        heroHp.setText(String.valueOf(hero.getHitPnts() + "/" + hero.getMaxHitPnts()));
+        heroAttack.setText("Attack: "+String.valueOf(hero.getAttackPnts()));
+        heroDefence.setText("Defence: " +String.valueOf(hero.getDefencePnts()) + "/" + hero.getMaxDefencePnts());
+        heroHp.setText("Health: " +String.valueOf(hero.getHitPnts() + "/" + hero.getMaxHitPnts()));
     }
 
     static public void displayFightMenu(){
