@@ -10,6 +10,7 @@ import Models.SavedGameLoader;
 import Views.Gui.BaseWindow;
 import Views.Gui.FightMenu;
 import Views.Gui.InventoryMenu;
+import Views.Terminal.FightMenuOutput;
 import Views.Terminal.InventoryMenuOutput;
 
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.Random;
 
 import static Controllers.ApplicationControls.getHero;
 import static Controllers.ApplicationControls.getMonster;
+import static java.lang.Math.abs;
 
 public class FightMenuParsing extends Global {
 
@@ -29,9 +31,31 @@ public class FightMenuParsing extends Global {
         Random rn = new Random();
         if (rn.nextInt() % 2 == 0){
             monster.takeDamage(hero.getAttackPnts());
+            ApplicationControls.addToFight("You hit the monster for " + hero.getAttackPnts());
+
         }
         if (rn.nextInt() % 2 == 0){
             hero.takeDamage(monster.getAttackPnts());
+            ApplicationControls.addToFight(monster.getName() + " hit you for " + monster.getAttackPnts());
+        }
+    }
+
+    private static void looting(){
+        if (getMonster().isMonsterDead()) {
+//            ApplicationControls.addToFight(getMonster().getName()+ " is dead");
+            getHero().addEpForMonsterKill(getMonster());
+            Random rn = new Random();
+            if (abs(rn.nextInt() % 2) == 0) {
+                ApplicationControls.getHero().lootEnemy();
+                ApplicationControls.status = LOOT;
+                return;
+            } else {
+                ApplicationControls.status = GAME_LOOP;
+                return;
+            }
+
+        } else {
+            FightMenu.displayFightMenu();
         }
     }
 
@@ -40,9 +64,11 @@ public class FightMenuParsing extends Global {
         Monster monster = getMonster();
         Random rn = new Random();
         if (rn.nextInt() % 4 == 0){
+            ApplicationControls.addToFight("you were able to run.");
            ApplicationControls.status = GAME_LOOP;
         } else {
             hero.takeDamage(monster.getAttackPnts());
+            ApplicationControls.addToFight("you were not able to run.");
         }
     }
 
@@ -65,10 +91,13 @@ public class FightMenuParsing extends Global {
             instructions = ApplicationControls.getInstructions();
             // TODO fight terminal output
 //            InventoryMenuOutput.displayInventoryInstrucitons();
+            FightMenuOutput.fightInstructions();
         }
 
         try {
+            FightMenuOutput.fightIntro(getMonster());
             while (ApplicationControls.status == FIGHT_MENU) {
+                looting();
                 for (int i = 0; i < instructions.size(); i++) {
                     instructionIndex = i;
                     /* IMPORTANT: remove instruction after use. */
@@ -92,22 +121,23 @@ public class FightMenuParsing extends Global {
                                 Controllers.ApplicationControls.closeApplication();
                                 break;
 
-                            case fight:
+                            case fight: {
                                 fightMonster();
                                 getHero().isPlayerDead();
-                                getMonster().isMonsterDead();
-                                FightMenu.displayFightMenu();
+                                looting();
+                                FightMenuOutput.fightOutput();
                                 break;
-
+                            }
 
                             case run:
                                 runFromMonster();
                                 getHero().isPlayerDead();
                                 FightMenu.displayFightMenu();
+                                FightMenuOutput.fightOutput();
                                 break;
 
                             default:
-                                System.out.println("Invalid instruction:" + instructions.get(i));
+                                System.out.println("Invalid instruction not invaild:" + instructions.get(i));
 
                         }
 
@@ -118,8 +148,10 @@ public class FightMenuParsing extends Global {
 
             }
         } catch (IllegalArgumentException e) {
-            System.out.println("Invalid instruction:"+instructions.get(instructionIndex));
-            ApplicationControls.removeInstructions(instructions.get(instructionIndex));
+            if (instructionIndex != -1) {
+                System.out.println("Invalid instruction:" + instructions.get(instructionIndex));
+                ApplicationControls.removeInstructions(instructions.get(instructionIndex));
+            }
             fightMenuParsing();
 
         } finally {

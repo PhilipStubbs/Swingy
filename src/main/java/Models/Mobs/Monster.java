@@ -15,14 +15,7 @@ public class Monster extends Mob {
     }
 
     public boolean isMonsterDead() {
-        Random rn = new Random();
         if (this.hitPnts <= 0){
-            if (abs(rn.nextInt() % 2 ) == 0) {
-                ApplicationControls.getHero().lootEnemy();
-                ApplicationControls.status = LOOT;
-            } else{
-                ApplicationControls.status = GAME_LOOP;
-            }
             return (true);
         }
         return (false);

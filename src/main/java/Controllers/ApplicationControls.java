@@ -17,6 +17,7 @@ public class ApplicationControls {
 	private static List<String> instructions = new ArrayList<String>();
 	private static Hero hero;
 	private static Monster monster;
+	private static List<String> fight = new ArrayList<String>();
 
 
 
@@ -75,5 +76,19 @@ public class ApplicationControls {
 
 	public static void setMonster(Monster monster) {
 		ApplicationControls.monster = monster;
+	}
+
+	/*-----------------------------------------------------------------------------------------------------*/
+	/* Fight controls */
+
+	public static List<String> getFight() {
+		return fight;
+	}
+	public static void addToFight(String fight) {
+		ApplicationControls.fight.add(fight);
+	}
+
+	public static void setFight(List<String> fight) {
+		ApplicationControls.fight = fight;
 	}
 }

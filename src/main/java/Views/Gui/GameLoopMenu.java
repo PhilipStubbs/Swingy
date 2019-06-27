@@ -61,12 +61,12 @@ public class GameLoopMenu extends BaseWindow{
         String tmp = "";
         for(int i = 0; i < gameLoopMap.length; i++){
             for(int x = 0; x < gameLoopMap.length; x++) {
-                if (gameLoopMap[i][x] == 0) {
-                    tmp += "_";
-                } else if (gameLoopMap[i][x] == 1) {
-                    tmp += "X ";
-                } else {
+                if (gameLoopMap[i][x] >= 2 &&  gameLoopMap[i][x] < 4) {
                     tmp += "M";
+                } else if (gameLoopMap[i][x] == 1) {
+                    tmp += "X";
+                } else {
+                    tmp += "_";
                 }
                 tmp +="  ";
             }

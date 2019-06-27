@@ -83,7 +83,9 @@ public abstract class Mob extends Global {
         }
     }
 
-    public void gainHitPnts(){}
+    public void gainHitPnts(int health){
+        this.hitPnts += health;
+    }
 
     public int getAttackPnts() {
         return attackPnts;

@@ -4,6 +4,7 @@ import Controllers.ApplicationControls;
 import Models.Global;
 import Views.Gui.BaseWindow;
 import Views.Gui.LootMenu;
+import Views.Terminal.LootMenuOutput;
 
 import java.util.List;
 
@@ -23,9 +24,11 @@ public class LootMenuParsing extends Global {
 
 
         int instructionIndex = -1;
+        LootMenu.displayLoopMenu();
         if (ApplicationControls.status == LOOT) {
             instructions = ApplicationControls.getInstructions();
             LootMenu.displayLoopMenu();
+            LootMenuOutput.discribeLoot(ApplicationControls.getHero().getLatestLoot());
         }
         try {
             while(ApplicationControls.status == LOOT) {
@@ -39,6 +42,7 @@ public class LootMenuParsing extends Global {
 
                             case thanks:
                                 ApplicationControls.status = GAME_LOOP;
+                                break;
 
                             case exit:
                                 ApplicationControls.setIsRunning(false);

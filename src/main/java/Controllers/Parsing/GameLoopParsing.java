@@ -23,6 +23,7 @@ public class GameLoopParsing extends Global {
     public  static void endLevel(Hero hero){
         hero.gainExperince(100);
         gameMap.createMap(hero);
+
     }
 
     private static void monsterCheck(int x, int y){
@@ -116,7 +117,7 @@ public class GameLoopParsing extends Global {
 
         try {
             while(ApplicationControls.status == GAME_LOOP) {
-
+                getHero().isPlayerDead();
                 for (int i = 0; i < instructions.size(); i++) {
                     instructionIndex = i;
                     /* IMPORTANT: remove instruction after use. */

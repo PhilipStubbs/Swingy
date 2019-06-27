@@ -155,6 +155,10 @@ public class Hero extends Mob {
         }
     }
 
+    public void addEpForMonsterKill(Monster monster){
+        gainExperince(monster.getMaxAttackPnts() + monster.getMaxHitPnts());
+    }
+
     public String getLatestLoot() {
         return latestLoot;
     }

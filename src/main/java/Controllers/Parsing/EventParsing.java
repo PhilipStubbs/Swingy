@@ -31,6 +31,10 @@ public class EventParsing {
 					InventoryMenuParsing.inventoryMenuParsing();
 
 					FightMenuParsing.fightMenuParsing();
+
+					LootMenuParsing.lootMenuCommands();
+
+					DiedMenuParsing.diedMenuCommands();
 				}
 			}
 		}).start();
@@ -51,7 +55,7 @@ public class EventParsing {
 
 			FightMenuParsing.fightMenuParsing();
 
-				LootMenuParsing.lootMenuCommands();
+			LootMenuParsing.lootMenuCommands();
 
 		}
 	}
