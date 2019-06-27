@@ -31,28 +31,32 @@ public class FightMenuParsing extends Global {
         Random rn = new Random();
         if (rn.nextInt() % 2 == 0){
             monster.takeDamage(hero.getAttackPnts());
-            ApplicationControls.addToFight("You hit the monster for " + hero.getAttackPnts());
+            ApplicationControls.addToFight("You hit the "+monster.getName()+" for " + hero.getAttackPnts());
 
+        } else {
+            ApplicationControls.addToFight("you missed");
         }
         if (rn.nextInt() % 2 == 0){
             hero.takeDamage(monster.getAttackPnts());
             ApplicationControls.addToFight(monster.getName() + " hit you for " + monster.getAttackPnts());
+        } else {
+            ApplicationControls.addToFight(monster.getName() +" missed");
         }
     }
 
     private static void looting(){
-        if (getMonster().isMonsterDead()) {
-//            ApplicationControls.addToFight(getMonster().getName()+ " is dead");
-            getHero().addEpForMonsterKill(getMonster());
+        Monster monster = getMonster();
+        if (monster.isMonsterDead()) {
+            ApplicationControls.addToFight(monster.getName()+ " is dead");
+            getHero().addEpForMonsterKill(monster);
             Random rn = new Random();
             if (abs(rn.nextInt() % 2) == 0) {
                 ApplicationControls.getHero().lootEnemy();
                 ApplicationControls.status = LOOT;
-                return;
             } else {
                 ApplicationControls.status = GAME_LOOP;
-                return;
             }
+            GameLoopParsing.getGameLoopMap()[monster.getY()][monster.getX()] = 1;
 
         } else {
             FightMenu.displayFightMenu();
@@ -89,8 +93,6 @@ public class FightMenuParsing extends Global {
             FightMenu.displayFightMenu();
 
             instructions = ApplicationControls.getInstructions();
-            // TODO fight terminal output
-//            InventoryMenuOutput.displayInventoryInstrucitons();
             FightMenuOutput.fightInstructions();
         }
 
