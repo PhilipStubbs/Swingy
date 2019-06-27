@@ -1,6 +1,7 @@
 package Controllers;
 
 import Models.Mobs.Hero;
+import Models.Mobs.Monster;
 import Views.Gui.BaseWindow;
 
 import java.util.ArrayList;
@@ -15,6 +16,9 @@ public class ApplicationControls {
 	private static Boolean isRunning;
 	private static List<String> instructions = new ArrayList<String>();
 	private static Hero hero;
+	private static Monster monster;
+
+
 
 	/*-----------------------------------------------------------------------------------------------------*/
 	/* Application controls */
@@ -61,4 +65,15 @@ public class ApplicationControls {
 		ApplicationControls.hero = hero;
 	}
 
+
+	/*-----------------------------------------------------------------------------------------------------*/
+	/* Monster controls */
+
+	public static Monster getMonster() {
+		return monster;
+	}
+
+	public static void setMonster(Monster monster) {
+		ApplicationControls.monster = monster;
+	}
 }

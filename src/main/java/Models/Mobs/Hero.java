@@ -1,11 +1,9 @@
 package Models.Mobs;
 
 import Models.Artifacts.Artifact;
-import Models.Items.Item;
+import Models.ItemsFactory.ItemFactory;
 
 import java.util.List;
-
-import static Models.Artifacts.Artifact.*;
 
 public class Hero extends Mob {
 
@@ -48,9 +46,10 @@ public class Hero extends Mob {
         maxExperiencePnts = level * 1000 + (int)Math.pow(level - 1, 2) * 450;
     }
 
-    public void lootEnemy(){}
-    public void save(){}
-    public void load(){}
+    public void lootEnemy(){
+        Artifact newItem = ItemFactory.generateLoot(this);
+        backpack[newItem.getType()].add(newItem);
+    }
 
     @Override
     public String toString() {
@@ -100,19 +99,28 @@ public class Hero extends Mob {
         backpack[item.getType()].add(item);
     }
 
+
+
     public void equipHelm(int helmIndex){
         Artifact newHelm = backpack[HELM].get(helmIndex);
         Artifact oldHelm = equipped[HELM];
         this.equipped[HELM] = newHelm;
 
+        this.hitPnts -= oldHelm.getBuff();
+        this.hitPnts += newHelm.getBuff();
+
         backpack[HELM].remove(helmIndex);
         addToBackpack(oldHelm);
+
     }
 
     public void equipArmour(int ArmourIndex){
         Artifact newArmour = backpack[ARMOUR].get(ArmourIndex);
         Artifact oldArmour = equipped[ARMOUR];
         this.equipped[ARMOUR] = newArmour;
+
+        this.defencePnts -= oldArmour.getBuff();
+        this.defencePnts += newArmour.getBuff();
 
         backpack[ARMOUR].remove(ArmourIndex);
         addToBackpack(oldArmour);
@@ -122,6 +130,9 @@ public class Hero extends Mob {
         Artifact newWeapon = backpack[WEAPON].get(WeaponIndex);
         Artifact oldWeapon = equipped[WEAPON];
         this.equipped[WEAPON] = newWeapon;
+
+        attackPnts -= oldWeapon.getBuff();
+        attackPnts += newWeapon.getBuff();
 
         backpack[WEAPON].remove(WeaponIndex);
         addToBackpack(oldWeapon);

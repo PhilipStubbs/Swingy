@@ -16,8 +16,11 @@ public class InventoryMenu extends BaseWindow {
 	private JList helmList;
 	private JList armourList;
 	private JList weaponList;
+    private JLabel helm;
+    private JLabel weapon;
+    private JLabel armour;
 
-	public InventoryMenu() {
+    public InventoryMenu() {
 		displayInventory();
 		exitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
@@ -64,6 +67,9 @@ public class InventoryMenu extends BaseWindow {
 		Hero hero = ApplicationControls.getHero();
 
 		List<Artifact>[] backpack = hero.getBackpack();
+		helm.setText(hero.getEquipped()[HELM].getDetails());
+		armour.setText(hero.getEquipped()[ARMOUR].getDetails());
+		weapon.setText(hero.getEquipped()[WEAPON].getDetails());
 
 		updateHelmBox(backpack[HELM]);
 		updateAmourBox(backpack[ARMOUR]);

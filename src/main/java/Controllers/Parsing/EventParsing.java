@@ -29,6 +29,8 @@ public class EventParsing {
 					GameLoopParsing.gameLoopMenuCommands();
 
 					InventoryMenuParsing.inventoryMenuParsing();
+
+					FightMenuParsing.fightMenuParsing();
 				}
 			}
 		}).start();
@@ -46,6 +48,8 @@ public class EventParsing {
 			GameLoopParsing.gameLoopMenuCommands();
 
 			InventoryMenuParsing.inventoryMenuParsing();
+
+			FightMenuParsing.fightMenuParsing();
 
 		}
 	}

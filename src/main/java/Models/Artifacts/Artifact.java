@@ -8,6 +8,8 @@ public class Artifact extends Global {
     private int type;
     private String name;
 
+    public Artifact(){};
+
     public Artifact(String name ,int abilityBuff, int type) {
         this.name = name;
         this.abilityBuff = abilityBuff;

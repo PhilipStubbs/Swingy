@@ -109,5 +109,4 @@ public class InventoryMenuParsing  extends Global {
 			instructions = ApplicationControls.getInstructions();
 		}
 	}
-
 }

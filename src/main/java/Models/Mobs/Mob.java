@@ -2,9 +2,7 @@ package Models.Mobs;
 
 import Models.Artifacts.Artifact;
 import Models.Global;
-import Models.Items.Item;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -25,6 +23,9 @@ public abstract class Mob extends Global {
     protected Artifact[] equipped;
     protected int x;
     protected int y;
+    protected int prevX;
+    protected int prevY;
+
 
     Mob() {
         this.name = "undefined";
@@ -145,10 +146,29 @@ public abstract class Mob extends Global {
         this.y = y;
     }
 
+    public void setPrevXY(int x, int y) {
+        setPrevX(x);
+        setPrevY(y);
+    }
+
     public int[] getLoc(){
         int[] loc = {this.y,this.x};
         return (loc);
     }
 
+    public int getPrevX() {
+        return prevX;
+    }
 
+    public void setPrevX(int prevX) {
+        this.prevX = prevX;
+    }
+
+    public int getPrevY() {
+        return prevY;
+    }
+
+    public void setPrevY(int prevY) {
+        this.prevY = prevY;
+    }
 }

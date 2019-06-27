@@ -61,8 +61,14 @@ public class GameLoopMenu extends BaseWindow{
         String tmp = "";
         for(int i = 0; i < gameLoopMap.length; i++){
             for(int x = 0; x < gameLoopMap.length; x++) {
-                tmp += String.valueOf(gameLoopMap[i][x]);
-                tmp +=" ";
+                if (gameLoopMap[i][x] == 0) {
+                    tmp += "_";
+                } else if (gameLoopMap[i][x] == 1) {
+                    tmp += "X ";
+                } else {
+                    tmp += "M";
+                }
+                tmp +="  ";
             }
             mapDataList.add(tmp);
             tmp = "";
