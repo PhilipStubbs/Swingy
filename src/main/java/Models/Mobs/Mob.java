@@ -69,11 +69,19 @@ public abstract class Mob extends Global {
         this.equipped = equipped;
     }
 
-    public void attack(){}
 
-    public void defend(){}
-
-    public void takeDamage(){}
+    public void takeDamage(int damage){
+        if (defencePnts > 0 && defencePnts - damage >= 0){
+            defencePnts -= damage;
+        } else if (defencePnts > 0 && defencePnts - damage < 0){
+            damage -=defencePnts;
+            defencePnts = 0;
+            hitPnts -= damage;
+        }
+         else {
+            hitPnts -=damage;
+        }
+    }
 
     public void gainHitPnts(){}
 

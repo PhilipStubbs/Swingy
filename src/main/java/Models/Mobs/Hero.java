@@ -1,5 +1,6 @@
 package Models.Mobs;
 
+import Controllers.ApplicationControls;
 import Models.Artifacts.Artifact;
 import Models.ItemsFactory.ItemFactory;
 
@@ -14,6 +15,8 @@ public class Hero extends Mob {
     public Hero(String name, String mobClass,int level, int experiencePnts, int maxHitPnts, int maxAttackPnts, int maxDefencePnts, List<Artifact>[] backpack, Artifact[] equipped) {
         super(name, mobClass,level, experiencePnts, maxHitPnts, maxAttackPnts, maxDefencePnts, backpack, equipped);
     }
+
+    private String latestLoot = "";
 
     public void gainExperince(int gain){
         experiencePnts += gain;
@@ -49,6 +52,7 @@ public class Hero extends Mob {
     public void lootEnemy(){
         Artifact newItem = ItemFactory.generateLoot(this);
         backpack[newItem.getType()].add(newItem);
+        System.out.println("You found " + newItem.getDetails());
     }
 
     @Override
@@ -142,5 +146,20 @@ public class Hero extends Mob {
     public int[] findMiddleOfMap(int mapSize){
         int[] heroLoc = {mapSize /2, mapSize /2};
         return heroLoc;
+    }
+
+    public void isPlayerDead() {
+
+        if (hitPnts <= 0){
+            ApplicationControls.status = DEAD;
+        }
+    }
+
+    public String getLatestLoot() {
+        return latestLoot;
+    }
+
+    public void setLatestLoot(String latestLoot) {
+        this.latestLoot = latestLoot;
     }
 }

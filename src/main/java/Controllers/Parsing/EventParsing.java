@@ -51,6 +51,8 @@ public class EventParsing {
 
 			FightMenuParsing.fightMenuParsing();
 
+				LootMenuParsing.lootMenuCommands();
+
 		}
 	}
 }

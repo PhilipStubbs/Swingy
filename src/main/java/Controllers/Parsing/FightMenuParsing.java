@@ -4,6 +4,8 @@ import Controllers.ApplicationControls;
 import Models.Artifacts.Artifact;
 import Models.Global;
 import Models.Mobs.Hero;
+import Models.Mobs.Mob;
+import Models.Mobs.Monster;
 import Models.SavedGameLoader;
 import Views.Gui.BaseWindow;
 import Views.Gui.FightMenu;
@@ -11,36 +13,62 @@ import Views.Gui.InventoryMenu;
 import Views.Terminal.InventoryMenuOutput;
 
 import java.util.List;
+import java.util.Random;
 
 import static Controllers.ApplicationControls.getHero;
+import static Controllers.ApplicationControls.getMonster;
 
 public class FightMenuParsing extends Global {
 
     static List<String> instructions;
-    private static boolean flag;
+
+
+    private static void fightMonster() {
+        Hero hero = getHero();
+        Monster monster = getMonster();
+        Random rn = new Random();
+        if (rn.nextInt() % 2 == 0){
+            monster.takeDamage(hero.getAttackPnts());
+        }
+        if (rn.nextInt() % 2 == 0){
+            hero.takeDamage(monster.getAttackPnts());
+        }
+    }
+
+    private static void runFromMonster(){
+        Hero hero = getHero();
+        Monster monster = getMonster();
+        Random rn = new Random();
+        if (rn.nextInt() % 4 == 0){
+           ApplicationControls.status = GAME_LOOP;
+        } else {
+            hero.takeDamage(monster.getAttackPnts());
+        }
+    }
+
 
     enum fightMenuInstruction {
         save_exit,
         exit,
         gui,
+        fight,
+        run
     }
 
     public static void fightMenuParsing() {
+        System.out.println("here");
         int instructionIndex = -1;
 
         if (ApplicationControls.status == FIGHT_MENU) {
-            if (!flag) {
-                FightMenu.displayFightMenu();
+            FightMenu.displayFightMenu();
 
-                flag = true;
-            }
             instructions = ApplicationControls.getInstructions();
-            InventoryMenuOutput.displayInventoryInstrucitons();
+            // TODO fight terminal output
+//            InventoryMenuOutput.displayInventoryInstrucitons();
         }
 
         try {
             while (ApplicationControls.status == FIGHT_MENU) {
-
                 for (int i = 0; i < instructions.size(); i++) {
                     instructionIndex = i;
                     /* IMPORTANT: remove instruction after use. */
@@ -59,10 +87,23 @@ public class FightMenuParsing extends Global {
                                 Controllers.ApplicationControls.closeApplication();
                                 break;
 
-
                             case exit:
                                 ApplicationControls.setIsRunning(false);
                                 Controllers.ApplicationControls.closeApplication();
+                                break;
+
+                            case fight:
+                                fightMonster();
+                                getHero().isPlayerDead();
+                                getMonster().isMonsterDead();
+                                FightMenu.displayFightMenu();
+                                break;
+
+
+                            case run:
+                                runFromMonster();
+                                getHero().isPlayerDead();
+                                FightMenu.displayFightMenu();
                                 break;
 
                             default:
@@ -77,36 +118,9 @@ public class FightMenuParsing extends Global {
 
             }
         } catch (IllegalArgumentException e) {
-            try {
-//                Hero hero = getHero();
-//                List<Artifact>[] backpack = hero.getBackpack();
-//
-//                String[] split = instructions.get(instructionIndex).split(" ");
-//
-//                if (split.length != 3){
-//                    System.out.println("Invalid instruction. 3 indexes are required.");
-//                } else {
-//                    int helmIndex = Integer.parseInt(split[0]);
-//                    int armourIndex = Integer.parseInt(split[1]);
-//                    int weaponIndex = Integer.parseInt(split[2]);
-//
-//                    if (helmIndex >= 0 && helmIndex < backpack[HELM].size()){
-//                        hero.equipHelm(helmIndex);
-//                    }
-//                    if (armourIndex >= 0 && armourIndex < backpack[ARMOUR].size()){
-//                        hero.equipArmour(armourIndex);
-//                    }
-//                    if (weaponIndex >= 0 && weaponIndex < backpack[WEAPON].size()){
-//                        hero.equipWeapon(weaponIndex);
-//                    }
-                    flag = false;
-                    ApplicationControls.status = GAME_LOOP;
-//                }
-            } catch (NumberFormatException x) {
-                System.out.println("Not an int:" + x.getLocalizedMessage());
-            }
+            System.out.println("Invalid instruction:"+instructions.get(instructionIndex));
             ApplicationControls.removeInstructions(instructions.get(instructionIndex));
-         fightMenuParsing();
+            fightMenuParsing();
 
         } finally {
             instructions = ApplicationControls.getInstructions();

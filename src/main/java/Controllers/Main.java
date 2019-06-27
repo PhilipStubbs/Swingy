@@ -10,10 +10,10 @@ public class Main {
 			ApplicationControls.createWindow();
 			ApplicationControls.status = 0;
 
-			EventParsing.instructionParseAsync();
+//			EventParsing.instructionParseAsync();
 
 			EventData.readStdinAsync();
-//			EventParsing.instructionParse();
+			EventParsing.instructionParse();
 
 			System.out.println("Main Menu: \"new_game\", \"continue_game\", \"exit\", \"gui\" ");
 

@@ -7,6 +7,8 @@ public class Global {
     public static final int NEW_GAME = 3;
     public static final int INVENTORY_MENU = 4;
     public static final int FIGHT_MENU = 5;
+    public static final int DEAD = 6;
+    public static final int LOOT = 7;
 
 
     public static final int HELM = 0;

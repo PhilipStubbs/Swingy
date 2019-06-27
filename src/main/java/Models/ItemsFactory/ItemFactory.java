@@ -6,6 +6,8 @@ import Models.Mobs.Hero;
 
 import java.util.Random;
 
+import static java.lang.Math.abs;
+
 public class ItemFactory extends Global {
 
 
@@ -23,10 +25,18 @@ public class ItemFactory extends Global {
         int x = hero.getX();
         int y = hero.getY();
         int level = hero.getLevel();
-        int rar = (rn.nextInt() + x + y) % 4;
-        int adj = (rn.nextInt() + x + y) % 7;
-        int tpe = (rn.nextInt() + x + y) % 3;
-        int itemType = (rn.nextInt() + x + y) % 4;
+        int rar = abs((rn.nextInt() + x + y) % 4);
+        int adj = abs((rn.nextInt() + x + y) % 7);
+        int tpe = abs((rn.nextInt() + x + y) % 3);
+        int itemType = abs((rn.nextInt() + x + y) % 4);
+
+        System.out.println(rar);
+        System.out.println(adj);
+
+        System.out.println(tpe);
+
+        System.out.println(itemType);
+
         String itemName = "";
         switch (tpe){
             case HELM:
@@ -41,6 +51,10 @@ public class ItemFactory extends Global {
                 itemName += rarity[rar] + " " + adjectives[adj] + " " + weaponType[itemType];
                 break;
         }
-        return new Artifact(itemName, rn.nextInt(level * 10), tpe);
+        System.out.println();
+        System.out.println(itemName);
+        Artifact newItem = new Artifact(itemName, rn.nextInt(level * 10), tpe);
+        System.out.println("look:"+newItem.getDetails());
+        return (newItem);
     }
 }

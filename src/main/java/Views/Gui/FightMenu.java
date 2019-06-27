@@ -21,6 +21,7 @@ public class FightMenu extends BaseWindow {
     private JLabel enemAttack;
     private JLabel enemDefence;
     private JLabel enemHealth;
+    private String[] instruction = {"fight", "run"};
 
     public FightMenu() {
         updateEnemyDisplay();
@@ -28,6 +29,11 @@ public class FightMenu extends BaseWindow {
         saveExitButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 ApplicationControls.addInstructions("save_exit");
+            }
+        });
+        endTurnButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ApplicationControls.addInstructions(instruction[comboBox1.getSelectedIndex()]);
             }
         });
     }
