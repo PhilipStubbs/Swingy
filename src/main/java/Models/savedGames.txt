@@ -1,3 +1,4 @@
 fg Wizard 0 0 101 21 21 3 Basic_cap 1 Cloth_shirt 1 Wooden_sword 1 0
 Bob_the_spider Wizard 1 776 23 23 -3 3 Epic_Spooky_Cap 22 Rare_Spooky_Steel_chest_piece 12 Wooden_sword 1 5 Basic_cap 1 0 Epic_Alright_Helmet 16 0 Cloth_shirt 1 1 Common_pointy_Leather_chest 15 1 Epic_Alright_Sword 13 2 
 name Wizard 0 0 102 22 24 3 Cool_Wizard_Hat 1 Robe 1 Staff 1 0 
+name Wizard 1 871 107 27 13 3 Cool_Wizard_Hat 1 Robe 1 Staff 1 2 Epic_Small_bowler 10 0 Epic_pointy_Crossbow 14 2 

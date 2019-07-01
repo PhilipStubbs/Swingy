@@ -49,18 +49,12 @@ public abstract class Mob extends Global {
 
         this.maxAttackPnts = maxAttackPnts;
         attackPnts = maxAttackPnts;
-        if (equipped[WEAPON] != null)
-            attackPnts += equipped[WEAPON].getBuff();
 
         this.maxDefencePnts = maxDefencePnts;
         defencePnts = maxDefencePnts;
-        if (equipped[ARMOUR] != null)
-            defencePnts += equipped[ARMOUR].getBuff();
 
         this.maxHitPnts = maxHitPnts;
         hitPnts = maxHitPnts;
-        if (equipped[HELM] != null)
-            hitPnts += equipped[HELM].getBuff();
 
         this.experiencePnts = experiencePnts;
         maxExperiencePnts = level * 1000 + (int)Math.pow(level - 1, 2) * 450;

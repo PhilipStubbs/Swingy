@@ -1,17 +1,13 @@
 package Controllers.Parsing;
 
 import Controllers.ApplicationControls;
-import Models.Artifacts.Artifact;
 import Models.Global;
 import Models.Mobs.Hero;
-import Models.Mobs.Mob;
 import Models.Mobs.Monster;
 import Models.SavedGameLoader;
 import Views.Gui.BaseWindow;
 import Views.Gui.FightMenu;
-import Views.Gui.InventoryMenu;
 import Views.Terminal.FightMenuOutput;
-import Views.Terminal.InventoryMenuOutput;
 
 import java.util.List;
 import java.util.Random;
@@ -73,7 +69,6 @@ public class FightMenuParsing extends Global {
                 ApplicationControls.status = GAME_LOOP;
             }
             GameLoopParsing.getGameLoopMap()[monster.getY()][monster.getX()] = 1;
-
         }
     }
 
@@ -158,6 +153,7 @@ public class FightMenuParsing extends Global {
                                 getHero().isPlayerDead();
                                 looting();
                                 FightMenuOutput.fightOutput();
+                                FightMenu.displayFightMenu();
                                 break;
                             }
 

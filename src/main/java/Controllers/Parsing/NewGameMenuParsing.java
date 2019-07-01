@@ -111,13 +111,11 @@ public class NewGameMenuParsing extends Global {
 				if (split.length == 2){
 					try {
 						ApplicationControls.setHero(createHero(split[0], split[1]));
+						ApplicationControls.status = GAME_LOOP;
 					} catch (IllegalArgumentException heroE){
 						System.out.println("Failed to create " + heroE.getLocalizedMessage());
 					}
-//					ApplicationControls.getHero().setName(split[0]);
-//					ApplicationControls.getHero().setMobClass(split[1]);
 
-					ApplicationControls.status = GAME_LOOP;
 				} else {
 					System.out.println("invalid creation.");
 				}

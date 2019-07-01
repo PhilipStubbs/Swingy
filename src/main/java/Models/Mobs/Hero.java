@@ -13,7 +13,14 @@ public class Hero extends Mob {
     }
 
     public Hero(String name, int level, int experiencePnts, int maxHitPnts, int maxAttackPnts, int maxDefencePnts, List<Artifact>[] backpack, Artifact[] equipped) {
-        super(name, level, experiencePnts, maxHitPnts, maxAttackPnts, maxDefencePnts, backpack, equipped);
+        super(name,
+        level,
+        experiencePnts,
+        maxHitPnts + (equipped[HELM] != null ? equipped[HELM].getBuff() : 0),
+        maxAttackPnts + (equipped[WEAPON] != null ? equipped[WEAPON].getBuff() : 0),
+        maxDefencePnts + (equipped[WEAPON] != null ? equipped[WEAPON].getBuff() : 0),
+        backpack,
+        equipped);
     }
 
     private String latestLoot = "";
@@ -32,18 +39,12 @@ public class Hero extends Mob {
 
         maxAttackPnts += 2;
         attackPnts = maxAttackPnts;
-        if (equipped[WEAPON] != null)
-            attackPnts += equipped[WEAPON].getBuff();
 
         maxDefencePnts += 2;
         defencePnts = maxDefencePnts;
-        if (equipped[ARMOUR] != null)
-            defencePnts += equipped[ARMOUR].getBuff();
 
         maxHitPnts += 2;
         hitPnts = maxHitPnts;
-        if (equipped[HELM] != null)
-            hitPnts += equipped[HELM].getBuff();
 
         experiencePnts -= maxExperiencePnts;
         maxExperiencePnts = level * 1000 + (int)Math.pow(level - 1, 2) * 450;
@@ -113,6 +114,9 @@ public class Hero extends Mob {
         this.hitPnts -= oldHelm.getBuff();
         this.hitPnts += newHelm.getBuff();
 
+        this.maxHitPnts -= oldHelm.getBuff();
+        this.maxHitPnts += newHelm.getBuff();
+
         backpack[HELM].remove(helmIndex);
         addToBackpack(oldHelm);
 
@@ -126,6 +130,9 @@ public class Hero extends Mob {
         this.defencePnts -= oldArmour.getBuff();
         this.defencePnts += newArmour.getBuff();
 
+        this.maxDefencePnts -= oldArmour.getBuff();
+        this.maxDefencePnts += newArmour.getBuff();
+
         backpack[ARMOUR].remove(ArmourIndex);
         addToBackpack(oldArmour);
     }
@@ -137,6 +144,9 @@ public class Hero extends Mob {
 
         attackPnts -= oldWeapon.getBuff();
         attackPnts += newWeapon.getBuff();
+
+        maxAttackPnts -= oldWeapon.getBuff();
+        maxAttackPnts += newWeapon.getBuff();
 
         backpack[WEAPON].remove(WeaponIndex);
         addToBackpack(oldWeapon);
