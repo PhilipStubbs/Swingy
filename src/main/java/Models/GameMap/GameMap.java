@@ -61,4 +61,8 @@ public class GameMap {
 	public static void setHeroLocation(Hero hero){
 		gameMap[hero.getY()][hero.getX()] = 1;
 	}
+
+	public static void setHeroLocation(int x, int y){
+		gameMap[y][x] = 1;
+	}
 }

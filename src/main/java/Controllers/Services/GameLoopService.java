@@ -6,6 +6,7 @@ import Models.Global;
 import Models.Missions.MissionFactory;
 import Models.Missions.MissionTypes.Mission;
 import Models.Mobs.Hero;
+import Models.Mobs.Monster;
 import Models.Mobs.MonsterFactory;
 import Views.Terminal.GameLoopOutput;
 
@@ -33,7 +34,9 @@ public class GameLoopService extends Global {
 	public static void monsterCheck(int x, int y){
 		if (gameMap.getGameMap()[y][x] >= 2)
 		{
-			ApplicationControls.setMonster(MonsterFactory.generateMonster());
+			Monster monster = MonsterFactory.generateMonster();
+			monster.setXY(x, y);
+			ApplicationControls.setMonster(monster);
 			ApplicationControls.status = FIGHT_MENU;
 		}
 	}

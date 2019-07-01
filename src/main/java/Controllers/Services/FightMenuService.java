@@ -51,7 +51,7 @@ public class FightMenuService extends Global {
 					ApplicationControls.setMission(MissionFactory.Mission());
 				}
 			}
-			setHeroLocation(getHero());
+			setHeroLocation(monster.getX(), monster.getY());
 			ApplicationControls.addToFight(monster.getName()+ " is dead");
 			getHero().addEpForMonsterKill(monster);
 			Random rn = new Random();
