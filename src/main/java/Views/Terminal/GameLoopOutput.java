@@ -2,6 +2,7 @@ package Views.Terminal;
 
 import Controllers.ApplicationControls;
 import Controllers.Parsing.GameLoopParsing;
+import Models.Missions.MissionTypes.Mission;
 
 public class GameLoopOutput {
 	static public void gameLoopGreating(){
@@ -10,7 +11,9 @@ public class GameLoopOutput {
 
 	static public void gameLoopInstructions(){
 		System.out.println("'save_exit', 'inventory' ,'north', 'east, 'south', 'west'");
-		System.out.println(ApplicationControls.getMission());
+		Mission heroMission = ApplicationControls.getMission();
+		String missionDetails = heroMission.getDescription() +":" +heroMission.getProgess()+"/"+heroMission.getGoal();
+		System.out.println(missionDetails);
 	}
 
 	static public void gameLoopMapDisplay(){

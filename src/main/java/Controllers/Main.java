@@ -15,7 +15,6 @@ public class Main {
 			EventData.readStdinAsync();
 //			EventParsing.instructionParse();
 
-			// TODO check that error on the fight screen where I cant select run
 
 			System.out.println("Main Menu: \"new_game\", \"continue_game\", \"exit\", \"gui\" ");
 

@@ -1,5 +1,6 @@
 package Controllers;
 
+import Models.Missions.MissionTypes.Mission;
 import Models.Mobs.Hero;
 import Models.Mobs.Monster;
 import Views.Gui.BaseWindow;
@@ -12,7 +13,7 @@ public class ApplicationControls {
 	/*
 	* 0 = main menu */
 	public static int status;
-	private static String mission;
+	private static Mission mission;
 	private static Boolean isRunning;
 	private static List<String> instructions = new ArrayList<String>();
 	private static Hero hero;
@@ -95,11 +96,24 @@ public class ApplicationControls {
 	/*-----------------------------------------------------------------------------------------------------*/
 	/* Missions control */
 
-	public static String getMission() {
+	public static Mission getMission() {
 		return mission;
 	}
 
-	public static void setMission(String mission) {
+	public static void setMission(Mission mission) {
 		ApplicationControls.mission = mission;
 	}
+
+	public static String saveMissoinString() {
+		Mission mission = getMission();
+		String save = "";
+		save += mission.getClass().getSimpleName() + " "+
+			mission.getProgess() + " " +
+			mission.getGoal() + " " +
+			mission.getDescription().replaceAll(" ", "_") + " " +
+			mission.getReward();
+		return save;
+	}
 }
+
+//(int progess, int goal, String description, int reward){

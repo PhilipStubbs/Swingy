@@ -3,6 +3,7 @@ package Models.Mobs;
 import Controllers.ApplicationControls;
 import Models.Artifacts.Artifact;
 import Models.ItemsFactory.ItemFactory;
+import Models.Missions.MissionTypes.Mission;
 
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class Hero extends Mob {
         equipped);
     }
 
+    private Mission currentMission;
     private String latestLoot = "";
 
     public void gainExperince(int gain){
@@ -177,5 +179,14 @@ public class Hero extends Mob {
 
     public void setLatestLoot(String latestLoot) {
         this.latestLoot = latestLoot;
+    }
+
+
+    public Mission getCurrentMission() {
+        return currentMission;
+    }
+
+    public void setCurrentMission(Mission currentMission) {
+        this.currentMission = currentMission;
     }
 }

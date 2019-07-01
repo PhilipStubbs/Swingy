@@ -68,7 +68,7 @@ public class ContinueMenuParsing extends Global {
                 int heroIndex = Integer.parseInt(instructions.get(instructionIndex));
                     if (heroIndex >= 0 && heroIndex <= heroList.size()){
                     ApplicationControls.setHero(heroList.get(heroIndex));
-                    ApplicationControls.setMission("Current Objective: SURVIVE");
+                    ApplicationControls.setMission(ApplicationControls.getHero().getCurrentMission());
                     ApplicationControls.status = GAME_LOOP;
                     } else {
                     System.out.println("Invalid index:" + heroIndex + ". Range from 0 - " + (getHeroes().size() -1));

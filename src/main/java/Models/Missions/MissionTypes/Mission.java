@@ -1,4 +1,4 @@
-package Models.Missions;
+package Models.Missions.MissionTypes;
 
 public class Mission {
     private int progess;
@@ -7,8 +7,8 @@ public class Mission {
     private Boolean completed;
     private int reward;
 
-    Mission(int goal, String description, int reward){
-        this.progess = 0;
+    public Mission(int progess, int goal, String description, int reward){
+        this.progess = progess;
         this.goal = goal;
         this.description = description;
         this.reward = reward;
@@ -18,6 +18,11 @@ public class Mission {
     public int getProgess() {
         return progess;
     }
+
+    public void addProgess() {
+        progess++;
+    }
+
 
     public void setProgess(int progess) {
         this.progess = progess;
@@ -49,6 +54,10 @@ public class Mission {
 
     public int getReward() {
         return reward;
+    }
+
+    public void addReward(int reward) {
+        this.reward += reward;
     }
 
     public void setReward(int reward) {

@@ -2,6 +2,8 @@ package Controllers.Parsing;
 
 import Controllers.ApplicationControls;
 import Models.Global;
+import Models.Missions.MissionFactory;
+import Models.Missions.MissionTypes.Mission;
 import Models.Mobs.Hero;
 import Models.Mobs.Monster;
 import Models.SavedGameLoader;
@@ -44,9 +46,18 @@ public class FightMenuParsing extends Global {
         }
     }
 
-    private static void looting(){
+    private static void monsterDeadCheck(){
         Monster monster = getMonster();
         if (monster.isMonsterDead()) {
+            Mission mission = ApplicationControls.getMission();
+            if (mission.getClass().getSimpleName().contains("EnemyHunter")) {
+                mission.addProgess();
+                mission.addReward(monster.getMaxAttackPnts() + monster.getMaxHitPnts());
+                if (mission.getProgess() >= mission.getGoal()) {
+                    getHero().gainExperince(mission.getReward() % 2);
+                    ApplicationControls.setMission(MissionFactory.Mission());
+                }
+            }
             setHeroLocation(getHero());
             ApplicationControls.addToFight(monster.getName()+ " is dead");
             getHero().addEpForMonsterKill(monster);
@@ -82,7 +93,7 @@ public class FightMenuParsing extends Global {
         while(!hero.isPlayerDead() && !monster.isMonsterDead()){
             fightMonsterLogic(hero, monster);
         }
-        looting();
+        monsterDeadCheck();
     }
 
     enum fightMenuInstruction {
@@ -109,7 +120,7 @@ public class FightMenuParsing extends Global {
                 FightMenuOutput.fightIntro(getMonster());
             }
             while (ApplicationControls.status == FIGHT_MENU) {
-                looting();
+//                monsterDeadCheck();
                 for (int i = 0; i < instructions.size(); i++) {
                     instructionIndex = i;
                     /* IMPORTANT: remove instruction after use. */
@@ -141,7 +152,7 @@ public class FightMenuParsing extends Global {
                             case fight: {
                                 fightMonster();
                                 getHero().isPlayerDead();
-                                looting();
+                                monsterDeadCheck();
                                 FightMenuOutput.fightOutput();
                                 FightMenu.displayFightMenu();
                                 break;

@@ -4,6 +4,7 @@ import Controllers.ApplicationControls;
 import Controllers.Parsing.GameLoopParsing;
 import Models.Artifacts.Artifact;
 import Models.GameMap.GameMap;
+import Models.Missions.MissionTypes.Mission;
 import Models.Mobs.Hero;
 
 import javax.swing.*;
@@ -45,7 +46,9 @@ public class GameLoopMenu extends BaseWindow{
         });
         updateStats();
         displayMap();
-        mission.setText(ApplicationControls.getMission());
+        Mission heroMission = ApplicationControls.getMission();
+        String missionDetails = heroMission.getDescription() +":" +heroMission.getProgess()+"/"+heroMission.getGoal();
+        mission.setText(missionDetails);
 		inventoryButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
 				ApplicationControls.addInstructions("inventory");

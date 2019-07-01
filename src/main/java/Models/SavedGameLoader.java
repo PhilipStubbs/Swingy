@@ -2,6 +2,9 @@ package Models;
 
 import Controllers.ApplicationControls;
 import Models.Artifacts.Artifact;
+import Models.Missions.MissionTypes.EnemyHunter;
+import Models.Missions.MissionTypes.LevelCompletion;
+import Models.Missions.MissionTypes.Mission;
 import Models.Mobs.*;
 
 import java.io.*;
@@ -27,20 +30,23 @@ public class SavedGameLoader extends Global {
         rouge
     }
 
-    public static void saveGame(){
+    enum MissionTypes{
+        EnemyHunter,
+        LevelCompletion
+    }
 
+    public static void saveGame(){
             Hero hero = ApplicationControls.getHero();
         try {
             FileWriter fr = new FileWriter(file, true);
-            fr.write(hero.saveString() + "\n");
+            fr.write(hero.saveString() + " " + ApplicationControls.saveMissoinString() +"\n");
             fr.close();
         } catch (IOException e){
             System.out.println("Cannot save game.");
         }
     }
 
-
-
+//(int progess, int goal, String description, int reward){
     public static List<Hero> openSaves(){
         List<Hero> heroList = new ArrayList<Hero>();
 
@@ -56,6 +62,12 @@ public class SavedGameLoader extends Global {
             int defencePnts;
             int equppied;
             int backPackSize;
+
+            String missionType;
+            int missionProgess;
+            int goal;
+            String missionDes;
+            int reward;
 
             while (sc.hasNext()) {
                 List<Artifact>[] backpack = new ArrayList[3];
@@ -78,7 +90,7 @@ public class SavedGameLoader extends Global {
                 equipped[2] = new Artifact(sc.next(), sc.nextInt(), WEAPON);
                 backPackSize = sc.nextInt();
 
-                for(int i = 0; i < backPackSize; i++){
+                for(int i = 0; i < backPackSize; i++) {
                     String itemName = sc.next();
                     int itemBuff = sc.nextInt();
                     int itemType = sc.nextInt();
@@ -97,26 +109,55 @@ public class SavedGameLoader extends Global {
                     }
                 }
 
+                missionType = sc.next();
+                missionProgess = sc.nextInt();
+                goal = sc.nextInt();
+                missionDes = sc.next().replaceAll("_", " ");
+                reward = sc.nextInt();
+
+                Mission mission = new Mission(missionProgess, goal, missionDes, reward);
+
+                switch (MissionTypes.valueOf(missionType)){
+                    case EnemyHunter:
+                        mission = new EnemyHunter(missionProgess, goal, missionDes, reward);
+                        break;
+
+                    case LevelCompletion:
+                        mission = new LevelCompletion(missionProgess, goal, missionDes, reward);
+                        break;
+
+                }
+
                 switch (HeroClasses.valueOf(heroClass.toLowerCase())){
                     case wizard:
-                        heroList.add(new Wizard(name ,level, xpPnts, hpPnts ,attackPnts, defencePnts, backpack, equipped));
+                        Wizard wizard = new Wizard(name ,level, xpPnts, hpPnts ,attackPnts, defencePnts, backpack, equipped);
+                        wizard.setCurrentMission(mission);
+                        heroList.add(wizard);
                         break;
 
                     case rouge:
-                        heroList.add(new Rouge(name ,level, xpPnts, hpPnts ,attackPnts, defencePnts, backpack, equipped));
+                        Rouge rouge = new Rouge(name ,level, xpPnts, hpPnts ,attackPnts, defencePnts, backpack, equipped);
+                        rouge.setCurrentMission(mission);
+                        heroList.add(rouge);
                         break;
 
                     case hunter:
-                        heroList.add(new Hunter(name ,level, xpPnts, hpPnts ,attackPnts, defencePnts, backpack, equipped));
+                        Hunter hunter = new Hunter(name ,level, xpPnts, hpPnts ,attackPnts, defencePnts, backpack, equipped);
+                        hunter.setCurrentMission(mission);
+                        heroList.add(hunter);
                         break;
 
                     case fighter:
-                        heroList.add(new Fighter(name ,level, xpPnts, hpPnts ,attackPnts, defencePnts, backpack, equipped));
+                        Fighter fighter = new Fighter(name ,level, xpPnts, hpPnts ,attackPnts, defencePnts, backpack, equipped);
+                        fighter.setCurrentMission(mission);
+                        heroList.add(fighter);
                         break;
 
 
                     default:
-                        heroList.add(new Hero(name ,level, xpPnts, hpPnts ,attackPnts, defencePnts, backpack, equipped));
+                        Hero hero = new Hero(name ,level, xpPnts, hpPnts ,attackPnts, defencePnts, backpack, equipped);
+                        hero.setCurrentMission(mission);
+                        heroList.add(hero);
                         break;
                 }
             }

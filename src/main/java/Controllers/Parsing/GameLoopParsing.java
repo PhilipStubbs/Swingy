@@ -3,6 +3,8 @@ package Controllers.Parsing;
 import Controllers.ApplicationControls;
 import Models.GameMap.GameMap;
 import Models.Global;
+import Models.Missions.MissionFactory;
+import Models.Missions.MissionTypes.Mission;
 import Models.Mobs.Hero;
 import Models.Mobs.MonsterFactory;
 import Models.SavedGameLoader;
@@ -22,9 +24,18 @@ public class GameLoopParsing extends Global {
     private static boolean mapReset;
 
     public  static void endLevel(Hero hero){
-        hero.gainExperince(100);
+        int xp = 100;
+        hero.gainExperince(xp);
         gameMap.createMap(hero);
-
+        Mission mission = ApplicationControls.getMission();
+        if (mission.getClass().getSimpleName().contains("LevelCompletion")) {
+            mission.addProgess();
+            mission.addReward(xp);
+            if (mission.getProgess() >= mission.getGoal()) {
+                getHero().gainExperince(mission.getReward());
+                ApplicationControls.setMission(MissionFactory.Mission());
+            }
+        }
     }
 
     private static void monsterCheck(int x, int y){
