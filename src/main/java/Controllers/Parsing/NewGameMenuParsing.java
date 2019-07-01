@@ -111,6 +111,7 @@ public class NewGameMenuParsing extends Global {
 				if (split.length == 2){
 					try {
 						ApplicationControls.setHero(createHero(split[0], split[1]));
+						ApplicationControls.setMission("Current Objective: SURVIVE");
 						ApplicationControls.status = GAME_LOOP;
 					} catch (IllegalArgumentException heroE){
 						System.out.println("Failed to create " + heroE.getLocalizedMessage());

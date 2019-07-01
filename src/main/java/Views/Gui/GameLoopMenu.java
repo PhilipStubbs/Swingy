@@ -32,6 +32,7 @@ public class GameLoopMenu extends BaseWindow{
     private JButton eastButton;
     private JButton westButton;
     private JButton southButton;
+    private JLabel mission;
     private JList mapList;
     private static List<String> mapDataList;
     private String[] dir= {"North", "East", "South", "West"};
@@ -44,7 +45,7 @@ public class GameLoopMenu extends BaseWindow{
         });
         updateStats();
         displayMap();
-
+        mission.setText(ApplicationControls.getMission());
 		inventoryButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
 				ApplicationControls.addInstructions("inventory");

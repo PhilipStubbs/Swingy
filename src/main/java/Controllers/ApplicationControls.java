@@ -12,7 +12,7 @@ public class ApplicationControls {
 	/*
 	* 0 = main menu */
 	public static int status;
-
+	private static String mission;
 	private static Boolean isRunning;
 	private static List<String> instructions = new ArrayList<String>();
 	private static Hero hero;
@@ -90,5 +90,16 @@ public class ApplicationControls {
 
 	public static void setFight(List<String> fight) {
 		ApplicationControls.fight = fight;
+	}
+
+	/*-----------------------------------------------------------------------------------------------------*/
+	/* Mission control */
+
+	public static String getMission() {
+		return mission;
+	}
+
+	public static void setMission(String mission) {
+		ApplicationControls.mission = mission;
 	}
 }

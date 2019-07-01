@@ -113,6 +113,8 @@ public class GameLoopParsing extends Global {
             gameMap.createMap(getHero());
             mapReset = true;
         }
+            GameMap.updateHeroLoc(ApplicationControls.getHero());
+
             displayGameLoopMenu();
             instructions = ApplicationControls.getInstructions();
             GameLoopOutput.gameLoopGreating();

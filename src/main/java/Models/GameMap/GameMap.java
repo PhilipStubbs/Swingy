@@ -36,8 +36,11 @@ public class GameMap {
 	}
 
 	public static void updateHeroLoc(Hero hero){
+
 		gameMap[hero.getPrevY()][hero.getPrevX()] = 0;
-		gameMap[hero.getY()][hero.getX()] = 1;
+		if (gameMap[hero.getY()][hero.getX()] == 0) {
+			gameMap[hero.getY()][hero.getX()] = 1;
+		}
 	}
 
 	public static void setMapSize(int mapSize) {
@@ -53,5 +56,9 @@ public class GameMap {
 		for (int i = 0 ; i < mapSize; i++){
 			gameMap[rn.nextInt(mapSize)][rn.nextInt(mapSize)] = rn.nextInt(5) + 2;
 		}
+	}
+
+	public static void setHeroLocation(Hero hero){
+		gameMap[hero.getY()][hero.getX()] = 1;
 	}
 }

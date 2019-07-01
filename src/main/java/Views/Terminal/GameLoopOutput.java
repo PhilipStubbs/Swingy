@@ -1,5 +1,6 @@
 package Views.Terminal;
 
+import Controllers.ApplicationControls;
 import Controllers.Parsing.GameLoopParsing;
 
 public class GameLoopOutput {
@@ -9,6 +10,7 @@ public class GameLoopOutput {
 
 	static public void gameLoopInstructions(){
 		System.out.println("'save_exit', 'inventory' ,'north', 'east, 'south', 'west'");
+		System.out.println(ApplicationControls.getMission());
 	}
 
 	static public void gameLoopMapDisplay(){

@@ -14,6 +14,7 @@ import java.util.Random;
 
 import static Controllers.ApplicationControls.getHero;
 import static Controllers.ApplicationControls.getMonster;
+import static Models.GameMap.GameMap.setHeroLocation;
 import static java.lang.Math.abs;
 
 public class FightMenuParsing extends Global {
@@ -23,23 +24,10 @@ public class FightMenuParsing extends Global {
     private static void fightMonster() {
         Hero hero = getHero();
         Monster monster = getMonster();
-        Random rn = new Random();
-        if (rn.nextInt() % 2 == 0){
-            monster.takeDamage(hero.getAttackPnts());
-            ApplicationControls.addToFight("You hit the "+monster.getName()+" for " + hero.getAttackPnts() + " damage.");
-
-        } else {
-            ApplicationControls.addToFight("you missed");
-        }
-        if (rn.nextInt() % 2 == 0){
-            hero.takeDamage(monster.getAttackPnts());
-            ApplicationControls.addToFight(monster.getName() + " hit you for " + monster.getAttackPnts()+ " damage.");
-        } else {
-            ApplicationControls.addToFight(monster.getName() +" missed");
-        }
+        fightMonsterLogic(hero, monster);
     }
 
-    private static void fightMonster(Hero hero, Monster monster) {
+    private static void fightMonsterLogic(Hero hero, Monster monster) {
         Random rn = new Random();
         if (rn.nextInt() % 2 == 0){
             monster.takeDamage(hero.getAttackPnts());
@@ -59,6 +47,7 @@ public class FightMenuParsing extends Global {
     private static void looting(){
         Monster monster = getMonster();
         if (monster.isMonsterDead()) {
+            setHeroLocation(getHero());
             ApplicationControls.addToFight(monster.getName()+ " is dead");
             getHero().addEpForMonsterKill(monster);
             Random rn = new Random();
@@ -68,20 +57,21 @@ public class FightMenuParsing extends Global {
             } else {
                 ApplicationControls.status = GAME_LOOP;
             }
-            GameLoopParsing.getGameLoopMap()[monster.getY()][monster.getX()] = 1;
         }
     }
 
-    private static void runFromMonster(){
+    private static boolean runFromMonster(){
         Hero hero = getHero();
         Monster monster = getMonster();
         Random rn = new Random();
-        if (rn.nextInt() % 4 == 0){
+        if (rn.nextInt() % 2 == 0){
             ApplicationControls.addToFight("you were able to run.");
            ApplicationControls.status = GAME_LOOP;
+           return true;
         } else {
             hero.takeDamage(monster.getAttackPnts());
             ApplicationControls.addToFight("you were not able to run.");
+            return false;
         }
     }
 
@@ -90,7 +80,7 @@ public class FightMenuParsing extends Global {
         Hero hero = getHero();
         Monster monster = getMonster();
         while(!hero.isPlayerDead() && !monster.isMonsterDead()){
-            fightMonster(hero, monster);
+            fightMonsterLogic(hero, monster);
         }
         looting();
     }
@@ -158,7 +148,10 @@ public class FightMenuParsing extends Global {
                             }
 
                             case run:
-                                runFromMonster();
+                                if (runFromMonster()){
+                                    Hero hero = getHero();
+                                    hero.setXY(hero.getPrevX(),hero.getPrevY());
+                                }
                                 getHero().isPlayerDead();
                                 FightMenu.displayFightMenu();
                                 FightMenuOutput.fightOutput();
