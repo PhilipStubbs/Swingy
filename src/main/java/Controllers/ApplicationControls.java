@@ -93,7 +93,7 @@ public class ApplicationControls {
 	}
 
 	/*-----------------------------------------------------------------------------------------------------*/
-	/* Mission control */
+	/* Missions control */
 
 	public static String getMission() {
 		return mission;
