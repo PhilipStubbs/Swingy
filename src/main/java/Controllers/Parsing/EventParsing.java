@@ -16,16 +16,12 @@ public class EventParsing {
 			public void run() {
 
 				while(ApplicationControls.getIsRunning()) {
-//					System.out.println("Main Menu");
-
 					MainMenuParsing.mainMenuCommands();
-//					System.out.println("Continue Menu");
 
 					ContinueMenuParsing.continueMenuCommands();
 
 					NewGameMenuParsing.newGameMenuCommands();
 
-//					System.out.println("Begin Game");
 					GameLoopParsing.gameLoopMenuCommands();
 
 					InventoryMenuParsing.inventoryMenuParsing();
@@ -42,21 +38,21 @@ public class EventParsing {
 
 	public static void instructionParse() {
 			while(ApplicationControls.getIsRunning()) {
-				System.out.println();
-			MainMenuParsing.mainMenuCommands();
+				MainMenuParsing.mainMenuCommands();
 
-			ContinueMenuParsing.continueMenuCommands();
+				ContinueMenuParsing.continueMenuCommands();
 
-			NewGameMenuParsing.newGameMenuCommands();
+				NewGameMenuParsing.newGameMenuCommands();
 
-			GameLoopParsing.gameLoopMenuCommands();
+				GameLoopParsing.gameLoopMenuCommands();
 
-			InventoryMenuParsing.inventoryMenuParsing();
+				InventoryMenuParsing.inventoryMenuParsing();
 
-			FightMenuParsing.fightMenuParsing();
+				FightMenuParsing.fightMenuParsing();
 
-			LootMenuParsing.lootMenuCommands();
+				LootMenuParsing.lootMenuCommands();
 
+				DiedMenuParsing.diedMenuCommands();
 		}
 	}
 }

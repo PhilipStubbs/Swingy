@@ -13,10 +13,10 @@ public class Main {
 			EventParsing.instructionParseAsync();
 
 			EventData.readStdinAsync();
+			System.out.println("Main Menu: \"new_game\", \"continue_game\", \"exit\", \"gui\" ");
 //			EventParsing.instructionParse();
 
 
-			System.out.println("Main Menu: \"new_game\", \"continue_game\", \"exit\", \"gui\" ");
 
 
 

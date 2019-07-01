@@ -8,9 +8,7 @@ import Models.SavedGameLoader;
 import Views.Gui.BaseWindow;
 import Views.Gui.InventoryMenu;
 import Views.Terminal.InventoryMenuOutput;
-
 import java.util.List;
-
 import static Controllers.ApplicationControls.getHero;
 
 public class InventoryMenuParsing  extends Global {
