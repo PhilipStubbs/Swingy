@@ -118,8 +118,6 @@ public class SavedGameLoader extends Global {
                     default:
                         heroList.add(new Hero(name ,level, xpPnts, hpPnts ,attackPnts, defencePnts, backpack, equipped));
                         break;
-
-
                 }
             }
 

@@ -82,7 +82,7 @@ public class Hero extends Mob {
         }
 
      return name + " " +
-            mobClass + " " +
+            getClass().getSimpleName() + " " +
             level + " " +
             experiencePnts + " " +
             hitPnts + " " +
