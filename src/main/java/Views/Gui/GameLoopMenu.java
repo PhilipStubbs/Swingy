@@ -28,8 +28,10 @@ public class GameLoopMenu extends BaseWindow{
     private JLabel equippedArmor;
     private JLabel equippedHelm;
     private JLabel level;
-    private JButton endTurnButton;
-    private JComboBox TravelDirection;
+     private JButton northButton;
+    private JButton eastButton;
+    private JButton westButton;
+    private JButton southButton;
     private JList mapList;
     private static List<String> mapDataList;
     private String[] dir= {"North", "East", "South", "West"};
@@ -42,17 +44,33 @@ public class GameLoopMenu extends BaseWindow{
         });
         updateStats();
         displayMap();
-        endTurnButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent actionEvent) {
-                ApplicationControls.addInstructions(dir[TravelDirection.getSelectedIndex()]);
-            }
-        });
+
 		inventoryButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
 				ApplicationControls.addInstructions("inventory");
 			}
 		});
-	}
+        northButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ApplicationControls.addInstructions("North");
+            }
+        });
+        eastButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ApplicationControls.addInstructions("East");
+            }
+        });
+        southButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ApplicationControls.addInstructions("South");
+            }
+        });
+        westButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ApplicationControls.addInstructions("West");
+            }
+        });
+    }
 
     public void updateMap(){
         mapDataList = new ArrayList<String>();

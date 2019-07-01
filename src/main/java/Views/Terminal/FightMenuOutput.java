@@ -9,7 +9,7 @@ import java.util.List;
 public class FightMenuOutput {
 
 	public static void fightInstructions(){
-		System.out.println("'fight' or 'run'");
+		System.out.println("'fight', 'run', 'simulate'");
 	}
 
 	public static void fightIntro(Monster monster){

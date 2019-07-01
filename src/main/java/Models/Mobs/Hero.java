@@ -12,8 +12,8 @@ public class Hero extends Mob {
         super();
     }
 
-    public Hero(String name, String mobClass,int level, int experiencePnts, int maxHitPnts, int maxAttackPnts, int maxDefencePnts, List<Artifact>[] backpack, Artifact[] equipped) {
-        super(name, mobClass,level, experiencePnts, maxHitPnts, maxAttackPnts, maxDefencePnts, backpack, equipped);
+    public Hero(String name, int level, int experiencePnts, int maxHitPnts, int maxAttackPnts, int maxDefencePnts, List<Artifact>[] backpack, Artifact[] equipped) {
+        super(name, level, experiencePnts, maxHitPnts, maxAttackPnts, maxDefencePnts, backpack, equipped);
     }
 
     private String latestLoot = "";
@@ -148,11 +148,13 @@ public class Hero extends Mob {
         return heroLoc;
     }
 
-    public void isPlayerDead() {
+    public boolean isPlayerDead() {
 
         if (hitPnts <= 0){
             ApplicationControls.status = DEAD;
+            return(true);
         }
+        return false;
     }
 
     public void addEpForMonsterKill(Monster monster){

@@ -2,7 +2,7 @@ package Models;
 
 import Controllers.ApplicationControls;
 import Models.Artifacts.Artifact;
-import Models.Mobs.Hero;
+import Models.Mobs.*;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -18,6 +18,13 @@ public class SavedGameLoader extends Global {
 
     public static List<Hero> getHeroes() {
         return heroes;
+    }
+
+    enum HeroClasses{
+        wizard,
+        fighter,
+        hunter,
+        rouge
     }
 
     public static void saveGame(){
@@ -70,7 +77,6 @@ public class SavedGameLoader extends Global {
                 equipped[1] = new Artifact(sc.next(), sc.nextInt(), ARMOUR);
                 equipped[2] = new Artifact(sc.next(), sc.nextInt(), WEAPON);
                 backPackSize = sc.nextInt();
-                // TODO confirm that this works.
 
                 for(int i = 0; i < backPackSize; i++){
                     String itemName = sc.next();
@@ -90,8 +96,31 @@ public class SavedGameLoader extends Global {
                             break;
                     }
                 }
-                Hero hero = new Hero(name,heroClass ,level, xpPnts, hpPnts ,attackPnts, defencePnts, backpack, equipped);
-                heroList.add(hero);
+
+                switch (HeroClasses.valueOf(heroClass.toLowerCase())){
+                    case wizard:
+                        heroList.add(new Wizard(name ,level, xpPnts, hpPnts ,attackPnts, defencePnts, backpack, equipped));
+                        break;
+
+                    case rouge:
+                        heroList.add(new Rouge(name ,level, xpPnts, hpPnts ,attackPnts, defencePnts, backpack, equipped));
+                        break;
+
+                    case hunter:
+                        heroList.add(new Hunter(name ,level, xpPnts, hpPnts ,attackPnts, defencePnts, backpack, equipped));
+                        break;
+
+                    case fighter:
+                        heroList.add(new Fighter(name ,level, xpPnts, hpPnts ,attackPnts, defencePnts, backpack, equipped));
+                        break;
+
+
+                    default:
+                        heroList.add(new Hero(name ,level, xpPnts, hpPnts ,attackPnts, defencePnts, backpack, equipped));
+                        break;
+
+
+                }
             }
 
         } catch (FileNotFoundException e) {
@@ -102,6 +131,8 @@ public class SavedGameLoader extends Global {
         } catch (InputMismatchException e){
             System.out.println("invalid saved game " + e.getLocalizedMessage());
             e.printStackTrace();
+        } catch (IllegalArgumentException e){
+            System.out.println("invalid Hero Class " + e.getLocalizedMessage());
         }
         return (heroList);
     }

@@ -28,7 +28,7 @@ public class NewGameMenuParsing extends Global {
 		equipped[HELM] = new Artifact("Basic_cap", 1, HELM);
 		equipped[ARMOUR] = new Artifact("Cloth_shirt", 1, ARMOUR);
 		equipped[WEAPON] = new Artifact("Wooden_sword", 1, WEAPON);
-		return new Hero("", "Fighter", 0, 0,100, 20, 20,backpack,equipped);
+		return new Hero("", 0, 0,100, 20, 20,backpack,equipped);
 	}
 
 	public static void newGameMenuCommands(){

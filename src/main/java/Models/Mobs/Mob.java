@@ -42,9 +42,8 @@ public abstract class Mob extends Global {
         return name;
     }
 
-    Mob(String name, String mobClass ,int level, int experiencePnts, int maxHitPnts, int maxAttackPnts, int maxDefencePnts, List<Artifact>[] backpack, Artifact[] equipped) {
+    Mob(String name, int level, int experiencePnts, int maxHitPnts, int maxAttackPnts, int maxDefencePnts, List<Artifact>[] backpack, Artifact[] equipped) {
         this.name = name;
-        this.mobClass = mobClass;
 
         this.level = level;
 

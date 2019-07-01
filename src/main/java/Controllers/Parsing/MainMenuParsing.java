@@ -43,6 +43,7 @@ public static void mainMenuCommands(){
 							break;
 
 						case continue_game:
+							System.out.println("here");
 							SavedGameLoader.setHeroes(SavedGameLoader.openSaves());
 							ApplicationControls.status = CONTINUE_MENU;
 							break;

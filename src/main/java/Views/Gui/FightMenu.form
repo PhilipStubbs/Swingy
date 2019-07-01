@@ -8,17 +8,6 @@
     <properties/>
     <border type="none"/>
     <children>
-      <component id="a7d25" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
-        <constraints>
-          <grid row="1" column="2" row-span="2" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <model>
-            <item value="Fight"/>
-            <item value="Run"/>
-          </model>
-        </properties>
-      </component>
       <component id="53b92" class="javax.swing.JLabel" binding="heroAttack">
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
@@ -131,19 +120,35 @@
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="5" use-parent-layout="false"/>
         </constraints>
       </vspacer>
-      <component id="7fa8" class="javax.swing.JButton" binding="endTurnButton" default-binding="true">
-        <constraints>
-          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="End Turn"/>
-        </properties>
-      </component>
       <vspacer id="e09d6">
         <constraints>
           <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
+      <component id="55b48" class="javax.swing.JButton" binding="fightButton" default-binding="true">
+        <constraints>
+          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Fight"/>
+        </properties>
+      </component>
+      <component id="c6ce6" class="javax.swing.JButton" binding="runButton" default-binding="true">
+        <constraints>
+          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Run"/>
+        </properties>
+      </component>
+      <component id="dd030" class="javax.swing.JButton" binding="simulateButton" default-binding="true">
+        <constraints>
+          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Simulate"/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>

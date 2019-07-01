@@ -21,7 +21,6 @@ public class ContinueMenuParsing extends Global {
         gui,
     }
 
-
     public static void continueMenuCommands(){
         int instructionIndex = -1;
 

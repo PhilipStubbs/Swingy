@@ -24,21 +24,37 @@ public class FightMenuParsing extends Global {
 
     static List<String> instructions;
 
-
     private static void fightMonster() {
         Hero hero = getHero();
         Monster monster = getMonster();
         Random rn = new Random();
         if (rn.nextInt() % 2 == 0){
             monster.takeDamage(hero.getAttackPnts());
-            ApplicationControls.addToFight("You hit the "+monster.getName()+" for " + hero.getAttackPnts());
+            ApplicationControls.addToFight("You hit the "+monster.getName()+" for " + hero.getAttackPnts() + " damage.");
 
         } else {
             ApplicationControls.addToFight("you missed");
         }
         if (rn.nextInt() % 2 == 0){
             hero.takeDamage(monster.getAttackPnts());
-            ApplicationControls.addToFight(monster.getName() + " hit you for " + monster.getAttackPnts());
+            ApplicationControls.addToFight(monster.getName() + " hit you for " + monster.getAttackPnts()+ " damage.");
+        } else {
+            ApplicationControls.addToFight(monster.getName() +" missed");
+        }
+    }
+
+    private static void fightMonster(Hero hero, Monster monster) {
+        Random rn = new Random();
+        if (rn.nextInt() % 2 == 0){
+            monster.takeDamage(hero.getAttackPnts());
+            ApplicationControls.addToFight("You hit the "+monster.getName()+" for " + hero.getAttackPnts()+ " damage.");
+
+        } else {
+            ApplicationControls.addToFight("you missed");
+        }
+        if (rn.nextInt() % 2 == 0){
+            hero.takeDamage(monster.getAttackPnts());
+            ApplicationControls.addToFight(monster.getName() + " hit you for " + monster.getAttackPnts()+ " damage." );
         } else {
             ApplicationControls.addToFight(monster.getName() +" missed");
         }
@@ -58,8 +74,6 @@ public class FightMenuParsing extends Global {
             }
             GameLoopParsing.getGameLoopMap()[monster.getY()][monster.getX()] = 1;
 
-        } else {
-            FightMenu.displayFightMenu();
         }
     }
 
@@ -77,16 +91,25 @@ public class FightMenuParsing extends Global {
     }
 
 
+    private static void simulateFight(){
+        Hero hero = getHero();
+        Monster monster = getMonster();
+        while(!hero.isPlayerDead() && !monster.isMonsterDead()){
+            fightMonster(hero, monster);
+        }
+        looting();
+    }
+
     enum fightMenuInstruction {
         save_exit,
         exit,
         gui,
+        simulate,
         fight,
         run
     }
 
     public static void fightMenuParsing() {
-        System.out.println("here");
         int instructionIndex = -1;
 
         if (ApplicationControls.status == FIGHT_MENU) {
@@ -97,7 +120,9 @@ public class FightMenuParsing extends Global {
         }
 
         try {
-            FightMenuOutput.fightIntro(getMonster());
+            if (ApplicationControls.status == FIGHT_MENU) {
+                FightMenuOutput.fightIntro(getMonster());
+            }
             while (ApplicationControls.status == FIGHT_MENU) {
                 looting();
                 for (int i = 0; i < instructions.size(); i++) {
@@ -121,6 +146,11 @@ public class FightMenuParsing extends Global {
                             case exit:
                                 ApplicationControls.setIsRunning(false);
                                 Controllers.ApplicationControls.closeApplication();
+                                break;
+
+                            case simulate:
+                                simulateFight();
+                                FightMenuOutput.fightOutput();
                                 break;
 
                             case fight: {

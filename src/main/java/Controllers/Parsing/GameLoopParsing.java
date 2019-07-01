@@ -19,6 +19,7 @@ public class GameLoopParsing extends Global {
 
     private static List<String> instructions;
     private static GameMap gameMap = new GameMap();
+    private static boolean mapReset;
 
     public  static void endLevel(Hero hero){
         hero.gainExperince(100);
@@ -107,8 +108,11 @@ public class GameLoopParsing extends Global {
         int instructionIndex = -1;
 
         if (ApplicationControls.status == GAME_LOOP) {
-            gameMap.createMap(getHero());
 
+        if (!mapReset) {
+            gameMap.createMap(getHero());
+            mapReset = true;
+        }
             displayGameLoopMenu();
             instructions = ApplicationControls.getInstructions();
             GameLoopOutput.gameLoopGreating();
@@ -173,20 +177,6 @@ public class GameLoopParsing extends Global {
 
             }
         } catch (IllegalArgumentException e){
-//            try {
-//                List<Hero> heroList = getHeroes();
-//                int heroIndex = Integer.parseInt(instructions.get(instructionIndex));
-//                if (heroIndex >= 0 && heroIndex <= heroList.size()){
-//                    ApplicationControls.setHero(heroList.get(heroIndex));
-//                    ApplicationControls.status = GAME_LOOP;
-//                    return;
-//                } else {
-//                    System.out.println("Invalid index:" + heroIndex + ". Range from 0 - " + (getHeroes().size() -1));
-//                }
-//
-//            } catch (NumberFormatException x){
-//                System.out.println("Not an int:" + x.getLocalizedMessage());
-//            }
 
             ApplicationControls.removeInstructions(instructions.get(instructionIndex));
             gameLoopMenuCommands();
