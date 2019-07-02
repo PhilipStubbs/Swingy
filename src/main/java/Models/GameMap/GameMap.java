@@ -1,6 +1,5 @@
 package Models.GameMap;
 
-import Controllers.ApplicationControls;
 import Models.Mobs.Hero;
 
 import java.util.Random;

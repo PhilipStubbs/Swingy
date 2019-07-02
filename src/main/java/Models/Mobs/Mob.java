@@ -3,11 +3,13 @@ package Models.Mobs;
 import Models.Artifacts.Artifact;
 import Models.Global;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 
 public abstract class Mob extends Global {
 
+    @NotNull (message = "Name required")
     protected String name;
     protected String mobClass;
     protected int level;
@@ -19,7 +21,9 @@ public abstract class Mob extends Global {
     protected int maxAttackPnts;
     protected int maxDefencePnts;
     protected int maxExperiencePnts;
+    @NotNull (message = "backpack required")
     protected List<Artifact>[] backpack;
+    @NotNull (message = "equipped required")
     protected Artifact[] equipped;
     protected int x;
     protected int y;
@@ -43,6 +47,7 @@ public abstract class Mob extends Global {
     }
 
     Mob(String name, int level, int experiencePnts, int maxHitPnts, int maxAttackPnts, int maxDefencePnts, List<Artifact>[] backpack, Artifact[] equipped) {
+
         this.name = name;
 
         this.level = level;

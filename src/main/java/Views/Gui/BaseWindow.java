@@ -27,5 +27,7 @@ public class BaseWindow extends Global {
 
 	static public void showBaseWindow(){
 		frame.setVisible(true);
+		frame.toFront();
+		frame.requestFocus();
 	}
 }

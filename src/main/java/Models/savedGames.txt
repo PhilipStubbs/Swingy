@@ -8,3 +8,4 @@ fgh Fighter 0 28 104 23 21 3 Steel_Cap 1 Cloth_shirt 1 Wooden_sword 1 0  LevelCo
 Hunter Hunter 1 32 108 23 23 3 Hunters_Hat 1 Vest 1 Bow 1 1 Epic_Spooky_Helmet 13 0  EnemyHunter 3 5 Kill_Enemies 161
 Rouge_One Rouge 1 272 90 26 0 3 Basic_cap 1 Cloth_shirt 1 Daggers 1 2 Rare_Spooky_Cap 8 0 Rare_Good_Staff 14 2  LevelCompletion 3 7 Finish_Levels 315
 ready_for_review? Hunter 0 100 106 21 21 3 Hunters_Hat 1 Vest 1 Bow 1 0  EnemyHunter 0 8 Kill_Enemies 16
+Poeslekkersex Wizard 1 384 104 24 26 3 Cool_Wizard_Hat 1 Robe 1 Staff 1 1 Rare_Nice_bowler 14 0  EnemyHunter 2 4 Kill_Enemies 157
