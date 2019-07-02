@@ -66,7 +66,7 @@ public class ContinueMenuParsing extends Global {
             try {
                  List<Hero> heroList = getHeroes();
                 int heroIndex = Integer.parseInt(instructions.get(instructionIndex));
-                    if (heroIndex >= 0 && heroIndex <= heroList.size()){
+                    if (heroIndex >= 0 && heroIndex < heroList.size()){
                     ApplicationControls.setHero(heroList.get(heroIndex));
                     ApplicationControls.setMission(ApplicationControls.getHero().getCurrentMission());
                     ApplicationControls.status = GAME_LOOP;

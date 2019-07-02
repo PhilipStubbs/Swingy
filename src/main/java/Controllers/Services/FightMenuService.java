@@ -39,11 +39,12 @@ public class FightMenuService extends Global {
 		}
 	}
 
-	public static void monsterDeadCheck(){
+
+	public static void monsterDeadCheck(boolean missionProgess){
 		Monster monster = getMonster();
 		if (monster.isMonsterDead()) {
 			Mission mission = ApplicationControls.getMission();
-			if (mission.getClass().getSimpleName().contains("EnemyHunter")) {
+			if (mission.getClass().getSimpleName().contains("EnemyHunter") && missionProgess) {
 				mission.addProgess();
 				mission.addReward(monster.getMaxAttackPnts() + monster.getMaxHitPnts());
 				if (mission.getProgess() >= mission.getGoal()) {
@@ -86,7 +87,7 @@ public class FightMenuService extends Global {
 		while(!hero.isPlayerDead() && !monster.isMonsterDead()){
 			fightMonsterLogic(hero, monster);
 		}
-		monsterDeadCheck();
+		monsterDeadCheck(true);
 	}
 
 }

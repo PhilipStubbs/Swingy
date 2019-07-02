@@ -40,7 +40,7 @@ public class FightMenuParsing extends Global {
                 FightMenuOutput.fightIntro(getMonster());
             }
             while (ApplicationControls.status == FIGHT_MENU) {
-//                monsterDeadCheck();
+                monsterDeadCheck(false);
                 for (int i = 0; i < instructions.size(); i++) {
                     instructionIndex = i;
                     /* IMPORTANT: remove instruction after use. */
@@ -72,7 +72,7 @@ public class FightMenuParsing extends Global {
                             case fight: {
                                 fightMonster();
                                 getHero().isPlayerDead();
-                                monsterDeadCheck();
+                                monsterDeadCheck(true);
                                 FightMenuOutput.fightOutput();
                                 FightMenu.displayFightMenu();
                                 break;
