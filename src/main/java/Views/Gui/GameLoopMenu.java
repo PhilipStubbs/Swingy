@@ -34,6 +34,7 @@ public class GameLoopMenu extends BaseWindow{
     private JButton westButton;
     private JButton southButton;
     private JLabel mission;
+    private JLabel heroClass;
     private JList mapList;
     private static List<String> mapDataList;
     private String[] dir= {"North", "East", "South", "West"};
@@ -107,6 +108,7 @@ public class GameLoopMenu extends BaseWindow{
         Artifact[] equipped = hero.getEquipped();
 
         heroName.setText(hero.getName());
+        heroClass.setText(hero.getClass().getSimpleName());
         level.setText("Level: "+String.valueOf(hero.getLevel()));
         health.setText("health: " + String.valueOf(hero.getHitPnts()) + "/" + String.valueOf(hero.getMaxHitPnts()));
         attack.setText("Attack: " + String.valueOf(hero.getAttackPnts()));

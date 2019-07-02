@@ -6,6 +6,7 @@ import Models.Missions.MissionTypes.EnemyHunter;
 import Models.Missions.MissionTypes.LevelCompletion;
 import Models.Missions.MissionTypes.Mission;
 import Models.Mobs.*;
+import Models.Mobs.Builders.*;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -130,32 +131,32 @@ public class SavedGameLoader extends Global {
 
                 switch (HeroClasses.valueOf(heroClass.toLowerCase())){
                     case wizard:
-                        Wizard wizard = new Wizard(name ,level, xpPnts, hpPnts ,attackPnts, defencePnts, backpack, equipped);
+                        Wizard wizard = new WizardBuilder().setName(name).setLevel(level).setExperiencePnts(xpPnts).setMaxHitPnts(hpPnts).setMaxAttackPnts(attackPnts).setMaxDefencePnts(defencePnts).setBackpack(backpack).setEquipped(equipped).createWizard();
                         wizard.setCurrentMission(mission);
                         heroList.add(wizard);
                         break;
 
                     case rouge:
-                        Rouge rouge = new Rouge(name ,level, xpPnts, hpPnts ,attackPnts, defencePnts, backpack, equipped);
+                        Rouge rouge = new RougeBuilder().setName(name).setLevel(level).setExperiencePnts(xpPnts).setMaxHitPnts(hpPnts).setMaxAttackPnts(attackPnts).setMaxDefencePnts(defencePnts).setBackpack(backpack).setEquipped(equipped).createRouge();
                         rouge.setCurrentMission(mission);
                         heroList.add(rouge);
                         break;
 
                     case hunter:
-                        Hunter hunter = new Hunter(name ,level, xpPnts, hpPnts ,attackPnts, defencePnts, backpack, equipped);
+                        Hunter hunter = new HunterBuilder().setName(name).setLevel(level).setExperiencePnts(xpPnts).setMaxHitPnts(hpPnts).setMaxAttackPnts(attackPnts).setMaxDefencePnts(defencePnts).setBackpack(backpack).setEquipped(equipped).createHunter();
                         hunter.setCurrentMission(mission);
                         heroList.add(hunter);
                         break;
 
                     case fighter:
-                        Fighter fighter = new Fighter(name ,level, xpPnts, hpPnts ,attackPnts, defencePnts, backpack, equipped);
+                        Fighter fighter = new FighterBuilder().setName(name).setLevel(level).setExperiencePnts(xpPnts).setMaxHitPnts(hpPnts).setMaxAttackPnts(attackPnts).setMaxDefencePnts(defencePnts).setBackpack(backpack).setEquipped(equipped).createFighter();
                         fighter.setCurrentMission(mission);
                         heroList.add(fighter);
                         break;
 
 
                     default:
-                        Hero hero = new Hero(name ,level, xpPnts, hpPnts ,attackPnts, defencePnts, backpack, equipped);
+                        Hero hero = new HeroBuilder().setName(name).setLevel(level).setExperiencePnts(xpPnts).setMaxHitPnts(hpPnts).setMaxAttackPnts(attackPnts).setMaxDefencePnts(defencePnts).setBackpack(backpack).setEquipped(equipped).createHero();
                         hero.setCurrentMission(mission);
                         heroList.add(hero);
                         break;
