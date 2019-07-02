@@ -47,7 +47,6 @@ public class SavedGameLoader extends Global {
         }
     }
 
-//(int progess, int goal, String description, int reward){
     public static List<Hero> openSaves(){
         List<Hero> heroList = new ArrayList<Hero>();
 

@@ -29,5 +29,10 @@ public class BaseWindow extends Global {
 		frame.setVisible(true);
 		frame.toFront();
 		frame.requestFocus();
+		frame.setAlwaysOnTop(true);
+	}
+
+	static public void hideBaseWindow(){
+		frame.setVisible(false);
 	}
 }
