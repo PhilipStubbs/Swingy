@@ -19,6 +19,7 @@ public class ApplicationControls {
 	private static Hero hero;
 	private static Monster monster;
 	private static List<String> fight = new ArrayList<String>();
+	private static List<Hero> heroList = new ArrayList<Hero>();
 
 
 
@@ -113,6 +114,16 @@ public class ApplicationControls {
 			mission.getDescription().replaceAll(" ", "_") + " " +
 			mission.getReward();
 		return save;
+	}
+	/*-----------------------------------------------------------------------------------------------------*/
+	/* Missions control */
+
+	public static List<Hero> getHeroes() {
+		return heroList;
+	}
+
+	public static void setHeroes(List<Hero> heroList) {
+		ApplicationControls.heroList = heroList;
 	}
 }
 

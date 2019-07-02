@@ -162,6 +162,7 @@ public class SavedGameLoader extends Global {
                         break;
                 }
             }
+            ApplicationControls.setHeroes(heroList);
 
         } catch (FileNotFoundException e) {
             System.out.println("No saved games");

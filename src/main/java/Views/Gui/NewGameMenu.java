@@ -1,11 +1,14 @@
 package Views.Gui;
 
 import Controllers.ApplicationControls;
+import Controllers.Services.NewGameMenuService;
 import Models.Mobs.Hero;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class NewGameMenu extends BaseWindow {
 	private JPanel newGameMenu;
@@ -17,6 +20,7 @@ public class NewGameMenu extends BaseWindow {
 	private JLabel health;
 	private JLabel attack;
 	private JLabel defence;
+	private JLabel heroClassType;
 
 	private String heroClasses[] = {"Wizard", "Fighter", "Hunter", "Rouge"};
 
@@ -38,6 +42,14 @@ public class NewGameMenu extends BaseWindow {
 				ApplicationControls.addInstructions(createdData);
 			}
 		});
+		heroClass.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				super.mouseClicked(e);
+				ApplicationControls.setHero(NewGameMenuService.createHero("",heroClasses[heroClass.getSelectedIndex()].toLowerCase()));
+				grabStats();
+			}
+		});
 	}
 
 	static public void displayNewGameMenu(){
@@ -52,5 +64,6 @@ public class NewGameMenu extends BaseWindow {
 		health.setText("Health: " + String.valueOf(hero.getHitPnts()) + "/" + String.valueOf(hero.getMaxHitPnts()));
 		attack.setText("Attack: " + String.valueOf(hero.getAttackPnts()));
 		defence.setText("defence: " + String.valueOf(hero.getDefencePnts()) + "/" + String.valueOf(hero.getMaxDefencePnts()));
+		heroClassType.setText("Class: "+ hero.getClass().getSimpleName());
 	}
 }

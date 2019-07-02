@@ -17,7 +17,8 @@ public class NewGameMenuService extends Global {
 		rouge
 	}
 
-	public static Hero createHero(String name, String heroClass){
+	public static Hero createHero(String rawName, String heroClass){
+		String name = rawName.length() >= 20 ? rawName.substring(0, 20) : rawName;
 		List<Artifact>[] backpack = new ArrayList[3];
 		backpack[HELM] = new ArrayList<Artifact>();
 		backpack[ARMOUR] = new ArrayList<Artifact>();
