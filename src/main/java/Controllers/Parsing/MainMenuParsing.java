@@ -46,7 +46,9 @@ public static void mainMenuCommands(){
 
 						case load:
 							SavedGameLoader.setHeroes(SavedGameLoader.openSaves());
-							ApplicationControls.status = LOAD_MENU;
+							if (!ApplicationControls.getHeroes().isEmpty() || !(ApplicationControls.getHeroes().size() == 0)){
+								ApplicationControls.status = LOAD_MENU;
+							}
 							break;
 
 						case exit:
