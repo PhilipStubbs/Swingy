@@ -10,7 +10,6 @@ public class EventData {
 	static public Scanner input = new Scanner(System.in);
 
 	public static void readStdinAsync(){
-
 		new Thread(new Runnable() {
 
 			public void run() {
@@ -21,7 +20,4 @@ public class EventData {
 			}
 		}).start();
 	}
-
-
-
 }

@@ -13,15 +13,8 @@ public class Main {
 			if (args.length >= 1 && args[0].contains("console")){
 				hideBaseWindow();
 			}
-//			EventParsing.instructionParseAsync();
-
-
 			EventData.readStdinAsync();
 			EventParsing.instructionParse();
-
-
-
-
 
 		}
 }

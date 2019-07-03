@@ -16,6 +16,10 @@ public class GameLoopOutput {
 		System.out.println(missionDetails);
 	}
 
+	static public void displayHeroInfo() {
+		System.out.println(ApplicationControls.getHero().toString());
+	}
+
 	static public void gameLoopMapDisplay(){
 		System.out.println();
 		int[][] gameLoopMap = GameLoopParsing.getGameLoopMap();
@@ -34,5 +38,6 @@ public class GameLoopOutput {
 			System.out.println();
 		}
 		gameLoopInstructions();
+		displayHeroInfo();
 	}
 }
