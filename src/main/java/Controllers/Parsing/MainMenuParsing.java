@@ -5,6 +5,7 @@ import Models.Global;
 import Models.SavedGameLoader;
 import Views.Gui.BaseWindow;
 import Views.Gui.MainMenu;
+import Views.Terminal.MainMenuOutput;
 
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class MainMenuParsing extends Global {
 		print,
 		exit,
 		new_game,
-		continue_game,
+		load,
 		gui,
 	}
 
@@ -25,6 +26,7 @@ public static void mainMenuCommands(){
 
 	int instructionIndex = -1;
 	if (ApplicationControls.status == MAIN_MENU) {
+		MainMenuOutput.outputInstructions();
 		instructions = ApplicationControls.getInstructions();
 		MainMenu.displayMainMenu();
 	}
@@ -42,15 +44,13 @@ public static void mainMenuCommands(){
 							System.out.println(ApplicationControls.getInstructions());
 							break;
 
-						case continue_game:
-							System.out.println("here");
+						case load:
 							SavedGameLoader.setHeroes(SavedGameLoader.openSaves());
-							ApplicationControls.status = CONTINUE_MENU;
+							ApplicationControls.status = LOAD_MENU;
 							break;
 
 						case exit:
 							ApplicationControls.setIsRunning(false);
-							System.out.println("killing program");
 							Controllers.ApplicationControls.closeApplication();
 							break;
 

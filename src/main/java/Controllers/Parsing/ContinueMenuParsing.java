@@ -24,14 +24,14 @@ public class ContinueMenuParsing extends Global {
     public static void continueMenuCommands(){
         int instructionIndex = -1;
 
-        if (ApplicationControls.status == CONTINUE_MENU) {
+        if (ApplicationControls.status == LOAD_MENU) {
             displayContinueMenu();
             instructions = ApplicationControls.getInstructions();
             ContinueMenuOutput.outputHeroes(SavedGameLoader.getHeroes());
         }
 
         try {
-            while(ApplicationControls.status == CONTINUE_MENU && ApplicationControls.getHero() == null) {
+            while(ApplicationControls.status == LOAD_MENU && ApplicationControls.getHero() == null) {
 
                 for (int i = 0; i < instructions.size(); i++) {
                     instructionIndex = i;

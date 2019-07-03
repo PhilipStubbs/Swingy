@@ -24,12 +24,18 @@ public class FightMenuOutput {
 		fight.clear();
 		Hero hero = ApplicationControls.getHero();
 		Monster monster = ApplicationControls.getMonster();
-		System.out.println("Your stats" +
+		System.out.println("\nYour stats \n" +
 		"Health: " +hero.getHitPnts() + "/" + hero.getMaxHitPnts()+
 		"\nDefence: " +hero.getDefencePnts() + "/" + hero.getMaxDefencePnts());
+		System.out.println("\n----------------------");
 
-		System.out.println("Their stats" +
+		System.out.println("Their stats \n" +
 		"Health: " + monster.getHitPnts() + "/" + monster.getMaxHitPnts() +
 		"\nDefence: " + monster.getDefencePnts() + "/" + monster.getMaxDefencePnts());
+		System.out.println("\n----------------------");
+
+		fightInstructions();
+
 	}
+
 }

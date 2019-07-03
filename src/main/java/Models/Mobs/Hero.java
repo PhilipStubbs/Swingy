@@ -60,6 +60,15 @@ public class Hero extends Mob {
 
     @Override
     public String toString() {
+
+        String backpackString = "";
+        for (int x = 0; x < 3; x++) {
+            for (int i = 0; i < backpack[x].size(); i++) {
+                backpackString += (backpack[x].get(i).getName() + " " + backpack[x].get(i).getBuff());
+            }
+        }
+
+
         return
                 "'" + name + '\'' +
                 ", level=" + level +
@@ -71,8 +80,14 @@ public class Hero extends Mob {
                 ", maxAttackPnts=" + maxAttackPnts +
                 ", maxDefencePnts=" + maxDefencePnts +
                 ", maxExperiencePnts=" + maxExperiencePnts +
-                ", backpack=" + backpack +
-                ", equipped=" + equipped;
+                ", equipped " +
+                this.equipped[HELM].getName() + " ," +
+                this.equipped[HELM].getBuff() + " ," +
+                this.equipped[ARMOUR].getName() + " ," +
+                this.equipped[ARMOUR].getBuff() + " ," +
+                this.equipped[WEAPON].getName() + " ," +
+                this.equipped[WEAPON].getBuff() + " " +
+                ", backpack=" + backpackString;
     }
 
     public String saveString(){

@@ -16,7 +16,7 @@ public class MainMenu extends BaseWindow{
 	public MainMenu() {
 		continueButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				ApplicationControls.addInstructions("continue_game");
+				ApplicationControls.addInstructions("load");
 			}
 		});
 		newGameButton.addActionListener(new ActionListener() {

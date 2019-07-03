@@ -24,10 +24,13 @@ public class FightMenu extends BaseWindow {
     private JButton fightButton;
     private JButton runButton;
     private JButton simulateButton;
+    private JScrollPane fightOutput;
+
 
     public FightMenu() {
         updateEnemyDisplay();
         updateHeroDisplay();
+        updateTextfield();
         saveExitButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 ApplicationControls.addInstructions("save_exit");
@@ -67,6 +70,12 @@ public class FightMenu extends BaseWindow {
         heroAttack.setText("Attack: "+String.valueOf(hero.getAttackPnts()));
         heroDefence.setText("Defence: " +String.valueOf(hero.getDefencePnts()) + "/" + hero.getMaxDefencePnts());
         heroHp.setText("Health: " +String.valueOf(hero.getHitPnts() + "/" + hero.getMaxHitPnts()));
+    }
+
+    private void updateTextfield(){
+
+        fightOutput.getViewport().add(new JList(ApplicationControls.getFight().toArray()));
+
     }
 
     static public void displayFightMenu(){

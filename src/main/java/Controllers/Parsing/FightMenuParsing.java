@@ -73,8 +73,8 @@ public class FightMenuParsing extends Global {
                                 fightMonster();
                                 getHero().isPlayerDead();
                                 monsterDeadCheck(true);
-                                FightMenuOutput.fightOutput();
                                 FightMenu.displayFightMenu();
+                                FightMenuOutput.fightOutput();
                                 break;
                             }
 
