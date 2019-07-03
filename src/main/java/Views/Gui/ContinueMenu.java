@@ -24,6 +24,8 @@ public class ContinueMenu extends BaseWindow {
     private JLabel level;
     private JLabel hp;
     private JLabel xp;
+    private JLabel defence;
+    private JLabel attack;
 
     private static List<String> heroDataList = new ArrayList<String>();
 
@@ -54,7 +56,9 @@ public class ContinueMenu extends BaseWindow {
                 heroClass.setText("Class: "+hero.getClass().getSimpleName());
                 level.setText("Level: "+String.valueOf(hero.getLevel()));
                 hp.setText("Health: "+String.valueOf(hero.getHitPnts() + "/" + hero.getMaxHitPnts()));
-                xp.setText("Xp: "+ String.valueOf(hero.getExperiencePnts()) + "/"+ String.valueOf(hero.getMaxExperiencePnts())) ;
+                xp.setText("Xp: "+ String.valueOf(hero.getExperiencePnts()) + "/"+ String.valueOf(hero.getMaxExperiencePnts()));
+                attack.setText("Attack: " + String.valueOf(hero.getAttackPnts()));
+                defence.setText("defence: " + String.valueOf(hero.getDefencePnts()) + "/" + String.valueOf(hero.getMaxDefencePnts()));
             }
         });
     }

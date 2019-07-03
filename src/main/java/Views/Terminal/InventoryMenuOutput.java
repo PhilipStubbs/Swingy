@@ -9,9 +9,10 @@ import java.util.List;
 
 public class InventoryMenuOutput extends Global {
 
-	private static  void displayArtifactList(List<Artifact> itemList){
+	private static  void displayArtifactList(List<Artifact> itemList, String type){
+		System.out.println(type);
 		for (int i = 0; i < itemList.size(); i++){
-			System.out.print(i + ":"+itemList.get(i).getDetails() + " ");
+			System.out.print("	"+i + ":"+itemList.get(i).getDetails() + "\n");
 		}
 	}
 
@@ -19,11 +20,13 @@ public class InventoryMenuOutput extends Global {
 		Hero hero = ApplicationControls.getHero();
 
 		List<Artifact>[] backpack = hero.getBackpack();
-		displayArtifactList(backpack[HELM]);
 		System.out.print(" | ");
-		displayArtifactList(backpack[ARMOUR]);
+		displayArtifactList(backpack[HELM], "Helm");
 		System.out.print(" | ");
-		displayArtifactList(backpack[WEAPON]);
+		displayArtifactList(backpack[ARMOUR], "Armour");
+		System.out.print(" | ");
+		displayArtifactList(backpack[WEAPON], "Weapons");
+		System.out.print(" | ");
 	}
 
 	public static void displayInventoryInstrucitons(){

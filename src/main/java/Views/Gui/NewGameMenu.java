@@ -21,6 +21,7 @@ public class NewGameMenu extends BaseWindow {
 	private JLabel attack;
 	private JLabel defence;
 	private JLabel heroClassType;
+	private JLabel xp;
 
 	private String heroClasses[] = {"Wizard", "Fighter", "Hunter", "Rouge"};
 
@@ -65,5 +66,6 @@ public class NewGameMenu extends BaseWindow {
 		attack.setText("Attack: " + String.valueOf(hero.getAttackPnts()));
 		defence.setText("defence: " + String.valueOf(hero.getDefencePnts()) + "/" + String.valueOf(hero.getMaxDefencePnts()));
 		heroClassType.setText("Class: "+ hero.getClass().getSimpleName());
+		xp.setText("xp:" + String.valueOf(hero.getExperiencePnts()) + "/" + String.valueOf(hero.getMaxExperiencePnts()));
 	}
 }
