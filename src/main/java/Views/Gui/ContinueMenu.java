@@ -27,7 +27,7 @@ public class ContinueMenu extends BaseWindow {
     private JLabel defence;
     private JLabel attack;
 
-    private static List<String> heroDataList = new ArrayList<String>();
+    private List<String> heroDataList = new ArrayList<String>();
 
     public ContinueMenu() {
         exitButton.addActionListener(new ActionListener() {

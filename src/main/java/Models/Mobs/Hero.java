@@ -95,11 +95,11 @@ public class Hero extends Mob {
         int backpackSize = backpack[HELM].size() + backpack[ARMOUR].size() + backpack[WEAPON].size();
         for (int x = 0; x < 3; x++) {
             for (int i = 0; i < backpack[x].size(); i++) {
-                backpackString += (backpack[x].get(i).getName() + " " + backpack[x].get(i).getBuff() + " " + backpack[x].get(i).getType() + " ");
+                backpackString += (backpack[x].get(i).getName().replaceAll(" ", "_") + " " + backpack[x].get(i).getBuff() + " " + backpack[x].get(i).getType() + " ");
             }
         }
 
-     return name + " " +
+     return name.replaceAll(" ", "_") + " " +
             getClass().getSimpleName() + " " +
             level + " " +
             experiencePnts + " " +
@@ -107,11 +107,11 @@ public class Hero extends Mob {
             attackPnts + " " +
             defencePnts + " " +
              this.equipped.length + " " +
-             this.equipped[HELM].getName() + " " +
+             this.equipped[HELM].getName().replaceAll(" ", "_") + " " +
              this.equipped[HELM].getBuff() + " " +
-             this.equipped[ARMOUR].getName() + " " +
+             this.equipped[ARMOUR].getName().replaceAll(" ", "_") + " " +
              this.equipped[ARMOUR].getBuff() + " " +
-             this.equipped[WEAPON].getName() + " " +
+             this.equipped[WEAPON].getName().replaceAll(" ", "_") + " " +
              this.equipped[WEAPON].getBuff() + " " +
              backpackSize + " " +
             backpackString ;

@@ -13,7 +13,7 @@ public class ItemFactory extends Global {
 
     private static String[] rarity = {"Common", "Rare", "Epic", "Legendary"};
     private static String[] adjectives = {"Wonderful", "Small", "pointy", "Good", "Alright", "Nice", "Spooky"};
-    private static String[] hatType = {"Cap", "Helmet", "Top Hat", "bowler"};
+    private static String[] hatType = {"Cap", "Helmet", "Top_Hat", "bowler"};
     private static String[] armourType = {"Leather_chest", "Chainmail_chest", "Steel_chest_piece", "cloth_shirt"};
     private static String[] weaponType = {"Sword", "Staff", "Crossbow", "Stick"};
 

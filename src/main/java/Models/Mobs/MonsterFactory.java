@@ -22,8 +22,8 @@ public class MonsterFactory {
         Monster monster = new Monster(name,
         hero.getLevel(),
         0,
-        rn.nextInt(hero.getMaxHitPnts()),
-        rn.nextInt(hero.getAttackPnts()) / 2,
+        rn.nextInt(hero.getMaxHitPnts()) + 10,
+                (rn.nextInt(hero.getAttackPnts()) / 2) + 10,
         0,
         backpack,
         equipped);

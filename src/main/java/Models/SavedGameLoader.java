@@ -77,7 +77,7 @@ public class SavedGameLoader extends Global {
 
                 Artifact[] equipped = new Artifact[3];
 
-                name = sc.next();
+                name = sc.next().replaceAll(" ", "_");
                 heroClass = sc.next();
                 level = sc.nextInt();
                 xpPnts = sc.nextInt();
@@ -91,7 +91,8 @@ public class SavedGameLoader extends Global {
                 backPackSize = sc.nextInt();
 
                 for(int i = 0; i < backPackSize; i++) {
-                    String itemName = sc.next();
+                    String itemName = sc.next().replaceAll(" ", "_");;
+                    System.out.println(itemName);
                     int itemBuff = sc.nextInt();
                     int itemType = sc.nextInt();
                     switch (itemType){
