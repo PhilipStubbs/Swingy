@@ -46,7 +46,7 @@ public abstract class Mob extends Global {
         return name;
     }
 
-    Mob(String name, int level, int experiencePnts, int maxHitPnts, int maxAttackPnts, int maxDefencePnts, List<Artifact>[] backpack, Artifact[] equipped) {
+    Mob(String name, int level, int experiencePnts, int maxHitPnts, int currentHp,int maxAttackPnts, int maxDefencePnts, int currentDefence, List<Artifact>[] backpack, Artifact[] equipped) {
 
         this.name = name;
 
@@ -56,10 +56,10 @@ public abstract class Mob extends Global {
         attackPnts = maxAttackPnts;
 
         this.maxDefencePnts = maxDefencePnts;
-        defencePnts = maxDefencePnts;
+        defencePnts = currentDefence;
 
         this.maxHitPnts = maxHitPnts;
-        hitPnts = maxHitPnts;
+        hitPnts = currentHp;
 
         this.experiencePnts = experiencePnts;
         maxExperiencePnts = level * 1000 + (int)Math.pow(level - 1, 2) * 450;

@@ -14,6 +14,18 @@ public class HunterBuilder {
     private int maxDefencePnts;
     private List<Artifact>[] backpack;
     private Artifact[] equipped;
+    private int currentHp;
+    private int currentDefence;
+
+    public HunterBuilder setCurrentHp(int currentHp) {
+        this.currentHp = currentHp;
+        return this;
+    }
+
+    public HunterBuilder setCurrentDefence(int currentDefence) {
+        this.currentDefence = currentDefence;
+        return this;
+    }
 
     public HunterBuilder setName(String name) {
         this.name = name;
@@ -56,6 +68,6 @@ public class HunterBuilder {
     }
 
     public Hunter createHunter() {
-        return new Hunter(name, level, experiencePnts, maxHitPnts, maxAttackPnts, maxDefencePnts, backpack, equipped);
+        return new Hunter(name, level, experiencePnts, maxHitPnts,currentHp, maxAttackPnts, maxDefencePnts,currentDefence, backpack, equipped);
     }
 }

@@ -1,1 +1,3 @@
-dy Hunter 0 0 106 21 21 3 Hunters_Hat 1 Vest 1 Bow 1 0  LevelCompletion 0 9 Finish_Levels 17
+Aragon Hunter 2 331 109 109 24 65 50 3 Legendary_pointy_Helmet 19 Common_Small_Steel_chest_piece 11 Rare_Alright_Staff 15 5 Hunters_Hat 1 0 Vest 1 1 Bow 1 2 Epic_Wonderful_Sword 13 2 Epic_Wonderful_Crossbow 9 2  LevelCompletion 7 8 Finish_Levels 716
+AMFSDGO Hunter 1 583 100 107 22 16 20 3 Hunters_Hat 1 Common_Alright_Chainmail_chest 17 Legendary_Good_Stick 18 3 Vest 1 1 Common_Small_Stick 7 2 Bow 1 2  LevelCompletion 4 9 Finish_Levels 417
+DFOGI Rouge 2 404 63 104 27 21 26 3 Common_Spooky_bowler 8 Common_Small_Leather_chest 22 Rare_Nice_Staff 12 3 Basic_cap 1 0 Cloth_shirt 1 1 Daggers 1 2  EnemyHunter 4 9 Kill_Enemies 352

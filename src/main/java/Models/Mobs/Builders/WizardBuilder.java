@@ -14,6 +14,18 @@ public class WizardBuilder {
     private int maxDefencePnts;
     private List<Artifact>[] backpack;
     private Artifact[] equipped;
+    private int currentHp;
+    private int currentDefence;
+
+    public WizardBuilder setCurrentHp(int currentHp) {
+        this.currentHp = currentHp;
+        return this;
+    }
+
+    public WizardBuilder setCurrentDefence(int currentDefence) {
+        this.currentDefence = currentDefence;
+        return this;
+    }
 
     public WizardBuilder setName(String name) {
         this.name = name;
@@ -56,6 +68,6 @@ public class WizardBuilder {
     }
 
     public Wizard createWizard() {
-        return new Wizard(name, level, experiencePnts, maxHitPnts, maxAttackPnts, maxDefencePnts, backpack, equipped);
+        return new Wizard(name, level, experiencePnts, maxHitPnts,currentHp, maxAttackPnts, maxDefencePnts,currentDefence, backpack, equipped);
     }
 }

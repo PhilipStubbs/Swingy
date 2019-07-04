@@ -14,6 +14,18 @@ public class RougeBuilder {
     private int maxDefencePnts;
     private List<Artifact>[] backpack;
     private Artifact[] equipped;
+    private int currentHp;
+    private int currentDefence;
+
+    public RougeBuilder setCurrentHp(int currentHp) {
+        this.currentHp = currentHp;
+        return this;
+    }
+
+    public RougeBuilder setCurrentDefence(int currentDefence) {
+        this.currentDefence = currentDefence;
+        return this;
+    }
 
     public RougeBuilder setName(String name) {
         this.name = name;
@@ -56,6 +68,6 @@ public class RougeBuilder {
     }
 
     public Rouge createRouge() {
-        return new Rouge(name, level, experiencePnts, maxHitPnts, maxAttackPnts, maxDefencePnts, backpack, equipped);
+        return new Rouge(name, level, experiencePnts, maxHitPnts,currentHp, maxAttackPnts, maxDefencePnts, currentDefence, backpack, equipped);
     }
 }

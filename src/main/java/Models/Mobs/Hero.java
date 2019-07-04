@@ -13,13 +13,15 @@ public class Hero extends Mob {
         super();
     }
 
-    public Hero(String name, int level, int experiencePnts, int maxHitPnts, int maxAttackPnts, int maxDefencePnts, List<Artifact>[] backpack, Artifact[] equipped) {
+    public Hero(String name, int level, int experiencePnts, int maxHitPnts , int currentHp, int maxAttackPnts, int maxDefencePnts, int currentDefence, List<Artifact>[] backpack, Artifact[] equipped) {
         super(name,
         level,
         experiencePnts,
         maxHitPnts + (equipped[HELM] != null ? equipped[HELM].getBuff() : 0),
+        currentHp  + (equipped[HELM] != null ? equipped[HELM].getBuff() : 0),
         maxAttackPnts + (equipped[WEAPON] != null ? equipped[WEAPON].getBuff() : 0),
-        maxDefencePnts + (equipped[WEAPON] != null ? equipped[WEAPON].getBuff() : 0),
+        maxDefencePnts + (equipped[ARMOUR] != null ? equipped[ARMOUR].getBuff() : 0),
+        currentDefence,
         backpack,
         equipped);
     }
@@ -98,14 +100,20 @@ public class Hero extends Mob {
                 backpackString += (backpack[x].get(i).getName().replaceAll(" ", "_") + " " + backpack[x].get(i).getBuff() + " " + backpack[x].get(i).getType() + " ");
             }
         }
-
+        System.out.println(  "here"+(maxDefencePnts - this.equipped[ARMOUR].getBuff()));
+        int currentDefencePnts = (defencePnts  <= 0 ? 0 : defencePnts);
+        int currentHp = (hitPnts - this.equipped[HELM].getBuff()) <= 0 ? 0 : hitPnts - this.equipped[HELM].getBuff();
+        int maxDefence = (maxDefencePnts - this.equipped[ARMOUR].getBuff());
+        System.out.println("save"+ maxDefence + " "+ maxDefence);
      return name.replaceAll(" ", "_") + " " +
             getClass().getSimpleName() + " " +
             level + " " +
             experiencePnts + " " +
-            hitPnts + " " +
-            attackPnts + " " +
-            defencePnts + " " +
+             currentHp + " " +
+             (maxHitPnts - this.equipped[HELM].getBuff()) + " " +
+             (maxAttackPnts - this.equipped[WEAPON].getBuff()) + " " +
+             currentDefencePnts+ " " +
+             maxDefence + " " +
              this.equipped.length + " " +
              this.equipped[HELM].getName().replaceAll(" ", "_") + " " +
              this.equipped[HELM].getBuff() + " " +

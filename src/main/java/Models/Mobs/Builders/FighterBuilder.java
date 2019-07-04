@@ -14,6 +14,18 @@ public class FighterBuilder {
     private int maxDefencePnts;
     private List<Artifact>[] backpack;
     private Artifact[] equipped;
+    private int currentHp;
+    private int currentDefence;
+
+    public FighterBuilder setCurrentHp(int currentHp) {
+        this.currentHp = currentHp;
+        return this;
+    }
+
+    public FighterBuilder setCurrentDefence(int currentDefence) {
+        this.currentDefence = currentDefence;
+        return this;
+    }
 
     public FighterBuilder setName(String name) {
         this.name = name;
@@ -56,6 +68,6 @@ public class FighterBuilder {
     }
 
     public Fighter createFighter() {
-        return new Fighter(name, level, experiencePnts, maxHitPnts, maxAttackPnts, maxDefencePnts, backpack, equipped);
+        return new Fighter(name, level, experiencePnts, maxHitPnts,currentHp, maxAttackPnts, maxDefencePnts,currentDefence, backpack, equipped);
     }
 }
